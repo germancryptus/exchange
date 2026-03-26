@@ -3,18 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRYPTUS — Phone Preview</title>
+<title>CRYPTUS EXCHANGE</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  background: #1a1a2e;
+  background: #FAFAFA;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  font-family: -apple-system, sans-serif;
-  padding: 20px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  padding: 30px 20px;
 }
+/* Brand header */
+.brand {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.brand-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 8px;
+  color: #0D0D0D;
+  text-transform: uppercase;
+}
+.brand-sub {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 6px;
+  color: #E8621A;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.brand-line {
+  width: 40px;
+  height: 3px;
+  background: #E8621A;
+  border-radius: 2px;
+  margin: 16px auto 0;
+}
+/* Phone */
 .phone-frame {
   width: 375px;
   height: 812px;
@@ -23,12 +55,11 @@ body {
   padding: 12px;
   box-shadow:
     0 0 0 2px #333,
-    0 0 0 4px #1a1a1a,
-    0 30px 80px rgba(0,0,0,0.6),
-    0 0 40px rgba(232,98,26,0.08);
+    0 0 0 4px #e0e0e0,
+    0 30px 80px rgba(0,0,0,0.15),
+    0 0 40px rgba(0,0,0,0.05);
   position: relative;
 }
-/* Notch */
 .phone-frame::before {
   content: '';
   position: absolute;
@@ -41,7 +72,6 @@ body {
   border-radius: 0 0 18px 18px;
   z-index: 10;
 }
-/* Dynamic Island dot */
 .phone-frame::after {
   content: '';
   position: absolute;
@@ -54,7 +84,6 @@ body {
   border-radius: 20px;
   z-index: 11;
 }
-/* Status bar */
 .status-bar {
   position: absolute;
   top: 12px;
@@ -80,7 +109,6 @@ body {
   align-items: center;
   gap: 5px;
 }
-/* Signal bars */
 .signal-bars {
   display: flex;
   align-items: flex-end;
@@ -96,9 +124,7 @@ body {
 .signal-bars .bar:nth-child(2) { height: 6px; }
 .signal-bars .bar:nth-child(3) { height: 8px; }
 .signal-bars .bar:nth-child(4) { height: 11px; }
-/* WiFi icon */
 .wifi-icon { display: flex; align-items: center; }
-/* Battery */
 .battery {
   display: flex;
   align-items: center;
@@ -110,7 +136,6 @@ body {
   border-radius: 3px;
   border: 1.5px solid rgba(255,255,255,0.5);
   padding: 1.5px;
-  position: relative;
 }
 .battery-fill {
   width: 80%;
@@ -140,21 +165,34 @@ iframe {
   top: 44px;
   left: 0;
 }
-.label {
+/* Footer */
+.footer {
   text-align: center;
-  margin-top: 20px;
-  color: rgba(255,255,255,0.4);
-  font-size: 13px;
-  letter-spacing: 1px;
+  margin-top: 24px;
 }
-.label span {
+.footer-text {
+  font-size: 12px;
+  color: #999;
+  letter-spacing: 0.5px;
+}
+.footer-text span {
   color: #E8621A;
   font-weight: 600;
+}
+.footer-copy {
+  font-size: 10px;
+  color: #ccc;
+  margin-top: 6px;
 }
 </style>
 </head>
 <body>
   <div>
+    <div class="brand">
+      <div class="brand-logo">CRYPTUS</div>
+      <div class="brand-sub">EXCHANGE</div>
+      <div class="brand-line"></div>
+    </div>
     <div class="phone-frame">
       <div class="status-bar">
         <div class="status-time" id="status-time">9:41</div>
@@ -180,7 +218,10 @@ iframe {
         <iframe src="cryptus-mini.html" id="app"></iframe>
       </div>
     </div>
-    <div class="label">CRYPTUS EXCHANGE — <span>iPhone 14 Pro Preview</span></div>
+    <div class="footer">
+      <div class="footer-text">Telegram Mini App — <span>MVP Prototype</span></div>
+      <div class="footer-copy">&copy; 2026 CRYPTUS EXCHANGE</div>
+    </div>
   </div>
 <script>
 function updateTime() {
