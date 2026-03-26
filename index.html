@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRYPTUS — Phone Preview</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: -apple-system, sans-serif;
+  padding: 20px;
+}
+.phone-frame {
+  width: 375px;
+  height: 812px;
+  border-radius: 50px;
+  background: #000;
+  padding: 12px;
+  box-shadow:
+    0 0 0 2px #333,
+    0 0 0 4px #1a1a1a,
+    0 30px 80px rgba(0,0,0,0.6),
+    0 0 40px rgba(232,98,26,0.08);
+  position: relative;
+}
+/* Notch */
+.phone-frame::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 28px;
+  background: #000;
+  border-radius: 0 0 18px 18px;
+  z-index: 10;
+}
+/* Dynamic Island dot */
+.phone-frame::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 18px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  z-index: 11;
+}
+/* Status bar */
+.status-bar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  height: 44px;
+  border-radius: 38px 38px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  z-index: 20;
+  background: #0D0D0D;
+}
+.status-time {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+/* Signal bars */
+.signal-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5px;
+  height: 11px;
+}
+.signal-bars .bar {
+  width: 3px;
+  border-radius: 1px;
+  background: #fff;
+}
+.signal-bars .bar:nth-child(1) { height: 4px; }
+.signal-bars .bar:nth-child(2) { height: 6px; }
+.signal-bars .bar:nth-child(3) { height: 8px; }
+.signal-bars .bar:nth-child(4) { height: 11px; }
+/* WiFi icon */
+.wifi-icon { display: flex; align-items: center; }
+/* Battery */
+.battery {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+.battery-body {
+  width: 22px;
+  height: 11px;
+  border-radius: 3px;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  padding: 1.5px;
+  position: relative;
+}
+.battery-fill {
+  width: 80%;
+  height: 100%;
+  border-radius: 1px;
+  background: #fff;
+}
+.battery-tip {
+  width: 2px;
+  height: 5px;
+  border-radius: 0 1px 1px 0;
+  background: rgba(255,255,255,0.5);
+}
+.screen-wrap {
+  width: 100%;
+  height: 100%;
+  border-radius: 38px;
+  overflow: hidden;
+  background: #0D0D0D;
+  position: relative;
+}
+iframe {
+  width: 100%;
+  height: calc(100% - 44px);
+  border: none;
+  position: absolute;
+  top: 44px;
+  left: 0;
+}
+.label {
+  text-align: center;
+  margin-top: 20px;
+  color: rgba(255,255,255,0.4);
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.label span {
+  color: #E8621A;
+  font-weight: 600;
+}
+</style>
+</head>
+<body>
+  <div>
+    <div class="phone-frame">
+      <div class="status-bar">
+        <div class="status-time" id="status-time">9:41</div>
+        <div class="status-right">
+          <div class="signal-bars">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          </div>
+          <div class="wifi-icon">
+            <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
+              <path d="M7.5 9.5a1 1 0 110 2 1 1 0 010-2z" fill="#fff"/>
+              <path d="M4.5 7.5a4.2 4.2 0 016 0" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M2 5a7.1 7.1 0 0111 0" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M0 2.5a10.5 10.5 0 0115 0" stroke="rgba(255,255,255,0.35)" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="battery">
+            <div class="battery-body"><div class="battery-fill"></div></div>
+            <div class="battery-tip"></div>
+          </div>
+        </div>
+      </div>
+      <div class="screen-wrap">
+        <iframe src="cryptus-mini.html" id="app"></iframe>
+      </div>
+    </div>
+    <div class="label">CRYPTUS EXCHANGE — <span>iPhone 14 Pro Preview</span></div>
+  </div>
+<script>
+function updateTime() {
+  var now = new Date();
+  var h = now.getHours();
+  var m = now.getMinutes().toString().padStart(2, '0');
+  document.getElementById('status-time').textContent = h + ':' + m;
+}
+updateTime();
+setInterval(updateTime, 10000);
+</script>
+</body>
+</html>
