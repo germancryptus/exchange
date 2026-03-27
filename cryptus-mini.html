@@ -32,6 +32,43 @@
   --r-xl:          24px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── Smart Placeholder ── */
+input[type="number"]::placeholder, input[type="text"]::placeholder {
+  color: rgba(245,240,232,0.18);
+  font-weight: 500;
+}
+/* ── Inline field error ── */
+.field-error-inline {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 16px;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #FF5555;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, opacity 0.25s ease, margin 0.25s ease;
+}
+.field-error-inline.visible {
+  max-height: 28px;
+  opacity: 1;
+  margin-top: 6px;
+}
+.field-error-inline svg { flex-shrink: 0; }
+/* ── CTA shake ── */
+@keyframes ctaShake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-6px); }
+  30% { transform: translateX(6px); }
+  45% { transform: translateX(-4px); }
+  60% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+  90% { transform: translateX(2px); }
+}
+.cta-shake { animation: ctaShake 0.45s ease; }
 /* ── Scrollbar styling ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -390,7 +427,7 @@ div[style*="overflow-y: auto"] {
   color:rgba(245,240,232,0.6);cursor:pointer;
 }
 .cta-disabled {
-  opacity:0.4;pointer-events:none;
+  opacity:0.5;cursor:pointer;
 }
 .cta-bottom {
   padding:8px 14px calc(4px + env(safe-area-inset-bottom, 0px));flex-shrink:0;
@@ -817,7 +854,7 @@ div[style*="overflow-y: auto"] {
         <div style="font-size:10px;color:rgba(245,240,232,0.5);">мин. <span id="form-min-val" style="color:#E8621A;font-weight:600;">800 USDT</span></div>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
-        <input id="form-amount" type="number" placeholder="0" inputmode="decimal"
+        <input id="form-amount" type="number" placeholder="от 800" inputmode="decimal"
           style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;font-variant-numeric:tabular-nums;"
           oninput="calcConvert()" />
         <!-- Выбор валюты -->
@@ -867,7 +904,7 @@ div[style*="overflow-y: auto"] {
         </div>
       </div>
     </div>
-    <div class="field-error" id="err-amount">Минимальная сумма: <span id="err-amount-min">800 USDT</span></div>
+    <div class="field-error-inline" id="err-amount"><svg width="13" height="13" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="#FF5555"/><text x="7" y="10.5" fill="#fff" font-size="9" font-weight="700" text-anchor="middle">!</text></svg> Минимальная сумма — <span id="err-amount-min">800 USDT</span></div>
     <!-- Стрелка -->
     <div style="display:flex;align-items:center;justify-content:center;">
       <div style="width:30px;height:30px;border-radius:50%;background:#1A1A1A;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;">
@@ -1173,12 +1210,13 @@ div[style*="overflow-y: auto"] {
         <div style="font-size:10px;color:rgba(245,240,232,0.5);">мин. <span id="buy-min-val" style="color:#4CAF7D;font-weight:600;">67 120 ₽</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:10px;">
-        <input id="buy-amount" type="number" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;font-variant-numeric:tabular-nums;" oninput="calcBuy()" />
+        <input id="buy-amount" type="number" placeholder="от 67 120" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;font-variant-numeric:tabular-nums;" oninput="calcBuy()" />
         <div style="display:flex;align-items:center;gap:5px;background:transparent;border:1px solid rgba(76,175,125,0.25);border-radius:8px;padding:6px 10px;flex-shrink:0;">
           <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#4CAF7D;">RUB</div>
         </div>
       </div>
     </div>
+    <div class="field-error-inline" id="err-buy-amount"><svg width="13" height="13" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="#FF5555"/><text x="7" y="10.5" fill="#fff" font-size="9" font-weight="700" text-anchor="middle">!</text></svg> Минимальная сумма — <span id="err-buy-amount-min">67 120 ₽</span></div>
     <div id="buy-bank-wrapper" style="background:#1A1A1A;border-radius:14px;padding:11px 14px;border:1px solid rgba(255,255,255,0.07);position:relative;transition:border-color 0.2s;">
       <div class="field-label" style="color:rgba(245,240,232,0.6);margin-bottom:10px;">Банк списания</div>
       <div onclick="toggleBuyBankMenu()" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
@@ -1271,7 +1309,7 @@ div[style*="overflow-y: auto"] {
         <div style="font-size:10px;color:rgba(245,240,232,0.5);">мин. <span id="express-min-val" style="color:#E8621A;font-weight:600;">1 000 ₽</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:10px;">
-        <input id="express-amount" type="number" placeholder="0" inputmode="decimal"
+        <input id="express-amount" type="number" placeholder="от 1 000" inputmode="decimal"
           style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;font-variant-numeric:tabular-nums;"
           oninput="calcExpress()" />
         <div style="display:flex;align-items:center;gap:6px;background:transparent;border:1.5px solid rgba(76,175,125,0.3);border-radius:10px;padding:7px 11px;flex-shrink:0;">
@@ -1282,6 +1320,7 @@ div[style*="overflow-y: auto"] {
         </div>
       </div>
     </div>
+    <div class="field-error-inline" id="err-express-amount"><svg width="13" height="13" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="#FF5555"/><text x="7" y="10.5" fill="#fff" font-size="9" font-weight="700" text-anchor="middle">!</text></svg> Минимальная сумма — 1 000 ₽</div>
     <!-- Курс -->
     <div class="rate-divider">
       <div class="rate-divider-line"></div>
@@ -1358,7 +1397,7 @@ div[style*="overflow-y: auto"] {
         <div style="font-size:10px;color:rgba(245,240,232,0.5);">мин. <span id="es-min-val" style="color:#E8621A;font-weight:600;">12 USDT</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:10px;">
-        <input id="es-amount" type="number" placeholder="0" inputmode="decimal"
+        <input id="es-amount" type="number" placeholder="от 12" inputmode="decimal"
           style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;font-variant-numeric:tabular-nums;"
           oninput="calcExpressSell()" />
         <div style="display:flex;align-items:center;gap:6px;background:rgba(232,98,26,0.08);border:1.5px solid rgba(232,98,26,0.25);border-radius:10px;padding:7px 11px;flex-shrink:0;">
@@ -1368,6 +1407,7 @@ div[style*="overflow-y: auto"] {
         </div>
       </div>
     </div>
+    <div class="field-error-inline" id="err-es-amount"><svg width="13" height="13" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="#FF5555"/><text x="7" y="10.5" fill="#fff" font-size="9" font-weight="700" text-anchor="middle">!</text></svg> Минимальная сумма — 12 USDT</div>
     <!-- Курс -->
     <div class="rate-divider">
       <div class="rate-divider-line"></div>
@@ -1754,7 +1794,7 @@ div[style*="overflow-y: auto"] {
           <div style="font-size:10px;color:rgba(245,240,232,0.5);">мин. <span id="cash-min-val" style="color:#E8621A;font-weight:600;">800 USDT</span></div>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
-          <input id="cash-amount" type="number" placeholder="0" inputmode="decimal"
+          <input id="cash-amount" type="number" placeholder="от 300 000" inputmode="decimal"
             style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;font-variant-numeric:tabular-nums;"
             oninput="calcCash()" />
           <!-- Крипто-кнопка (для sell) -->
@@ -1804,6 +1844,7 @@ div[style*="overflow-y: auto"] {
           <div style="display:flex;flex-wrap:wrap;gap:5px;" id="cash-net-chips-sell"></div>
         </div>
       </div>
+      <div class="field-error-inline" id="err-cash-amount"><svg width="13" height="13" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="#FF5555"/><text x="7" y="10.5" fill="#fff" font-size="9" font-weight="700" text-anchor="middle">!</text></svg> Минимальная сумма — <span id="err-cash-amount-min">300 000 ₽</span></div>
       <!-- Курс между -->
       <div class="rate-divider">
         <div class="rate-divider-line"></div>
@@ -3198,9 +3239,32 @@ function updateBuyCTA() {
     if (wb) wb.style.borderColor = 'rgba(255,85,85,0.5)';
     if (hintEl) hintEl.style.display = 'none';
   }
+  const belowMin = amount > 0 && amount < minRub;
   const valid = amount >= minRub && walletOk;
+  /* ── Inline error ── */
+  const errEl = document.getElementById('err-buy-amount');
+  if (errEl) {
+    const errMin = document.getElementById('err-buy-amount-min');
+    if (errMin) errMin.textContent = minRub.toLocaleString('ru-RU') + ' ₽';
+    errEl.classList.toggle('visible', belowMin);
+  }
+  /* ── CTA с причиной ── */
   const cta = document.getElementById('buy-cta');
-  if (cta) { cta.style.opacity = valid ? '1' : '0.4'; cta.style.pointerEvents = valid ? 'auto' : 'none'; }
+  if (cta) {
+    if (valid) {
+      cta.textContent = 'Продолжить →';
+      cta.style.opacity = '1';
+      cta.classList.remove('cta-disabled');
+      cta.onclick = function() { submitBuyForm(); };
+    } else {
+      if (amount === 0) cta.textContent = 'Введите сумму от ' + minRub.toLocaleString('ru-RU') + ' ₽';
+      else if (belowMin) cta.textContent = 'Сумма ниже минимума ↑';
+      else if (!walletOk) cta.textContent = 'Введите адрес кошелька';
+      cta.style.opacity = '0.5';
+      cta.classList.add('cta-disabled');
+      cta.onclick = function() { shakeBtn(this); };
+    }
+  }
 }
 async function pasteWalletAddress() {
   const input = document.getElementById('buy-wallet');
@@ -3261,6 +3325,12 @@ function setBuyCurrency(curr) {
   });
   document.getElementById('buy-currency-menu').style.display = 'none';
   renderBuyNetChips(curr);
+  // Update smart placeholder + min label
+  var minR = getBuyMinRub();
+  var buyInp = document.getElementById('buy-amount');
+  if (buyInp) buyInp.placeholder = 'от ' + minR.toLocaleString('ru-RU');
+  var buyMinEl = document.getElementById('buy-min-val');
+  if (buyMinEl) buyMinEl.textContent = minR.toLocaleString('ru-RU') + ' ₽';
   calcBuy();
 }
 function renderBuyNetChips(currency) {
@@ -3456,6 +3526,18 @@ function setCashCurrency(curr, recalc = true) {
   if (menu) menu.style.display = 'none';
   updateCashRate();
   renderCashNetChips(curr);
+  // Update smart placeholder + min label при смене валюты
+  var cashMin = getCashMin();
+  var cashInp = document.getElementById('cash-amount');
+  var cashMinEl = document.getElementById('cash-min-val');
+  if (cashIntent === 'sell') {
+    var phTxt = cashMin < 1 ? cashMin.toFixed(6) : cashMin.toLocaleString('ru-RU');
+    if (cashInp) cashInp.placeholder = 'от ' + phTxt;
+    if (cashMinEl) cashMinEl.textContent = phTxt + ' ' + curr;
+  } else {
+    if (cashInp) cashInp.placeholder = 'от 300 000';
+    if (cashMinEl) cashMinEl.textContent = '300 000 ₽';
+  }
   if (recalc) calcCash();
 }
 /* ── Города с автокомплитом ── */
@@ -3519,8 +3601,14 @@ function getCashCityRate() {
   return classicRate - 2.59 + spread;
 }
 function getCashMin() {
-  // Минимум 3000 USDT эквивалент
-  return cashIntent === 'sell' ? 3000 : Math.round((classicRate + 0.72) * 3000);
+  // Минимум 300 000 ₽ эквивалент
+  // sell: отдаём крипту → мин. в USDT = 300000 / rate
+  // buy: отдаём наличные → мин. 300 000 ₽
+  if (cashIntent === 'sell') {
+    const rate = (classicRate - 1.95) * (CRYPTO_RATES[cashCurrency] || 1);
+    return +(300000 / rate).toFixed(rate > 1000 ? 6 : 2);
+  }
+  return 300000;
 }
 function selectCashCity(city) {
   selectedCashCity = { city };
@@ -3533,9 +3621,10 @@ function selectCashCity(city) {
   if (clear) clear.style.display = 'flex';
   if (box)   box.style.borderColor = 'rgba(76,175,125,0.3)';
   document.getElementById('cash-city-menu').style.display = 'none';
+  var cashMin = getCashMin();
   if (minVal) minVal.textContent = cashIntent === 'sell'
-    ? '3 000 USDT'
-    : Math.round((classicRate + 0.72) * 3000).toLocaleString('ru-RU') + ' ₽';
+    ? (cashMin < 1 ? cashMin.toFixed(6) : cashMin.toLocaleString('ru-RU')) + ' ' + (cashCurrency || 'USDT')
+    : '300 000 ₽';
   if (section) {
     section.style.display = 'flex';
     section.style.opacity = '0';
@@ -3640,8 +3729,6 @@ function updateCashCTA() {
   const min = getCashMin();
   const belowMin = amount > 0 && amount < min;
   const valid = amount >= min && selectedCashCity !== null;
-  const cta = document.getElementById('cash-cta');
-  if (cta) { cta.style.opacity = valid ? '1' : '0.4'; cta.style.pointerEvents = valid ? 'auto' : 'none'; }
   // Подсветка поля суммы красным при вводе ниже минимума
   const giveBox = document.getElementById('cash-give-box');
   if (giveBox) {
@@ -3650,6 +3737,33 @@ function updateCashCTA() {
   // Подсветка минимума красным
   const minVal = document.getElementById('cash-min-val');
   if (minVal) minVal.style.color = belowMin ? '#FF5555' : '#E8621A';
+  /* ── Inline error ── */
+  const errEl = document.getElementById('err-cash-amount');
+  if (errEl) {
+    const errMin = document.getElementById('err-cash-amount-min');
+    const unit = cashIntent === 'sell' ? (' ' + (cashCurrency || 'USDT')) : ' ₽';
+    if (errMin) errMin.textContent = (min < 1 ? min.toFixed(6) : min.toLocaleString('ru-RU')) + unit;
+    errEl.classList.toggle('visible', belowMin);
+  }
+  /* ── CTA с причиной ── */
+  const cta = document.getElementById('cash-cta');
+  if (cta) {
+    const unit = cashIntent === 'sell' ? (' ' + (cashCurrency || 'USDT')) : ' ₽';
+    const minFmt = min < 1 ? min.toFixed(4) : min.toLocaleString('ru-RU');
+    if (valid) {
+      cta.textContent = 'Записаться на обмен →';
+      cta.style.opacity = '1';
+      cta.classList.remove('cta-disabled');
+      cta.onclick = function() { submitCashForm(); };
+    } else {
+      if (!selectedCashCity) cta.textContent = 'Выберите город';
+      else if (amount === 0) cta.textContent = 'Введите сумму от ' + minFmt + unit;
+      else if (belowMin) cta.textContent = 'Сумма ниже минимума ↑';
+      cta.style.opacity = '0.5';
+      cta.classList.add('cta-disabled');
+      cta.onclick = function() { shakeBtn(this); };
+    }
+  }
 }
 function submitCashForm() {
   const amount = document.getElementById('cash-amount')?.value || '0';
@@ -3996,6 +4110,11 @@ function setCurrency(curr) {
   });
   document.getElementById('currency-menu').style.display = 'none';
   updateMinLabel();
+  // Update smart placeholder
+  var min = getMinInCurrency();
+  var ph = min < 1 ? min.toFixed(6) : min.toLocaleString('ru-RU');
+  var inp = document.getElementById('form-amount');
+  if (inp) inp.placeholder = 'от ' + ph;
   renderNetChips(curr);
   calcConvert();
 }
@@ -4117,9 +4236,29 @@ function updateEsCTA() {
   const amount  = parseFloat(document.getElementById('es-amount')?.value) || 0;
   const phone   = document.getElementById('es-phone')?.value.replace(/\D/g,'') || '';
   const hasBank = !!window._esSelectedBank;
+  const belowMin = amount > 0 && amount < ES_MIN_USDT;
   const valid   = amount >= ES_MIN_USDT && hasBank && phone.length === 11;
+  /* ── Inline error ── */
+  const errEl = document.getElementById('err-es-amount');
+  if (errEl) errEl.classList.toggle('visible', belowMin);
+  /* ── CTA с причиной ── */
   const cta = document.getElementById('es-cta');
-  if (cta) { cta.style.opacity = valid ? '1' : '0.4'; cta.style.pointerEvents = valid ? 'auto' : 'none'; }
+  if (cta) {
+    if (valid) {
+      cta.textContent = 'Оставить заявку →';
+      cta.style.opacity = '1';
+      cta.classList.remove('cta-disabled');
+      cta.onclick = function() { submitExpressSell(); };
+    } else {
+      if (amount === 0) cta.textContent = 'Введите сумму от 12 USDT';
+      else if (belowMin) cta.textContent = 'Сумма ниже минимума ↑';
+      else if (!hasBank) cta.textContent = 'Выберите банк';
+      else if (phone.length !== 11) cta.textContent = 'Введите номер телефона';
+      cta.style.opacity = '0.5';
+      cta.classList.add('cta-disabled');
+      cta.onclick = function() { shakeBtn(this); };
+    }
+  }
 }
 let _esTimerInterval = null;
 function submitExpressSell() {
@@ -4239,9 +4378,28 @@ function updateExpressCTA() {
   const amount = parseFloat(document.getElementById('express-amount')?.value) || 0;
   const wallet = document.getElementById('express-wallet')?.value.trim() || '';
   const validWallet = wallet.startsWith('T') && wallet.length === 34;
+  const belowMin = amount > 0 && amount < EXPRESS_MIN_RUB;
   const valid = amount >= EXPRESS_MIN_RUB && validWallet;
+  /* ── Inline error ── */
+  const errEl = document.getElementById('err-express-amount');
+  if (errEl) errEl.classList.toggle('visible', belowMin);
+  /* ── CTA с причиной ── */
   const cta = document.getElementById('express-cta');
-  if (cta) { cta.style.opacity = valid ? '1' : '0.4'; cta.style.pointerEvents = valid ? 'auto' : 'none'; }
+  if (cta) {
+    if (valid) {
+      cta.textContent = 'Продолжить →';
+      cta.style.opacity = '1';
+      cta.classList.remove('cta-disabled');
+      cta.onclick = function() { submitExpressBuy(); };
+    } else {
+      if (amount === 0) cta.textContent = 'Введите сумму от 1 000 ₽';
+      else if (belowMin) cta.textContent = 'Сумма ниже минимума ↑';
+      else if (!validWallet) cta.textContent = 'Введите адрес кошелька';
+      cta.style.opacity = '0.5';
+      cta.classList.add('cta-disabled');
+      cta.onclick = function() { shakeBtn(this); };
+    }
+  }
 }
 function pasteExpressWallet() {
   if (navigator.clipboard?.readText) {
@@ -4521,12 +4679,31 @@ function updateCTA() {
     errRekv.textContent = paymentMethod === 'sbp' ? 'Введите номер телефона (СБП)' : 'Введите номер карты (16 цифр)';
     errRekv.classList.toggle('visible', rekvInput.length > 0 && !rekvOk);
   }
-  /* ── CTA ── */
+  /* ── CTA с причиной ── */
   const cta = document.getElementById('form-cta');
   if (cta) {
-    cta.style.opacity       = valid ? '1'    : '0.4';
-    cta.style.pointerEvents = valid ? 'auto' : 'none';
+    const formatted = min < 1 ? min.toFixed(6) : min % 1 === 0 ? min.toLocaleString('ru-RU') : min.toFixed(4);
+    if (valid) {
+      cta.textContent = 'Продолжить →';
+      cta.style.opacity = '1';
+      cta.classList.remove('cta-disabled');
+      cta.onclick = function() { submitForm(); };
+    } else {
+      if (amount === 0) cta.textContent = 'Введите сумму от ' + formatted + ' ' + sellCurrency;
+      else if (belowMin) cta.textContent = 'Сумма ниже минимума ↑';
+      else if (!selectedBank) cta.textContent = 'Выберите банк';
+      else if (!rekvOk) cta.textContent = 'Заполните реквизиты';
+      cta.style.opacity = '0.5';
+      cta.classList.add('cta-disabled');
+      cta.onclick = function() { shakeBtn(this); };
+    }
   }
+}
+function shakeBtn(el) {
+  el.classList.remove('cta-shake');
+  void el.offsetWidth;
+  el.classList.add('cta-shake');
+  setTimeout(function() { el.classList.remove('cta-shake'); }, 500);
 }
 function formatPhone(el) {
   let v = el.value.replace(/\D/g, '');
