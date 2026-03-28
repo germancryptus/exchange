@@ -1706,7 +1706,7 @@ div[style*="overflow-y: auto"] {
         <div style="height:2px;"></div>
         <div style="display:flex;gap:12px;align-items:flex-start;">
           <div style="width:24px;height:24px;border-radius:50%;background:rgba(232,98,26,0.15);border:1px solid rgba(232,98,26,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:#E8621A;">1</div>
-          <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:600;color:#F5F0E8;">Выберите нужный город</div>
+          <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:600;color:#F5F0E8;">Выберите нужную страну / город</div>
         </div>
         <div style="height:1px;background:rgba(255,255,255,0.06);"></div>
         <div style="display:flex;gap:12px;align-items:flex-start;">
@@ -1747,7 +1747,7 @@ div[style*="overflow-y: auto"] {
     </div>
     <div>
       <div class="screen-title" id="cash-form-title">Купить / Продать</div>
-      <div style="font-size:12px;color:rgba(245,240,232,0.5);margin-top:2px;">Выберите нужный город</div>
+      <div style="font-size:12px;color:rgba(245,240,232,0.5);margin-top:2px;">Выберите нужную страну / город</div>
     </div>
   </div>
   <div class="scroll-content">
@@ -3602,13 +3602,19 @@ function getCashCityRate() {
 }
 function getCashMin() {
   // Минимум 300 000 ₽ эквивалент
-  // sell: отдаём крипту → мин. в USDT = 300000 / rate
-  // buy: отдаём наличные → мин. 300 000 ₽
+  // sell: отдаём крипту → мин. = 300000₽ / (курс крипты в ₽)
+  // buy: отдаём наличные → мин. = 300000₽ × fiatRate (конвертация в выбранную валюту)
   if (cashIntent === 'sell') {
     const rate = (classicRate - 1.95) * (CRYPTO_RATES[cashCurrency] || 1);
     return +(300000 / rate).toFixed(rate > 1000 ? 6 : 2);
   }
-  return 300000;
+  // buy: конвертируем 300 000 ₽ в выбранную фиатную валюту
+  const fiatRate = FIAT_RATES[cashGiveFiat] || 1;
+  return Math.round(300000 * fiatRate);
+}
+function getCashMinUnit() {
+  if (cashIntent === 'sell') return ' ' + (cashCurrency || 'USDT');
+  return ' ' + (cashGiveFiat || 'RUB');
 }
 function selectCashCity(city) {
   selectedCashCity = { city };
@@ -3670,6 +3676,14 @@ function setCashGiveFiat(curr, sym) {
     if (sp) sp.style.color = isActive ? '#E8621A' : 'rgba(245,240,232,0.8)';
   });
   updateCashRate();
+  // Update smart placeholder + min при смене фиатной валюты
+  var cashMin = getCashMin();
+  var cashInp = document.getElementById('cash-amount');
+  var cashMinEl = document.getElementById('cash-min-val');
+  var minFmt = cashMin < 1 ? cashMin.toFixed(4) : cashMin.toLocaleString('ru-RU');
+  var unit = getCashMinUnit();
+  if (cashInp) cashInp.placeholder = 'от ' + minFmt;
+  if (cashMinEl) cashMinEl.textContent = minFmt + unit;
   calcCash();
 }
 function renderCashNetChips(currency) {
@@ -3741,14 +3755,14 @@ function updateCashCTA() {
   const errEl = document.getElementById('err-cash-amount');
   if (errEl) {
     const errMin = document.getElementById('err-cash-amount-min');
-    const unit = cashIntent === 'sell' ? (' ' + (cashCurrency || 'USDT')) : ' ₽';
+    const unit = getCashMinUnit();
     if (errMin) errMin.textContent = (min < 1 ? min.toFixed(6) : min.toLocaleString('ru-RU')) + unit;
     errEl.classList.toggle('visible', belowMin);
   }
   /* ── CTA с причиной ── */
   const cta = document.getElementById('cash-cta');
   if (cta) {
-    const unit = cashIntent === 'sell' ? (' ' + (cashCurrency || 'USDT')) : ' ₽';
+    const unit = getCashMinUnit();
     const minFmt = min < 1 ? min.toFixed(4) : min.toLocaleString('ru-RU');
     if (valid) {
       cta.textContent = 'Записаться на обмен →';
@@ -4707,15 +4721,15 @@ function shakeBtn(el) {
 }
 function formatPhone(el) {
   let v = el.value.replace(/\D/g, '');
-  // Если ввёл 8 или 7 в начале — нормализуем
+  // Если ввёл 7 или 8 в начале — убираем, т.к. +7 уже показан в UI
   if (v.startsWith('7') || v.startsWith('8')) v = v.slice(1);
   v = v.slice(0, 10);
-  let fmt = '+7 ';
+  let fmt = '';
   if (v.length > 0) fmt += '(' + v.slice(0,3);
   if (v.length >= 4) fmt += ') ' + v.slice(3,6);
   if (v.length >= 7) fmt += '-' + v.slice(6,8);
   if (v.length >= 9) fmt += '-' + v.slice(8,10);
-  el.value = v.length > 0 ? fmt : '';
+  el.value = fmt;
   const fieldBox = document.getElementById('field-sbp')?.parentElement;
   if (fieldBox) {
     if (v.length > 0 && v.length < 10) {
