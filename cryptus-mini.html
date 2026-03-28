@@ -998,8 +998,7 @@ div[style*="overflow-y: auto"] {
       <div id="field-sbp">
         <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:8px;">Номер телефона</div>
         <div class="rate-divider">
-          <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:600;color:rgba(245,240,232,0.5);flex-shrink:0;">+7</div>
-          <input id="form-phone" type="tel" placeholder="(___) ___-__-__" inputmode="numeric" maxlength="15"
+          <input id="form-phone" type="tel" placeholder="+7 (___) ___-__-__" inputmode="numeric" maxlength="18"
             style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:18px;font-weight:600;color:#F5F0E8;width:100%;"
             oninput="formatPhone(this)" />
         </div>
@@ -4655,7 +4654,7 @@ function updateCTA() {
   const amount   = parseFloat(document.getElementById('form-amount').value) || 0;
   const phone    = (document.getElementById('form-phone')?.value  || '').replace(/\D/g,'');
   const card     = (document.getElementById('form-card')?.value   || '').replace(/\D/g,'');
-  const rekvOk   = paymentMethod === 'sbp' ? (phone.length >= 10 && phone.length <= 11) : card.length === 16;
+  const rekvOk   = paymentMethod === 'sbp' ? phone.length === 11 : card.length === 16;
   const min      = getMinInCurrency();
   const belowMin = amount > 0 && amount < min;
   const valid    = amount >= min && rekvOk && selectedBank !== null;
@@ -4721,20 +4720,21 @@ function shakeBtn(el) {
 }
 function formatPhone(el) {
   let v = el.value.replace(/\D/g, '');
-  // Если ввёл 7 или 8 в начале — убираем, т.к. +7 уже показан в UI
-  if (v.startsWith('7') || v.startsWith('8')) v = v.slice(1);
-  v = v.slice(0, 10);
-  let fmt = '';
-  if (v.length > 0) fmt += '(' + v.slice(0,3);
-  if (v.length >= 4) fmt += ') ' + v.slice(3,6);
-  if (v.length >= 7) fmt += '-' + v.slice(6,8);
-  if (v.length >= 9) fmt += '-' + v.slice(8,10);
+  if (!v.length) { el.value = ''; updateCTA(); return; }
+  if (v.startsWith('8')) v = '7' + v.slice(1);
+  if (!v.startsWith('7')) v = '7' + v;
+  v = v.slice(0, 11);
+  let fmt = '+7';
+  if (v.length > 1) fmt += ' (' + v.slice(1, 4);
+  if (v.length >= 4) fmt += ') ' + v.slice(4, 7);
+  if (v.length >= 7) fmt += '-' + v.slice(7, 9);
+  if (v.length >= 9) fmt += '-' + v.slice(9, 11);
   el.value = fmt;
   const fieldBox = document.getElementById('field-sbp')?.parentElement;
   if (fieldBox) {
-    if (v.length > 0 && v.length < 10) {
+    if (v.length > 1 && v.length < 11) {
       fieldBox.style.borderColor = 'rgba(255,85,85,0.6)';
-    } else {
+    } else if (v.length === 11) {
       fieldBox.style.borderColor = 'rgba(255,255,255,0.12)';
     }
   }
