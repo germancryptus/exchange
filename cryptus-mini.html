@@ -4993,8 +4993,9 @@ function applyPromo() {
     input.style.borderColor = 'rgba(76,175,125,0.5)';
     input.disabled = true;
     if (title) { title.textContent = '✓ Промокод применён: −5%'; title.style.color = '#4CAF7D'; }
-    if (msg) { msg.textContent = '✓ Скидка 5% применена'; msg.style.color = '#4CAF7D'; msg.style.display = 'block'; }
-    // НЕ сворачиваем — оставляем открытым
+    if (msg) { msg.style.display = 'none'; msg.textContent = ''; }
+    // Сворачиваем блок после применения
+    setTimeout(function() { togglePromo(); }, 600);
   } else {
     input.style.borderColor = 'rgba(255,85,85,0.5)';
     if (msg) { msg.textContent = '✗ Неверный промокод'; msg.style.color = '#FF5555'; msg.style.display = 'block'; }
