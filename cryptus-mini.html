@@ -1598,7 +1598,7 @@ div[style*="overflow-y: auto"] {
         <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:#4CAF7D;word-break:break-all;letter-spacing:0.3px;" id="buy-conf-wallet">—</div>
       </div>
     </div>
-    <div id="buy-promo-block" style="background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
+    <div id="buy-promo-block" class="promo-block">
       <div onclick="toggleBuyPromo()" style="padding:11px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
         <div class="rate-divider">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="rgba(232,98,26,0.6)" stroke-width="1.4" stroke-linecap="round"><rect x="1" y="4" width="12" height="8" rx="2"/><path d="M4 4V3a3 3 0 016 0v1"/><circle cx="7" cy="8" r="1" fill="rgba(232,98,26,0.6)" stroke="none"/></svg>
@@ -1608,8 +1608,11 @@ div[style*="overflow-y: auto"] {
       </div>
       <div id="buy-promo-wrap" style="display:none;padding:0 14px 12px;">
         <div style="display:flex;gap:8px;">
-          <input id="buy-promo-input" type="text" placeholder="Введите промокод" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 14px;flex:1;font-family:'Inter',sans-serif;font-size:14px;color:#F5F0E8;outline:none;box-sizing:border-box;"/>
-          <div onclick="applyBuyPromo()" style="background:#E8621A;border-radius:10px;padding:10px 14px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#fff;cursor:pointer;white-space:nowrap;display:flex;align-items:center;">Применить</div>
+          <input id="buy-promo-input" type="text" placeholder="Введите промокод"
+            style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 14px;flex:1;font-family:'Inter',sans-serif;font-size:14px;color:#F5F0E8;outline:none;box-sizing:border-box;transition:border-color 0.2s;" />
+          <div onclick="applyBuyPromo()" style="background:#E8621A;border-radius:10px;padding:10px 14px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#fff;cursor:pointer;white-space:nowrap;display:flex;align-items:center;">
+            Применить
+          </div>
         </div>
         <div id="buy-promo-msg" style="display:none;font-family:'Syne',sans-serif;font-size:12px;font-weight:600;color:#FF5555;margin-top:8px;padding:0 2px;"></div>
       </div>
@@ -3854,32 +3857,24 @@ function toggleBuyPromo() {
   if (arrow) arrow.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
 }
 function applyBuyPromo() {
-  const input = document.getElementById('buy-promo-input');
-  const wrap  = document.getElementById('buy-promo-wrap');
-  const block = document.getElementById('buy-promo-block');
-  const title = document.getElementById('buy-promo-title');
-  const arrow = document.getElementById('buy-promo-arrow');
+  var input = document.getElementById('buy-promo-input');
+  var title = document.getElementById('buy-promo-title');
+  var msg   = document.getElementById('buy-promo-msg');
   if (!input || !input.value.trim()) return;
-  const isValid = VALID_PROMOS.includes(input.value.trim().toUpperCase()) || VALID_PROMOS.includes(input.value.trim());
-  if (isValid) {
-    if (wrap)  wrap.style.display = 'none';
-    if (arrow) arrow.style.transform = 'rotate(0deg)';
-    if (title) { title.textContent = 'Промокод применён'; title.style.color = '#4CAF7D'; }
-    if (block) block.style.borderColor = 'rgba(76,175,125,0.25)';
+  var code = input.value.trim().toUpperCase();
+  if (VALID_PROMOS.indexOf(code) !== -1) {
+    input.style.borderColor = 'rgba(76,175,125,0.5)';
+    input.disabled = true;
+    if (title) { title.textContent = '✓ Промокод применён: −5%'; title.style.color = '#4CAF7D'; }
+    if (msg) { msg.style.display = 'none'; msg.textContent = ''; }
+    setTimeout(function() { toggleBuyPromo(); }, 600);
   } else {
-    if (input) { input.style.borderColor = 'rgba(255,85,85,0.6)'; input.style.color = '#FF5555'; }
-    let errEl = document.getElementById('buy-promo-error');
-    if (!errEl) {
-      errEl = document.createElement('div');
-      errEl.id = 'buy-promo-error';
-      errEl.style.cssText = "font-size:11px;color:#FF5555;padding:6px 2px 0;font-family:'Inter',sans-serif;width:100%;";
-      input.closest('div').insertAdjacentElement('afterend', errEl);
-    }
-    errEl.textContent = 'Недействительный промокод';
-    setTimeout(() => {
-      if (input) { input.style.borderColor = 'rgba(255,255,255,0.1)'; input.style.color = '#F5F0E8'; input.value = ''; }
-      if (errEl) errEl.textContent = '';
-    }, 2500);
+    input.style.borderColor = 'rgba(255,85,85,0.5)';
+    if (msg) { msg.textContent = '✗ Неверный промокод'; msg.style.color = '#FF5555'; msg.style.display = 'block'; }
+    setTimeout(function() {
+      input.style.borderColor = '';
+      if (msg) { msg.textContent = ''; msg.style.display = 'none'; }
+    }, 3000);
   }
 }
 function confirmBuyOrder() {
@@ -4946,8 +4941,7 @@ function applyPromo() {
   var msg = document.getElementById('promo-msg');
   if (!input) return;
   var code = input.value.trim().toUpperCase();
-  var valid = ['CRYPTUS10','WELCOME','VIP2024','BONUS50','CRYPTUS','111'];
-  if (valid.indexOf(code) !== -1) {
+  if (VALID_PROMOS.indexOf(code) !== -1) {
     input.style.borderColor = 'rgba(76,175,125,0.5)';
     input.disabled = true;
     if (title) { title.textContent = '✓ Промокод применён: −5%'; title.style.color = '#4CAF7D'; }
@@ -4991,25 +4985,23 @@ function toggleCashPromo() {
 }
 function applyCashPromo() {
   var input = document.getElementById('cash-promo-input');
-  var block = document.getElementById('cash-promo-block');
   var title = document.getElementById('cash-promo-title');
-  var arrow = document.getElementById('cash-promo-arrow');
-  var wrap  = document.getElementById('cash-promo-wrap');
   var msg   = document.getElementById('cash-promo-msg');
   if (!input || !input.value.trim()) return;
-  var isValid = VALID_PROMOS.includes(input.value.trim().toUpperCase()) || VALID_PROMOS.includes(input.value.trim());
-  if (isValid) {
-    if (wrap)  wrap.style.display = 'none';
-    if (arrow) arrow.style.transform = 'rotate(0deg)';
-    if (title) { title.textContent = 'Промокод применён'; title.style.color = '#4CAF7D'; }
-    if (block) block.style.borderColor = 'rgba(76,175,125,0.25)';
-    if (msg)   msg.style.display = 'none';
+  var code = input.value.trim().toUpperCase();
+  if (VALID_PROMOS.indexOf(code) !== -1) {
+    input.style.borderColor = 'rgba(76,175,125,0.5)';
+    input.disabled = true;
+    if (title) { title.textContent = '✓ Промокод применён: −5%'; title.style.color = '#4CAF7D'; }
+    if (msg) { msg.style.display = 'none'; msg.textContent = ''; }
+    setTimeout(function() { toggleCashPromo(); }, 600);
   } else {
-    if (input) { input.style.borderColor = 'rgba(255,85,85,0.6)'; input.style.color = '#FF5555'; }
-    if (msg) { msg.textContent = 'Промокод не найден'; msg.style.display = 'block'; msg.style.color = '#FF5555'; }
+    input.style.borderColor = 'rgba(255,85,85,0.5)';
+    if (msg) { msg.textContent = '✗ Неверный промокод'; msg.style.color = '#FF5555'; msg.style.display = 'block'; }
     setTimeout(function() {
-      if (input) { input.style.borderColor = 'rgba(255,255,255,0.1)'; input.style.color = '#F5F0E8'; }
-    }, 2000);
+      input.style.borderColor = '';
+      if (msg) { msg.textContent = ''; msg.style.display = 'none'; }
+    }, 3000);
   }
 }
 function confirmCashOrder() {
