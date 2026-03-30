@@ -2484,14 +2484,14 @@ div[style*="overflow-y: auto"] {
   <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:10px;">
     <!-- Юр. лица -->
     <div id="transfer-corp" style="display:flex;flex-direction:column;gap:10px;width:100%;">
-      <div onclick="openTransferForm('corp','invoice')" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
+      <div onclick="openTfInvoice()" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
           <div style="width:38px;height:38px;border-radius:10px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="1" width="11" height="15" rx="2" stroke="#E8621A" stroke-width="1.4"/><path d="M5 5h5M5 8h5M5 11h3" stroke="#E8621A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
           <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#F5F0E8;">Оплата по инвойсу</div>
         </div>
         <div style="font-size:12px;color:rgba(245,240,232,0.5);line-height:1.6;">Платежи по вашим зарубежным инвойсам через SWIFT и SEPA: мы берём на себя проверку реквизитов, контроль сроков и безопасную отправку средств.</div>
       </div>
-      <div onclick="openTransferForm('corp','ved')" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
+      <div onclick="openTfVed()" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
           <div style="width:38px;height:38px;border-radius:10px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#E8621A" stroke-width="1.4"/><path d="M2 9h14M9 2c-2 2-3 4-3 7s1 5 3 7M9 2c2 2 3 4 3 7s-1 5-3 7" stroke="#E8621A" stroke-width="1.2"/></svg></div>
           <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#F5F0E8;">Платежный агент/ВЭД</div>
@@ -2501,7 +2501,7 @@ div[style*="overflow-y: auto"] {
     </div>
     <!-- Физ. лица -->
     <div id="transfer-pers" style="display:none;flex-direction:column;gap:10px;">
-      <div onclick="openTransferForm('pers','card')" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
+      <div onclick="openTfCard()" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
           <div style="width:38px;height:38px;border-radius:10px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="4" width="16" height="11" rx="2" stroke="#E8621A" stroke-width="1.4"/><path d="M1 8h16" stroke="#E8621A" stroke-width="1.4"/><path d="M4 12h3" stroke="#E8621A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
           <div>
@@ -2511,14 +2511,14 @@ div[style*="overflow-y: auto"] {
         </div>
         <div style="font-size:12px;color:rgba(245,240,232,0.5);line-height:1.6;">Wise, Revolut, Zelle и др. Лимит в рамках одного пополнения — до 9,999€.</div>
       </div>
-      <div onclick="openTransferForm('pers','alipay')" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
+      <div onclick="openTfAlipay()" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
           <div style="width:38px;height:38px;border-radius:10px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#E8621A" stroke-width="1.4"/><path d="M6 9a3 3 0 106 0" stroke="#E8621A" stroke-width="1.4"/><path d="M9 6v6" stroke="#E8621A" stroke-width="1.2"/></svg></div>
           <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#F5F0E8;">Alipay и WeChat</div>
         </div>
         <div style="font-size:12px;color:rgba(245,240,232,0.5);line-height:1.6;">Оперативное пополнение — быстро, надёжно и с гарантией зачисления.</div>
       </div>
-      <div onclick="openTransferForm('pers','invoice')" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
+      <div onclick="openTfInvoice()" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
           <div style="width:38px;height:38px;border-radius:10px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="1" width="11" height="15" rx="2" stroke="#E8621A" stroke-width="1.4"/><path d="M5 5h5M5 8h5M5 11h3" stroke="#E8621A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
           <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#F5F0E8;">Оплата по инвойсу</div>
@@ -2536,58 +2536,250 @@ div[style*="overflow-y: auto"] {
     <div class="nav-item" onclick="goTo('screen-card')"><svg width="20" height="20" viewBox="0 0 22 22" fill="none"><rect x="2" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M2 9h18" stroke="currentColor" stroke-width="1.6"/><path d="M5 14h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="nav-label">Карта</span></div>
   </div></div>
 </div><!-- /screen-transfer -->
-<!-- ── ЭКРАН: Форма перевода за рубеж ── -->
-<div class="phone screen" id="screen-transfer-form">
+<!-- ══ ЭКРАН: Оплата по инвойсу ══ -->
+<div class="phone screen" id="screen-tf-invoice">
   <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;flex-shrink:0;">
     <div onclick="goBack()" class="back-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="1.8" stroke-linecap="round"><path d="M10 3L5 8l5 5"/></svg></div>
-    <div class="screen-title" id="transfer-form-title">Оплата по инвойсу</div>
+    <div class="screen-title">Оплата по инвойсу</div>
   </div>
   <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;">
   <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:10px;">
-    <!-- Сумма -->
-    <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1.5px solid rgba(255,255,255,0.07);" id="tf-amount-box">
+    <!-- Сумма + валюта -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1.5px solid rgba(255,255,255,0.07);">
       <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Сумма</div>
       <div style="display:flex;align-items:center;gap:10px;">
-        <input id="tf-amount" type="number" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="checkTransferCTA()">
-        <div id="tf-currency-btn" onclick="toggleTfCurrencyDrop()" style="display:flex;align-items:center;gap:6px;border:1.5px solid rgba(232,98,26,0.35);border-radius:10px;padding:7px 11px;flex-shrink:0;cursor:pointer;position:relative;">
-          <span id="tf-curr-label" style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">EUR</span>
+        <input id="tfi-amount" type="number" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="checkTfInvoiceCTA()">
+        <div onclick="toggleTfiCurrDrop()" style="display:flex;align-items:center;gap:6px;border:1.5px solid rgba(232,98,26,0.35);border-radius:10px;padding:7px 11px;flex-shrink:0;cursor:pointer;position:relative;">
+          <span id="tfi-curr-label" style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">USD</span>
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
-          <div id="tf-curr-drop" style="display:none;position:absolute;right:0;top:calc(100% + 4px);background:#1E1E1E;border-radius:12px;border:1px solid rgba(255,255,255,0.1);padding:6px;z-index:30;min-width:100px;box-shadow:0 8px 24px rgba(0,0,0,0.7);">
-            <div onclick="setTfCurr('EUR');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">EUR</div>
-            <div onclick="setTfCurr('USD');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">USD</div>
-            <div onclick="setTfCurr('CNY');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">CNY</div>
-            <div onclick="setTfCurr('GBP');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">GBP</div>
+          <div id="tfi-curr-drop" style="display:none;position:absolute;right:0;top:calc(100% + 4px);background:#1E1E1E;border-radius:12px;border:1px solid rgba(255,255,255,0.1);padding:6px;z-index:30;min-width:100px;box-shadow:0 8px 24px rgba(0,0,0,0.7);">
+            <div onclick="setTfiCurr('USD');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">USD</div>
+            <div onclick="setTfiCurr('EUR');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">EUR</div>
+            <div onclick="setTfiCurr('CNY');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">CNY</div>
+            <div onclick="setTfiCurr('GBP');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">GBP</div>
+            <div onclick="setTfiCurr('AED');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">AED</div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Получатель -->
-    <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1px solid rgba(255,255,255,0.07);" id="tf-recipient-box">
-      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Получатель / Банк</div>
-      <input id="tf-recipient" type="text" placeholder="Название компании или ФИО" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:#F5F0E8;width:100%;" oninput="checkTransferCTA()">
+    <!-- Страна -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1px solid rgba(255,255,255,0.07);position:relative;">
+      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Страна</div>
+      <div id="tfi-country-btn" onclick="toggleTfiCountryDrop()" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+        <span id="tfi-country-label" style="font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:rgba(245,240,232,0.35);">Выберите страну</span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
+      </div>
+      <div id="tfi-country-drop" style="display:none;position:absolute;left:0;right:0;top:calc(100% + 4px);background:#1E1E1E;border-radius:12px;border:1px solid rgba(255,255,255,0.1);padding:6px;z-index:30;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.7);">
+        <input id="tfi-country-search" type="text" placeholder="Поиск..." oninput="filterTfiCountries()" style="background:rgba(255,255,255,0.06);border:none;outline:none;border-radius:8px;padding:8px 10px;font-family:'Inter',sans-serif;font-size:13px;color:#F5F0E8;width:100%;box-sizing:border-box;margin-bottom:4px;" onclick="event.stopPropagation()">
+        <div id="tfi-country-list"></div>
+      </div>
     </div>
-    <!-- Назначение платежа -->
+    <!-- Описание -->
     <div style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1px solid rgba(255,255,255,0.07);">
-      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Назначение платежа</div>
-      <input id="tf-purpose" type="text" placeholder="Оплата по инвойсу №..." style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:#F5F0E8;width:100%;" oninput="checkTransferCTA()">
-    </div>
-    <!-- Комментарий -->
-    <div style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1px solid rgba(255,255,255,0.07);">
-      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Комментарий <span style="font-weight:400;opacity:0.5">(необязательно)</span></div>
-      <input id="tf-comment" type="text" placeholder="Дополнительные детали..." style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:#F5F0E8;width:100%;">
+      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Описание платежа</div>
+      <textarea id="tfi-desc" placeholder="Опишите назначение платежа..." rows="3" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;width:100%;resize:none;line-height:1.5;" oninput="checkTfInvoiceCTA()"></textarea>
     </div>
     <div style="background:rgba(232,98,26,0.05);border:1px solid rgba(232,98,26,0.12);border-radius:12px;padding:10px 12px;font-size:11px;color:rgba(245,240,232,0.45);line-height:1.6;">
-      Наш менеджер свяжется с вами в течение 30 минут для подтверждения деталей и согласования курса.
+      Менеджер свяжется с вами в течение 30 минут для подтверждения деталей и согласования курса.
     </div>
     <div style="height:4px;"></div>
   </div>
   </div>
   <div style="padding:8px 14px 12px;flex-shrink:0;">
-    <div id="tf-cta" onclick="submitTransferForm()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;opacity:0.4;pointer-events:none;">Оставить заявку →</div>
+    <div id="tfi-cta" onclick="submitTfInvoice()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;opacity:0.4;pointer-events:none;">Оставить заявку →</div>
   </div>
-</div><!-- /screen-transfer-form -->
-<!-- ── ЭКРАН: Успех перевода ── -->
-<div class="phone screen" id="screen-transfer-ok">
+</div>
+
+<!-- ══ ЭКРАН: Платежный агент / ВЭД ══ -->
+<div class="phone screen" id="screen-tf-ved">
+  <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;flex-shrink:0;">
+    <div onclick="goBack()" class="back-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="1.8" stroke-linecap="round"><path d="M10 3L5 8l5 5"/></svg></div>
+    <div class="screen-title">Платежный агент/ВЭД</div>
+  </div>
+  <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:10px;">
+    <!-- Сумма + валюта -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1.5px solid rgba(255,255,255,0.07);">
+      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Сумма</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <input id="tfv-amount" type="number" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="checkTfVedCTA()">
+        <div onclick="toggleTfvCurrDrop()" style="display:flex;align-items:center;gap:6px;border:1.5px solid rgba(232,98,26,0.35);border-radius:10px;padding:7px 11px;flex-shrink:0;cursor:pointer;position:relative;">
+          <span id="tfv-curr-label" style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">USD</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
+          <div id="tfv-curr-drop" style="display:none;position:absolute;right:0;top:calc(100% + 4px);background:#1E1E1E;border-radius:12px;border:1px solid rgba(255,255,255,0.1);padding:6px;z-index:30;min-width:100px;box-shadow:0 8px 24px rgba(0,0,0,0.7);">
+            <div onclick="setTfvCurr('USD');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">USD</div>
+            <div onclick="setTfvCurr('EUR');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">EUR</div>
+            <div onclick="setTfvCurr('CNY');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">CNY</div>
+            <div onclick="setTfvCurr('AED');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">AED</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Страна -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1px solid rgba(255,255,255,0.07);position:relative;">
+      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Страна</div>
+      <div id="tfv-country-btn" onclick="toggleTfvCountryDrop()" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+        <span id="tfv-country-label" style="font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:rgba(245,240,232,0.35);">Выберите страну</span>
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
+      </div>
+      <div id="tfv-country-drop" style="display:none;position:absolute;left:0;right:0;top:calc(100% + 4px);background:#1E1E1E;border-radius:12px;border:1px solid rgba(255,255,255,0.1);padding:6px;z-index:30;max-height:220px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,0.7);">
+        <input id="tfv-country-search" type="text" placeholder="Поиск..." oninput="filterTfvCountries()" style="background:rgba(255,255,255,0.06);border:none;outline:none;border-radius:8px;padding:8px 10px;font-family:'Inter',sans-serif;font-size:13px;color:#F5F0E8;width:100%;box-sizing:border-box;margin-bottom:4px;" onclick="event.stopPropagation()">
+        <div id="tfv-country-list"></div>
+      </div>
+    </div>
+    <!-- Описание -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1px solid rgba(255,255,255,0.07);">
+      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Описание платежа</div>
+      <textarea id="tfv-desc" placeholder="Опишите назначение платежа..." rows="3" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;width:100%;resize:none;line-height:1.5;" oninput="checkTfVedCTA()"></textarea>
+    </div>
+    <div style="background:rgba(232,98,26,0.05);border:1px solid rgba(232,98,26,0.12);border-radius:12px;padding:10px 12px;font-size:11px;color:rgba(245,240,232,0.45);line-height:1.6;">
+      Менеджер свяжется с вами для подтверждения деталей и согласования условий.
+    </div>
+    <div style="height:4px;"></div>
+  </div>
+  </div>
+  <div style="padding:8px 14px 12px;flex-shrink:0;">
+    <div id="tfv-cta" onclick="submitTfVed()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;opacity:0.4;pointer-events:none;">Оставить заявку →</div>
+  </div>
+</div>
+
+<!-- ══ ЭКРАН: Пополнение зарубежных карт ══ -->
+<div class="phone screen" id="screen-tf-card">
+  <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;flex-shrink:0;">
+    <div onclick="goBack()" class="back-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="1.8" stroke-linecap="round"><path d="M10 3L5 8l5 5"/></svg></div>
+    <div class="screen-title">Пополнение карт</div>
+  </div>
+  <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:10px;">
+    <!-- Сумма + валюта -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1.5px solid rgba(255,255,255,0.07);">
+      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Сумма</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <input id="tfc-amount" type="number" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="checkTfCardCTA()">
+        <div onclick="toggleTfcCurrDrop()" style="display:flex;align-items:center;gap:6px;border:1.5px solid rgba(232,98,26,0.35);border-radius:10px;padding:7px 11px;flex-shrink:0;cursor:pointer;position:relative;">
+          <span id="tfc-curr-label" style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">EUR</span>
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
+          <div id="tfc-curr-drop" style="display:none;position:absolute;right:0;top:calc(100% + 4px);background:#1E1E1E;border-radius:12px;border:1px solid rgba(255,255,255,0.1);padding:6px;z-index:30;min-width:100px;box-shadow:0 8px 24px rgba(0,0,0,0.7);">
+            <div onclick="setTfcCurr('EUR');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">EUR</div>
+            <div onclick="setTfcCurr('USD');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">USD</div>
+            <div onclick="setTfcCurr('GBP');event.stopPropagation()" style="padding:8px 12px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background='rgba(255,255,255,0.06)'" onmouseout="this.style.background=''">GBP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Банк -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1px solid rgba(255,255,255,0.07);">
+      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:8px;">Банк</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;" id="tfc-bank-chips">
+        <div onclick="selectTfcBank('Wise')" class="tfc-bank-chip" style="padding:8px 14px;border-radius:10px;border:1.5px solid rgba(232,98,26,0.25);font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:rgba(245,240,232,0.6);cursor:pointer;transition:all .2s;">Wise</div>
+        <div onclick="selectTfcBank('Revolut')" class="tfc-bank-chip" style="padding:8px 14px;border-radius:10px;border:1.5px solid rgba(232,98,26,0.25);font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:rgba(245,240,232,0.6);cursor:pointer;transition:all .2s;">Revolut</div>
+        <div onclick="selectTfcBank('N26')" class="tfc-bank-chip" style="padding:8px 14px;border-radius:10px;border:1.5px solid rgba(232,98,26,0.25);font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:rgba(245,240,232,0.6);cursor:pointer;transition:all .2s;">N26</div>
+        <div onclick="selectTfcBank('Другой')" class="tfc-bank-chip" style="padding:8px 14px;border-radius:10px;border:1.5px solid rgba(232,98,26,0.25);font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:rgba(245,240,232,0.6);cursor:pointer;transition:all .2s;">Другой</div>
+      </div>
+    </div>
+    <!-- Номер карты -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1px solid rgba(255,255,255,0.07);">
+      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Номер карты</div>
+      <input id="tfc-card" type="text" placeholder="0000 0000 0000 0000" inputmode="numeric" maxlength="19" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:18px;font-weight:600;color:#F5F0E8;width:100%;letter-spacing:1px;" oninput="formatCardInput(this);checkTfCardCTA()">
+    </div>
+    <div style="background:rgba(232,98,26,0.05);border:1px solid rgba(232,98,26,0.12);border-radius:12px;padding:10px 12px;font-size:11px;color:rgba(245,240,232,0.45);line-height:1.6;">
+      Лимит: до 9 999€ за одну операцию. Менеджер свяжется для подтверждения.
+    </div>
+    <div style="height:4px;"></div>
+  </div>
+  </div>
+  <div style="padding:8px 14px 12px;flex-shrink:0;">
+    <div id="tfc-cta" onclick="submitTfCard()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;opacity:0.4;pointer-events:none;">Оставить заявку →</div>
+  </div>
+</div>
+
+<!-- ══ ЭКРАН: Alipay и WeChat ══ -->
+<div class="phone screen" id="screen-tf-alipay">
+  <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;flex-shrink:0;">
+    <div onclick="goBack()" class="back-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="1.8" stroke-linecap="round"><path d="M10 3L5 8l5 5"/></svg></div>
+    <div class="screen-title">Alipay и WeChat</div>
+  </div>
+  <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:10px;">
+    <!-- Сумма (CNY) -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1.5px solid rgba(255,255,255,0.07);">
+      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Сумма</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <input id="tfa-amount" type="number" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="checkTfAlipayCTA()">
+        <div style="display:flex;align-items:center;gap:6px;border:1.5px solid rgba(232,98,26,0.35);border-radius:10px;padding:7px 11px;flex-shrink:0;">
+          <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">CNY</span>
+        </div>
+      </div>
+    </div>
+    <!-- Платформа -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1px solid rgba(255,255,255,0.07);">
+      <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:8px;">Платформа</div>
+      <div style="display:flex;gap:8px;" id="tfa-platform-chips">
+        <div onclick="selectTfaPlatform('Alipay')" class="tfa-plat-chip" style="flex:1;padding:10px;border-radius:10px;border:1.5px solid rgba(232,98,26,0.25);text-align:center;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:rgba(245,240,232,0.6);cursor:pointer;transition:all .2s;">
+          <div style="font-size:20px;margin-bottom:4px;">💳</div>Alipay
+        </div>
+        <div onclick="selectTfaPlatform('WeChat')" class="tfa-plat-chip" style="flex:1;padding:10px;border-radius:10px;border:1.5px solid rgba(232,98,26,0.25);text-align:center;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;color:rgba(245,240,232,0.6);cursor:pointer;transition:all .2s;">
+          <div style="font-size:20px;margin-bottom:4px;">💬</div>WeChat
+        </div>
+      </div>
+    </div>
+    <div style="background:rgba(232,98,26,0.05);border:1px solid rgba(232,98,26,0.12);border-radius:12px;padding:10px 12px;font-size:11px;color:rgba(245,240,232,0.45);line-height:1.6;">
+      Быстрое и надёжное пополнение с гарантией зачисления. Менеджер подтвердит детали.
+    </div>
+    <div style="height:4px;"></div>
+  </div>
+  </div>
+  <div style="padding:8px 14px 12px;flex-shrink:0;">
+    <div id="tfa-cta" onclick="submitTfAlipay()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;opacity:0.4;pointer-events:none;">Продолжить →</div>
+  </div>
+</div>
+
+<!-- ══ ЭКРАН: Подтверждение перевода ══ -->
+<div class="phone screen" id="screen-tf-confirm">
+  <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;flex-shrink:0;">
+    <div onclick="goBack()" class="back-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="1.8" stroke-linecap="round"><path d="M10 3L5 8l5 5"/></svg></div>
+    <div class="screen-title">Подтверждение</div>
+  </div>
+  <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:12px;">
+    <!-- Иконка типа -->
+    <div style="text-align:center;padding:10px 0 4px;">
+      <div id="tfc-confirm-icon" style="width:56px;height:56px;border-radius:50%;background:rgba(232,98,26,0.1);border:2px solid rgba(232,98,26,0.3);display:inline-flex;align-items:center;justify-content:center;">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="3" y="2" width="16" height="20" rx="3" stroke="#E8621A" stroke-width="1.6"/><path d="M7 7h8M7 11h8M7 15h5" stroke="#E8621A" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </div>
+      <div id="tfc-confirm-title" style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#F5F0E8;margin-top:8px;">Подтверждение</div>
+    </div>
+    <!-- Детали заявки -->
+    <div style="background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
+      <div style="padding:10px 14px;display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span class="detail-row-label">Тип</span>
+        <span id="tfc-conf-type" style="font-family:'Syne',sans-serif;font-size:12px;font-weight:600;color:#F5F0E8;">—</span>
+      </div>
+      <div style="padding:10px 14px;display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span class="detail-row-label">Сумма</span>
+        <span id="tfc-conf-amount" class="detail-row-value">—</span>
+      </div>
+      <div id="tfc-conf-row-country" style="padding:10px 14px;display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);">
+        <span class="detail-row-label">Страна</span>
+        <span id="tfc-conf-country" class="detail-row-value">—</span>
+      </div>
+      <div id="tfc-conf-row-detail" style="padding:10px 14px;display:flex;justify-content:space-between;">
+        <span id="tfc-conf-detail-label" class="detail-row-label">Описание</span>
+        <span id="tfc-conf-detail" class="detail-row-value" style="max-width:55%;text-align:right;word-break:break-word;">—</span>
+      </div>
+    </div>
+    <div style="background:rgba(232,98,26,0.05);border:1px solid rgba(232,98,26,0.12);border-radius:12px;padding:10px 12px;font-size:11px;color:rgba(245,240,232,0.45);line-height:1.6;">
+      Нажимая «Подтвердить», вы соглашаетесь с условиями обработки заявки. Менеджер свяжется с вами для финализации.
+    </div>
+  </div>
+  </div>
+  <div style="padding:8px 14px 12px;flex-shrink:0;">
+    <div onclick="confirmTransfer()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;">Подтвердить заявку →</div>
+  </div>
+</div>
+
+<!-- ══ ЭКРАН: Успех перевода ══ -->
+<div class="phone screen" id="screen-tf-ok">
   <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:max(14px, env(safe-area-inset-top, 14px)) 14px 0;text-align:center;overflow-y:auto;">
     <div class="success-icon">
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M8 18l7 7 13-14" stroke="#4CAF7D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2596,31 +2788,36 @@ div[style*="overflow-y: auto"] {
     <div class="success-subtitle">Менеджер свяжется с вами<br>в течение 30 минут</div>
     <div style="background:#1A1A1A;border-radius:14px;padding:10px 14px;border:1px solid rgba(76,175,125,0.2);width:100%;margin-bottom:10px;">
       <div style="font-size:10px;color:rgba(245,240,232,0.5);font-family:'Syne',sans-serif;font-weight:600;letter-spacing:1px;margin-bottom:6px;">НОМЕР ЗАЯВКИ</div>
-      <div style="font-family:'Inter',sans-serif;font-size:22px;font-weight:800;color:#4CAF7D;" id="transfer-ok-id">#CRX-0000</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
+        <span style="font-family:'Inter',sans-serif;font-size:22px;font-weight:800;color:#4CAF7D;" id="tf-ok-id">#CRX-0000</span>
+        <div onclick="copyTfOrderId()" style="width:28px;height:28px;border-radius:8px;background:rgba(76,175,125,0.1);display:flex;align-items:center;justify-content:center;cursor:pointer;">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="4" y="4" width="8" height="8" rx="1.5" stroke="#4CAF7D" stroke-width="1.3"/><path d="M2 10V3a1 1 0 011-1h7" stroke="#4CAF7D" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+      </div>
     </div>
     <div style="background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);width:100%;">
       <div style="padding:10px 14px;display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);">
         <span class="detail-row-label">Тип</span>
-        <span style="font-family:'Syne',sans-serif;font-size:12px;font-weight:600;color:#F5F0E8;" id="transfer-ok-type">—</span>
+        <span style="font-family:'Syne',sans-serif;font-size:12px;font-weight:600;color:#F5F0E8;" id="tf-ok-type">—</span>
       </div>
       <div style="padding:10px 14px;display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);">
         <span class="detail-row-label">Сумма</span>
-        <span class="detail-row-value" id="transfer-ok-amount">—</span>
+        <span class="detail-row-value" id="tf-ok-amount">—</span>
       </div>
       <div style="padding:10px 14px;display:flex;justify-content:space-between;">
-        <span class="detail-row-label">Получатель</span>
-        <span class="detail-row-value" id="transfer-ok-recipient">—</span>
+        <span class="detail-row-label" id="tf-ok-detail-label">Описание</span>
+        <span class="detail-row-value" id="tf-ok-detail">—</span>
       </div>
     </div>
   </div>
   <div style="padding:10px 14px 12px;flex-shrink:0;display:flex;flex-direction:column;gap:10px;">
     <div onclick="openTelegram()" style="background:#E8621A;border-radius:14px;padding:15px;text-align:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 2L15 22l-4-9-9-4 20-7Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Написать менеджеру
+      В чат с оператором
     </div>
-    <div onclick="goTo('screen1')" class="cta-secondary">Главная</div>
+    <div onclick="goTo('screen1')" class="cta-secondary">В главное меню</div>
   </div>
-</div><!-- /screen-transfer-ok -->
+</div>
 <!-- ── Шторка: На проверке ── -->
 <div id="verify-pending-overlay" onclick="closeVerifyPendingModal()" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9000;"></div>
 <div id="verify-pending-modal" style="display:none;position:absolute;bottom:0;left:0;right:0;background:#1C1C1C;border-radius:20px 20px 0 0;z-index:9001;padding:0 0 32px;transform:translateY(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);">
@@ -2948,7 +3145,7 @@ const TAB_MAP = {
   'screen-express-buy': 'screen1',
   'screen-express-sell': 'screen1',
   'screen-order-status': 'screen1',
-  'screen3': 'screen3', 'screen-transfer': 'screen1', 'screen-transfer-form': 'screen1', 'screen-transfer-ok': 'screen1',
+  'screen3': 'screen3', 'screen-transfer': 'screen1', 'screen-tf-invoice': 'screen1', 'screen-tf-ved': 'screen1', 'screen-tf-card': 'screen1', 'screen-tf-alipay': 'screen1', 'screen-tf-confirm': 'screen1', 'screen-tf-ok': 'screen1',
   'screen-wallet': 'screen-more',
   'screen-card': 'screen-more',
   'screen-more': 'screen-more',
@@ -5118,8 +5315,6 @@ function checkVerifyBtn() {
 }
 /* ══ ПЕРЕВОД ЗА РУБЕЖ ══ */
 var transferSeg = 'corp';
-var transferType = 'invoice';
-var tfCurr = 'EUR';
 function switchTransferSeg(seg) {
   transferSeg = seg;
   var corp = document.getElementById('transfer-corp');
@@ -5138,64 +5333,219 @@ function switchTransferSeg(seg) {
     if (segPers) { segPers.style.background = '#E8621A'; segPers.style.color = '#fff'; }
   }
 }
-var TRANSFER_TITLES = {
-  'corp_invoice': 'Оплата по инвойсу',
-  'corp_ved':     'Платежный агент/ВЭД',
-  'pers_card':    'Пополнение карт',
-  'pers_alipay':  'Alipay и WeChat',
-  'pers_invoice': 'Оплата по инвойсу'
-};
-function openTransferForm(seg, type) {
-  transferSeg = seg;
-  transferType = type;
-  var title = document.getElementById('transfer-form-title');
-  if (title) title.textContent = TRANSFER_TITLES[seg + '_' + type] || 'Перевод';
-  var tfAmt = document.getElementById('tf-amount');
-  var tfRec = document.getElementById('tf-recipient');
-  var tfPur = document.getElementById('tf-purpose');
-  var tfCom = document.getElementById('tf-comment');
-  if (tfAmt) tfAmt.value = '';
-  if (tfRec) tfRec.value = '';
-  if (tfPur) tfPur.value = '';
-  if (tfCom) tfCom.value = '';
-  checkTransferCTA();
-  goTo('screen-transfer-form');
+
+/* ── Список стран ── */
+var TF_COUNTRIES = [
+  '🇨🇳 Китай','🇺🇸 США','🇬🇧 Великобритания','🇩🇪 Германия','🇫🇷 Франция',
+  '🇮🇹 Италия','🇪🇸 Испания','🇹🇷 Турция','🇦🇪 ОАЭ','🇮🇳 Индия',
+  '🇯🇵 Япония','🇰🇷 Южная Корея','🇹🇭 Таиланд','🇻🇳 Вьетнам','🇮🇩 Индонезия',
+  '🇲🇾 Малайзия','🇸🇬 Сингапур','🇭🇰 Гонконг','🇧🇷 Бразилия','🇲🇽 Мексика',
+  '🇨🇦 Канада','🇦🇺 Австралия','🇳🇿 Новая Зеландия','🇿🇦 ЮАР','🇪🇬 Египет',
+  '🇮🇱 Израиль','🇵🇱 Польша','🇨🇿 Чехия','🇳🇱 Нидерланды','🇧🇪 Бельгия',
+  '🇦🇹 Австрия','🇨🇭 Швейцария','🇸🇪 Швеция','🇳🇴 Норвегия','🇫🇮 Финляндия',
+  '🇩🇰 Дания','🇵🇹 Португалия','🇬🇷 Греция','🇷🇴 Румыния','🇭🇺 Венгрия',
+  '🇧🇬 Болгария','🇭🇷 Хорватия','🇷🇸 Сербия','🇬🇪 Грузия','🇦🇲 Армения',
+  '🇰🇿 Казахстан','🇺🇿 Узбекистан','🇦🇿 Азербайджан','🇧🇾 Беларусь','🇰🇬 Кыргызстан',
+  '🇹🇯 Таджикистан','🇵🇰 Пакистан','🇧🇩 Бангладеш','🇱🇰 Шри-Ланка','🇵🇭 Филиппины',
+  '🇲🇲 Мьянма','🇰🇭 Камбоджа','🇱🇦 Лаос','🇲🇳 Монголия','🇳🇬 Нигерия',
+  '🇰🇪 Кения','🇬🇭 Гана','🇹🇿 Танзания','🇪🇹 Эфиопия','🇲🇦 Марокко',
+  '🇹🇳 Тунис','🇦🇷 Аргентина','🇨🇱 Чили','🇨🇴 Колумбия','🇵🇪 Перу'
+];
+
+function renderCountryList(listId, items, selectFn) {
+  var el = document.getElementById(listId);
+  if (!el) return;
+  el.innerHTML = items.map(function(c) {
+    return '<div onclick="' + selectFn + '(\'' + c.replace(/'/g, "\\'") + '\');event.stopPropagation()" style="padding:8px 10px;font-family:\'Inter\',sans-serif;font-size:13px;color:#F5F0E8;cursor:pointer;border-radius:8px;" onmouseover="this.style.background=\'rgba(255,255,255,0.06)\'" onmouseout="this.style.background=\'\'">' + c + '</div>';
+  }).join('');
 }
 
-function setTfCurr(c) {
-  tfCurr = c;
-  var lbl = document.getElementById('tf-curr-label');
-  if (lbl) lbl.textContent = c;
-  var drop = document.getElementById('tf-curr-drop');
-  if (drop) drop.style.display = 'none';
+/* ── Данные для confirm/ok ── */
+var _tfConfirmData = {};
+
+/* ══ ИНВОЙС ══ */
+var tfiCurr = 'USD';
+var tfiCountry = '';
+function openTfInvoice() {
+  tfiCurr = 'USD'; tfiCountry = '';
+  var el;
+  if (el = document.getElementById('tfi-amount'))   el.value = '';
+  if (el = document.getElementById('tfi-desc'))     el.value = '';
+  if (el = document.getElementById('tfi-curr-label')) el.textContent = 'USD';
+  if (el = document.getElementById('tfi-country-label')) { el.textContent = 'Выберите страну'; el.style.color = 'rgba(245,240,232,0.35)'; }
+  if (el = document.getElementById('tfi-country-search')) el.value = '';
+  renderCountryList('tfi-country-list', TF_COUNTRIES, 'selectTfiCountry');
+  checkTfInvoiceCTA();
+  goTo('screen-tf-invoice');
 }
-function toggleTfCurrencyDrop() {
-  var drop = document.getElementById('tf-curr-drop');
-  if (!drop) return;
-  drop.style.display = drop.style.display === 'block' ? 'none' : 'block';
-}
-function checkTransferCTA() {
-  var amt = parseFloat(document.getElementById('tf-amount')?.value || '0') || 0;
-  var rec = (document.getElementById('tf-recipient')?.value || '').trim();
-  var pur = (document.getElementById('tf-purpose')?.value || '').trim();
-  var cta = document.getElementById('tf-cta');
-  var ok = amt > 0 && rec.length > 1 && pur.length > 1;
+function setTfiCurr(c) { tfiCurr = c; var l = document.getElementById('tfi-curr-label'); if(l) l.textContent = c; var d = document.getElementById('tfi-curr-drop'); if(d) d.style.display = 'none'; }
+function toggleTfiCurrDrop() { var d = document.getElementById('tfi-curr-drop'); if(d) d.style.display = d.style.display === 'block' ? 'none' : 'block'; }
+function toggleTfiCountryDrop() { var d = document.getElementById('tfi-country-drop'); if(d) d.style.display = d.style.display === 'block' ? 'none' : 'block'; }
+function selectTfiCountry(c) { tfiCountry = c; var l = document.getElementById('tfi-country-label'); if(l) { l.textContent = c; l.style.color = '#F5F0E8'; } var d = document.getElementById('tfi-country-drop'); if(d) d.style.display = 'none'; checkTfInvoiceCTA(); }
+function filterTfiCountries() { var q = (document.getElementById('tfi-country-search')?.value || '').toLowerCase(); var filtered = TF_COUNTRIES.filter(function(c) { return c.toLowerCase().indexOf(q) !== -1; }); renderCountryList('tfi-country-list', filtered, 'selectTfiCountry'); }
+function checkTfInvoiceCTA() {
+  var amt = parseFloat(document.getElementById('tfi-amount')?.value || '0') || 0;
+  var desc = (document.getElementById('tfi-desc')?.value || '').trim();
+  var ok = amt > 0 && tfiCountry && desc.length > 1;
+  var cta = document.getElementById('tfi-cta');
   if (cta) { cta.style.opacity = ok ? '1' : '0.4'; cta.style.pointerEvents = ok ? 'auto' : 'none'; }
 }
-function submitTransferForm() {
-  var amt = document.getElementById('tf-amount')?.value || '0';
-  var rec = document.getElementById('tf-recipient')?.value || '—';
+function submitTfInvoice() {
+  var amt = document.getElementById('tfi-amount')?.value || '0';
+  var desc = document.getElementById('tfi-desc')?.value || '—';
+  _tfConfirmData = { type: 'Оплата по инвойсу', amount: parseFloat(amt).toLocaleString('ru-RU', {maximumFractionDigits:2}) + ' ' + tfiCurr, country: tfiCountry, detail: desc, detailLabel: 'Описание' };
+  showTfConfirm();
+}
+
+/* ══ ВЭД ══ */
+var tfvCurr = 'USD';
+var tfvCountry = '';
+function openTfVed() {
+  tfvCurr = 'USD'; tfvCountry = '';
+  var el;
+  if (el = document.getElementById('tfv-amount'))   el.value = '';
+  if (el = document.getElementById('tfv-desc'))     el.value = '';
+  if (el = document.getElementById('tfv-curr-label')) el.textContent = 'USD';
+  if (el = document.getElementById('tfv-country-label')) { el.textContent = 'Выберите страну'; el.style.color = 'rgba(245,240,232,0.35)'; }
+  if (el = document.getElementById('tfv-country-search')) el.value = '';
+  renderCountryList('tfv-country-list', TF_COUNTRIES, 'selectTfvCountry');
+  checkTfVedCTA();
+  goTo('screen-tf-ved');
+}
+function setTfvCurr(c) { tfvCurr = c; var l = document.getElementById('tfv-curr-label'); if(l) l.textContent = c; var d = document.getElementById('tfv-curr-drop'); if(d) d.style.display = 'none'; }
+function toggleTfvCurrDrop() { var d = document.getElementById('tfv-curr-drop'); if(d) d.style.display = d.style.display === 'block' ? 'none' : 'block'; }
+function toggleTfvCountryDrop() { var d = document.getElementById('tfv-country-drop'); if(d) d.style.display = d.style.display === 'block' ? 'none' : 'block'; }
+function selectTfvCountry(c) { tfvCountry = c; var l = document.getElementById('tfv-country-label'); if(l) { l.textContent = c; l.style.color = '#F5F0E8'; } var d = document.getElementById('tfv-country-drop'); if(d) d.style.display = 'none'; checkTfVedCTA(); }
+function filterTfvCountries() { var q = (document.getElementById('tfv-country-search')?.value || '').toLowerCase(); var filtered = TF_COUNTRIES.filter(function(c) { return c.toLowerCase().indexOf(q) !== -1; }); renderCountryList('tfv-country-list', filtered, 'selectTfvCountry'); }
+function checkTfVedCTA() {
+  var amt = parseFloat(document.getElementById('tfv-amount')?.value || '0') || 0;
+  var desc = (document.getElementById('tfv-desc')?.value || '').trim();
+  var ok = amt > 0 && tfvCountry && desc.length > 1;
+  var cta = document.getElementById('tfv-cta');
+  if (cta) { cta.style.opacity = ok ? '1' : '0.4'; cta.style.pointerEvents = ok ? 'auto' : 'none'; }
+}
+function submitTfVed() {
+  var amt = document.getElementById('tfv-amount')?.value || '0';
+  var desc = document.getElementById('tfv-desc')?.value || '—';
+  _tfConfirmData = { type: 'Платежный агент/ВЭД', amount: parseFloat(amt).toLocaleString('ru-RU', {maximumFractionDigits:2}) + ' ' + tfvCurr, country: tfvCountry, detail: desc, detailLabel: 'Описание' };
+  showTfConfirm();
+}
+
+/* ══ КАРТЫ ══ */
+var tfcCurr = 'EUR';
+var tfcBank = '';
+function openTfCard() {
+  tfcCurr = 'EUR'; tfcBank = '';
+  var el;
+  if (el = document.getElementById('tfc-amount'))   el.value = '';
+  if (el = document.getElementById('tfc-card'))     el.value = '';
+  if (el = document.getElementById('tfc-curr-label')) el.textContent = 'EUR';
+  var chips = document.querySelectorAll('.tfc-bank-chip');
+  chips.forEach(function(ch) { ch.style.background = 'transparent'; ch.style.borderColor = 'rgba(232,98,26,0.25)'; ch.style.color = 'rgba(245,240,232,0.6)'; });
+  checkTfCardCTA();
+  goTo('screen-tf-card');
+}
+function setTfcCurr(c) { tfcCurr = c; var l = document.getElementById('tfc-curr-label'); if(l) l.textContent = c; var d = document.getElementById('tfc-curr-drop'); if(d) d.style.display = 'none'; }
+function toggleTfcCurrDrop() { var d = document.getElementById('tfc-curr-drop'); if(d) d.style.display = d.style.display === 'block' ? 'none' : 'block'; }
+function selectTfcBank(bank) {
+  tfcBank = bank;
+  var chips = document.querySelectorAll('.tfc-bank-chip');
+  chips.forEach(function(ch) {
+    if (ch.textContent.trim() === bank) {
+      ch.style.background = 'rgba(232,98,26,0.15)'; ch.style.borderColor = '#E8621A'; ch.style.color = '#E8621A';
+    } else {
+      ch.style.background = 'transparent'; ch.style.borderColor = 'rgba(232,98,26,0.25)'; ch.style.color = 'rgba(245,240,232,0.6)';
+    }
+  });
+  checkTfCardCTA();
+}
+function formatCardInput(el) {
+  var v = el.value.replace(/\D/g, '').substring(0, 16);
+  el.value = v.replace(/(.{4})/g, '$1 ').trim();
+}
+function checkTfCardCTA() {
+  var amt = parseFloat(document.getElementById('tfc-amount')?.value || '0') || 0;
+  var card = (document.getElementById('tfc-card')?.value || '').replace(/\s/g, '');
+  var ok = amt > 0 && tfcBank && card.length >= 13;
+  var cta = document.getElementById('tfc-cta');
+  if (cta) { cta.style.opacity = ok ? '1' : '0.4'; cta.style.pointerEvents = ok ? 'auto' : 'none'; }
+}
+function submitTfCard() {
+  var amt = document.getElementById('tfc-amount')?.value || '0';
+  var card = document.getElementById('tfc-card')?.value || '—';
+  _tfConfirmData = { type: 'Пополнение карты', amount: parseFloat(amt).toLocaleString('ru-RU', {maximumFractionDigits:2}) + ' ' + tfcCurr, country: tfcBank, detail: card, detailLabel: 'Карта', countryLabel: 'Банк' };
+  showTfConfirm();
+}
+
+/* ══ ALIPAY/WECHAT ══ */
+var tfaPlatform = '';
+function openTfAlipay() {
+  tfaPlatform = '';
+  var el;
+  if (el = document.getElementById('tfa-amount')) el.value = '';
+  var chips = document.querySelectorAll('.tfa-plat-chip');
+  chips.forEach(function(ch) { ch.style.background = 'transparent'; ch.style.borderColor = 'rgba(232,98,26,0.25)'; ch.style.color = 'rgba(245,240,232,0.6)'; });
+  checkTfAlipayCTA();
+  goTo('screen-tf-alipay');
+}
+function selectTfaPlatform(p) {
+  tfaPlatform = p;
+  var chips = document.querySelectorAll('.tfa-plat-chip');
+  chips.forEach(function(ch) {
+    if (ch.textContent.trim().indexOf(p) !== -1) {
+      ch.style.background = 'rgba(232,98,26,0.15)'; ch.style.borderColor = '#E8621A'; ch.style.color = '#E8621A';
+    } else {
+      ch.style.background = 'transparent'; ch.style.borderColor = 'rgba(232,98,26,0.25)'; ch.style.color = 'rgba(245,240,232,0.6)';
+    }
+  });
+  checkTfAlipayCTA();
+}
+function checkTfAlipayCTA() {
+  var amt = parseFloat(document.getElementById('tfa-amount')?.value || '0') || 0;
+  var ok = amt > 0 && tfaPlatform;
+  var cta = document.getElementById('tfa-cta');
+  if (cta) { cta.style.opacity = ok ? '1' : '0.4'; cta.style.pointerEvents = ok ? 'auto' : 'none'; }
+}
+function submitTfAlipay() {
+  var amt = document.getElementById('tfa-amount')?.value || '0';
+  _tfConfirmData = { type: tfaPlatform, amount: parseFloat(amt).toLocaleString('ru-RU', {maximumFractionDigits:2}) + ' CNY', country: '🇨🇳 Китай', detail: tfaPlatform, detailLabel: 'Платформа' };
+  showTfConfirm();
+}
+
+/* ══ ПОДТВЕРЖДЕНИЕ + УСПЕХ ══ */
+function showTfConfirm() {
+  var d = _tfConfirmData;
+  var el;
+  if (el = document.getElementById('tfc-confirm-title')) el.textContent = d.type || 'Подтверждение';
+  if (el = document.getElementById('tfc-conf-type'))     el.textContent = d.type || '—';
+  if (el = document.getElementById('tfc-conf-amount'))   el.textContent = d.amount || '—';
+  if (el = document.getElementById('tfc-conf-country'))  el.textContent = d.country || '—';
+  if (el = document.getElementById('tfc-conf-detail'))   el.textContent = d.detail || '—';
+  if (el = document.getElementById('tfc-conf-detail-label')) el.textContent = d.detailLabel || 'Описание';
+  /* Лейбл "Страна" vs "Банк" */
+  var countryRow = document.getElementById('tfc-conf-row-country');
+  if (countryRow) {
+    var countryLabel = countryRow.querySelector('.detail-row-label');
+    if (countryLabel) countryLabel.textContent = d.countryLabel || 'Страна';
+  }
+  goTo('screen-tf-confirm');
+}
+function confirmTransfer() {
+  var d = _tfConfirmData;
   var oid = '#CRX-' + (4000 + Math.floor(Math.random() * 999));
-  var title = TRANSFER_TITLES[transferSeg + '_' + transferType] || 'Перевод';
-  var elId  = document.getElementById('transfer-ok-id');
-  var elTyp = document.getElementById('transfer-ok-type');
-  var elAmt = document.getElementById('transfer-ok-amount');
-  var elRec = document.getElementById('transfer-ok-recipient');
-  if (elId)  elId.textContent  = oid;
-  if (elTyp) elTyp.textContent = title;
-  if (elAmt) elAmt.textContent = parseFloat(amt).toLocaleString('ru-RU', {maximumFractionDigits:2}) + ' ' + tfCurr;
-  if (elRec) elRec.textContent = rec;
-  goTo('screen-transfer-ok');
+  var el;
+  if (el = document.getElementById('tf-ok-id'))     el.textContent = oid;
+  if (el = document.getElementById('tf-ok-type'))   el.textContent = d.type || '—';
+  if (el = document.getElementById('tf-ok-amount')) el.textContent = d.amount || '—';
+  if (el = document.getElementById('tf-ok-detail')) el.textContent = d.detail || '—';
+  if (el = document.getElementById('tf-ok-detail-label')) el.textContent = d.detailLabel || 'Описание';
+  goTo('screen-tf-ok');
+}
+function copyTfOrderId() {
+  var id = document.getElementById('tf-ok-id')?.textContent || '';
+  if (navigator.clipboard) { navigator.clipboard.writeText(id); }
+  var btn = document.querySelector('#tf-ok-id')?.nextElementSibling;
+  /* no-op visual feedback for MVP */
 }
 </script>
 </body>
