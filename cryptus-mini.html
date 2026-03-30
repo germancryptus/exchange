@@ -802,6 +802,16 @@ div[style*="overflow-y: auto"] {
       <!-- Блок верификации -->
       <div id="verify-badge"></div>
     </div>
+    <!-- Разница между методами -->
+    <div onclick="toggleMethodInfo()" style="text-align:center;cursor:pointer;margin-bottom:10px;">
+      <span id="method-info-link" style="font-size:11px;color:rgba(232,98,26,0.7);border-bottom:1px dashed rgba(232,98,26,0.4);font-family:'Syne',sans-serif;font-weight:500;">В чём разница?</span>
+    </div>
+    <div id="method-info" style="display:none;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:12px 14px;margin-bottom:12px;">
+      <div style="font-size:11px;color:rgba(245,240,232,0.6);line-height:1.6;font-family:'Inter',sans-serif;">
+        <b style="color:#F5F0E8;">Классический</b> — оператор обработает вашу заявку вручную. Лучший курс, но ожидание до 60 минут.<br><br>
+        <b style="color:#F5F0E8;">Экспресс</b> — автоматический обмен за 3 минуты. Нужна верификация. Курс чуть выше, зато моментально.
+      </div>
+    </div>
     <!-- CTA -->
     <div id="sheet-cta" onclick="sheetCTAClick()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#fff;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
       Продолжить →
@@ -3924,6 +3934,14 @@ function openSheet(intent) {
   document.getElementById('sheet-overlay').style.display = 'block';
   bs.style.display = 'block';
   setTimeout(() => { bs.style.transform = 'translateY(0)'; }, 10);
+}
+function toggleMethodInfo() {
+  var el = document.getElementById('method-info');
+  var link = document.getElementById('method-info-link');
+  if (!el) return;
+  var open = el.style.display === 'block';
+  el.style.display = open ? 'none' : 'block';
+  if (link) link.textContent = open ? 'В чём разница?' : 'Скрыть';
 }
 function closeSheet() {
   const bs = document.getElementById('bottom-sheet');
