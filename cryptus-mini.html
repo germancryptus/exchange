@@ -847,9 +847,9 @@ div[style*="overflow-y: auto"] {
         <div style="font-size:10px;color:rgba(245,240,232,0.5);">мин. <span id="form-min-val" style="color:#E8621A;font-weight:600;">800 USDT</span></div>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
-        <input id="form-amount" type="number" placeholder="от 800" inputmode="decimal"
+        <input id="form-amount" type="text" placeholder="от 800" inputmode="decimal"
           style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;font-variant-numeric:tabular-nums;"
-          oninput="calcConvert()" />
+          oninput="formatAmountInput(this);calcConvert()" />
         <!-- Выбор валюты -->
         <div onclick="toggleCurrencyMenu()" style="display:flex;align-items:center;gap:6px;background:transparent;border:1.5px solid rgba(232,98,26,0.35);border-radius:10px;padding:8px 12px;flex-shrink:0;cursor:pointer;position:relative;">
           <span id="sell-currency-icon" style="font-size:16px;line-height:1;">
@@ -1295,9 +1295,9 @@ div[style*="overflow-y: auto"] {
         <div style="font-size:10px;color:rgba(245,240,232,0.5);">мин. <span id="express-min-val" style="color:#E8621A;font-weight:600;">1 000 ₽</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:10px;">
-        <input id="express-amount" type="number" placeholder="от 1 000" inputmode="decimal"
+        <input id="express-amount" type="text" placeholder="от 1 000" inputmode="decimal"
           style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;font-variant-numeric:tabular-nums;"
-          oninput="calcExpress()" />
+          oninput="formatAmountInput(this);calcExpress()" />
         <div style="display:flex;align-items:center;gap:6px;background:transparent;border:1.5px solid rgba(76,175,125,0.3);border-radius:10px;padding:7px 11px;flex-shrink:0;">
           <div style="width:20px;height:20px;border-radius:50%;background:#4CAF7D;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <span style="font-family:'Arial',sans-serif;font-size:11px;font-weight:800;color:#fff;">₽</span>
@@ -1383,9 +1383,9 @@ div[style*="overflow-y: auto"] {
         <div style="font-size:10px;color:rgba(245,240,232,0.5);">мин. <span id="es-min-val" style="color:#E8621A;font-weight:600;">12 USDT</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:10px;">
-        <input id="es-amount" type="number" placeholder="от 12" inputmode="decimal"
+        <input id="es-amount" type="text" placeholder="от 12" inputmode="decimal"
           style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;font-variant-numeric:tabular-nums;"
-          oninput="calcExpressSell()" />
+          oninput="formatAmountInput(this);calcExpressSell()" />
         <div style="display:flex;align-items:center;gap:6px;background:rgba(232,98,26,0.08);border:1.5px solid rgba(232,98,26,0.25);border-radius:10px;padding:7px 11px;flex-shrink:0;">
           <img src="https://cryptologos.cc/logos/tether-usdt-logo.png?v=040" width="20" height="20" style="border-radius:50%;object-fit:cover;">
           <span style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#E8621A;">USDT</span>
@@ -1486,6 +1486,14 @@ div[style*="overflow-y: auto"] {
       </div>
       <div id="os-status-text" style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#E8621A;">Ожидает оплаты</div>
       <div id="os-status-sub" style="font-size:11px;color:rgba(245,240,232,0.4);margin-top:4px;">Оплатите заявку для продолжения</div>
+      <!-- Таймер оплаты (только для покупки RUB→USDT) -->
+      <div id="os-timer-wrap" style="display:none;margin-top:10px;">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(232,98,26,0.1);border:1px solid rgba(232,98,26,0.25);border-radius:10px;padding:6px 14px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E8621A" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:#E8621A;font-variant-numeric:tabular-nums;" id="os-timer">10:00</span>
+          <span style="font-size:10px;color:rgba(232,98,26,0.6);">на оплату</span>
+        </div>
+      </div>
     </div>
     <!-- Информация о заявке -->
     <div style="background:#1A1A1A;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:12px;">
@@ -1847,9 +1855,9 @@ div[style*="overflow-y: auto"] {
           <div style="font-size:10px;color:rgba(245,240,232,0.5);">мин. <span id="cash-min-val" style="color:#E8621A;font-weight:600;">800 USDT</span></div>
         </div>
         <div style="display:flex;align-items:center;gap:10px;">
-          <input id="cash-amount" type="number" placeholder="от 300 000" inputmode="decimal"
+          <input id="cash-amount" type="text" placeholder="от 300 000" inputmode="decimal"
             style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;font-variant-numeric:tabular-nums;"
-            oninput="calcCash()" />
+            oninput="formatAmountInput(this);calcCash()" />
           <!-- Крипто-кнопка (для sell) -->
           <div id="cash-give-curr-btn" onclick="toggleCashCurrencyMenu()" style="display:flex;align-items:center;gap:5px;background:transparent;border:1.5px solid rgba(232,98,26,0.35);border-radius:10px;padding:7px 11px;flex-shrink:0;cursor:pointer;">
             <span id="cash-give-curr-icon"><img src="https://cryptologos.cc/logos/tether-usdt-logo.png?v=040" width="20" height="20" style="border-radius:50%;object-fit:cover;"></span>
@@ -2506,7 +2514,7 @@ div[style*="overflow-y: auto"] {
     <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1.5px solid rgba(255,255,255,0.07);">
       <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Сумма</div>
       <div style="display:flex;align-items:center;gap:10px;">
-        <input id="tfi-amount" type="number" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="checkTfInvoiceCTA()">
+        <input id="tfi-amount" type="text" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="formatAmountInput(this);checkTfInvoiceCTA()">
         <div onclick="toggleTfiCurrDrop()" style="display:flex;align-items:center;gap:6px;border:1.5px solid rgba(232,98,26,0.35);border-radius:10px;padding:7px 11px;flex-shrink:0;cursor:pointer;position:relative;">
           <span id="tfi-curr-label" style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">USD</span>
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
@@ -2560,7 +2568,7 @@ div[style*="overflow-y: auto"] {
     <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1.5px solid rgba(255,255,255,0.07);">
       <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Сумма</div>
       <div style="display:flex;align-items:center;gap:10px;">
-        <input id="tfv-amount" type="number" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="checkTfVedCTA()">
+        <input id="tfv-amount" type="text" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="formatAmountInput(this);checkTfVedCTA()">
         <div onclick="toggleTfvCurrDrop()" style="display:flex;align-items:center;gap:6px;border:1.5px solid rgba(232,98,26,0.35);border-radius:10px;padding:7px 11px;flex-shrink:0;cursor:pointer;position:relative;">
           <span id="tfv-curr-label" style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">USD</span>
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
@@ -2613,7 +2621,7 @@ div[style*="overflow-y: auto"] {
     <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1.5px solid rgba(255,255,255,0.07);">
       <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Сумма</div>
       <div style="display:flex;align-items:center;gap:10px;">
-        <input id="tfc-amount" type="number" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="checkTfCardCTA()">
+        <input id="tfc-amount" type="text" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="formatAmountInput(this);checkTfCardCTA()">
         <div onclick="toggleTfcCurrDrop()" style="display:flex;align-items:center;gap:6px;border:1.5px solid rgba(232,98,26,0.35);border-radius:10px;padding:7px 11px;flex-shrink:0;cursor:pointer;position:relative;">
           <span id="tfc-curr-label" style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">EUR</span>
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
@@ -2663,7 +2671,7 @@ div[style*="overflow-y: auto"] {
     <div style="background:#1A1A1A;border-radius:14px;padding:10px 12px;border:1.5px solid rgba(255,255,255,0.07);">
       <div style="font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:rgba(245,240,232,0.5);margin-bottom:6px;">Сумма</div>
       <div style="display:flex;align-items:center;gap:10px;">
-        <input id="tfa-amount" type="number" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="checkTfAlipayCTA()">
+        <input id="tfa-amount" type="text" placeholder="0" inputmode="decimal" style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;width:100%;" oninput="formatAmountInput(this);checkTfAlipayCTA()">
         <div style="display:flex;align-items:center;gap:6px;border:1.5px solid rgba(232,98,26,0.35);border-radius:10px;padding:7px 11px;flex-shrink:0;">
           <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">CNY</span>
         </div>
@@ -3070,6 +3078,41 @@ const ICONS_URLS = {
   SOL:  'https://cryptologos.cc/logos/solana-sol-logo.png?v=040',
   BNB:  'https://cryptologos.cc/logos/bnb-bnb-logo.png?v=040',
 };
+/* ── Форматирование сумм с разделителями (1 000, 100 000) ── */
+function formatNumSpaces(val) {
+  val = val.replace(/[^\d.]/g, '');
+  var parts = val.split('.');
+  var intPart = parts[0] || '';
+  var decPart = parts.length > 1 ? '.' + parts.slice(1).join('') : '';
+  intPart = intPart.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  return intPart + decPart;
+}
+function parseAmount(str) {
+  if (!str) return 0;
+  return parseFloat(String(str).replace(/\s/g, '')) || 0;
+}
+function formatAmountInput(el) {
+  var cursorPos = el.selectionStart;
+  var oldVal = el.value;
+  // Считаем кол-во цифр/точек до курсора в старом значении
+  var digitsBefore = oldVal.substring(0, cursorPos).replace(/\s/g, '').length;
+  // Форматируем
+  var raw = oldVal.replace(/\s/g, '');
+  var formatted = formatNumSpaces(raw);
+  if (formatted === oldVal) return;
+  el.value = formatted;
+  // Восстанавливаем курсор
+  var count = 0; var newPos = formatted.length;
+  for (var i = 0; i < formatted.length; i++) {
+    if (formatted[i] !== ' ') count++;
+    if (count >= digitsBefore) { newPos = i + 1; break; }
+  }
+  el.setSelectionRange(newPos, newPos);
+}
+function fmtNum(n) {
+  if (!n && n !== 0) return '0';
+  return Number(n).toLocaleString('ru-RU', { maximumFractionDigits: 2 });
+}
 /* ── Screen navigation ── */
 var navStack = ['screen1'];
 function goTo(screenId) {
@@ -3646,7 +3689,7 @@ function setCashFiat(fiat) {
   calcCash();
 }
 function calcCash() {
-  const amount = parseFloat(document.getElementById('cash-amount').value) || 0;
+  const amount = parseAmount(document.getElementById('cash-amount').value) || 0;
   const fiatRate = FIAT_RATES[cashGiveFiat] || 1;
   const rate = (classicRate - 2.59) * (CRYPTO_RATES[cashCurrency] || 1);
   let result = 0;
@@ -3907,7 +3950,7 @@ function selectCashNet(el) {
   cashNetwork = el.textContent.trim();
 }
 function updateCashCTA() {
-  const amount = parseFloat(document.getElementById('cash-amount').value) || 0;
+  const amount = parseAmount(document.getElementById('cash-amount').value) || 0;
   const min = getCashMin();
   const belowMin = amount > 0 && amount < min;
   const valid = amount >= min && selectedCashCity !== null;
@@ -3948,7 +3991,8 @@ function updateCashCTA() {
   }
 }
 function submitCashForm() {
-  const amount = document.getElementById('cash-amount')?.value || '0';
+  const rawAmount = document.getElementById('cash-amount')?.value || '0';
+  const amount = parseAmount(rawAmount);
   const result = document.getElementById('cash-result')?.textContent || '0';
   const rate   = document.getElementById('cash-rate-display')?.textContent || '';
   const rateCurr = document.getElementById('cash-rate-curr')?.textContent || 'USDT';
@@ -3966,7 +4010,7 @@ function submitCashForm() {
   const confCity     = document.getElementById('cash-conf-city');
   const confCity2    = document.getElementById('cash-conf-city2');
   if (cashIntent === 'sell') {
-    if (confGiveAmt)  confGiveAmt.textContent  = parseFloat(amount).toLocaleString('ru-RU');
+    if (confGiveAmt)  confGiveAmt.textContent  = fmtNum(amount);
     if (confGiveCurr) confGiveCurr.textContent = cashCurrency;
     if (confGiveIcon) confGiveIcon.innerHTML    = '<img src="' + (ICONS_URLS[cashCurrency] || ICONS_URLS['USDT']) + '" width="32" height="32" style="border-radius:50%;object-fit:cover;">';
     if (confGetAmt)   confGetAmt.textContent   = result;
@@ -3974,7 +4018,7 @@ function submitCashForm() {
     if (confGetSym)   confGetSym.textContent   = FIAT_SYMBOLS[cashFiat] || '₽';
     if (confGetIcon)  confGetIcon.style.background = '#4CAF7D';
   } else {
-    if (confGiveAmt)  confGiveAmt.textContent  = parseFloat(amount).toLocaleString('ru-RU');
+    if (confGiveAmt)  confGiveAmt.textContent  = fmtNum(amount);
     if (confGiveCurr) confGiveCurr.textContent = cashGiveFiat || 'RUB';
     if (confGiveIcon) { confGiveIcon.style.background = '#4CAF7D'; confGiveIcon.innerHTML = '<span style="font-family:Arial;font-size:14px;font-weight:800;color:#fff;">' + (FIAT_SYMBOLS[cashGiveFiat] || '₽') + '</span>'; }
     if (confGetAmt)   confGetAmt.textContent   = result;
@@ -4369,7 +4413,7 @@ function updateEsVerifyBadge() {
   }
 }
 function calcExpressSell() {
-  const amount = parseFloat(document.getElementById('es-amount')?.value) || 0;
+  const amount = parseAmount(document.getElementById('es-amount')?.value) || 0;
   const rate   = classicRate - 1.28;
   const result = amount * rate;
   const reEl = document.getElementById('es-result');
@@ -4418,7 +4462,7 @@ function formatEsPhone(input) {
     ? 'rgba(255,85,85,0.5)' : 'rgba(255,85,85,0.5)';
 }
 function updateEsCTA() {
-  const amount  = parseFloat(document.getElementById('es-amount')?.value) || 0;
+  const amount  = parseAmount(document.getElementById('es-amount')?.value) || 0;
   const phone   = document.getElementById('es-phone')?.value.replace(/\D/g,'') || '';
   const hasBank = !!window._esSelectedBank;
   const belowMin = amount > 0 && amount < ES_MIN_USDT;
@@ -4447,11 +4491,11 @@ function updateEsCTA() {
 }
 let _esTimerInterval = null;
 function submitExpressSell() {
-  const amount = document.getElementById('es-amount')?.value || '0';
+  const amount = parseAmount(document.getElementById('es-amount')?.value);
   const result = document.getElementById('es-result')?.textContent || '0';
   const bank   = window._esSelectedBank || '—';
   openOrderStatus('sell', {
-    give: parseFloat(amount).toFixed(4) + ' USDT',
+    give: amount.toFixed(2) + ' USDT',
     get:  result + ' ₽',
     method: bank,
     address: bank
@@ -4461,7 +4505,7 @@ function submitExpressSell() {
 /* ── ЭКСПРЕСС ПОКУПКА ── */
 const EXPRESS_MIN_RUB = 1000;
 function calcExpress() {
-  const amount = parseFloat(document.getElementById('express-amount')?.value) || 0;
+  const amount = parseAmount(document.getElementById('express-amount')?.value) || 0;
   const rate   = classicRate - 1.28; // экспресс спред
   const result = amount / rate;
   const resEl  = document.getElementById('express-result');
@@ -4499,7 +4543,7 @@ function validateExpressWallet() {
   updateExpressCTA();
 }
 function updateExpressCTA() {
-  const amount = parseFloat(document.getElementById('express-amount')?.value) || 0;
+  const amount = parseAmount(document.getElementById('express-amount')?.value) || 0;
   const wallet = document.getElementById('express-wallet')?.value.trim() || '';
   const validWallet = wallet.startsWith('T') && wallet.length === 34;
   const belowMin = amount > 0 && amount < EXPRESS_MIN_RUB;
@@ -4537,12 +4581,13 @@ function pasteExpressWallet() {
   }
 }
 function submitExpressBuy() {
-  var amount = document.getElementById('express-amount')?.value || '0';
+  var rawAmount = document.getElementById('express-amount')?.value || '0';
+  var amount = parseAmount(rawAmount);
   var result = document.getElementById('express-result')?.textContent || '0';
   var wallet = document.getElementById('express-wallet')?.value.trim() || '';
   window._ebSbpAmount = amount;
   openOrderStatus('buy', {
-    give: parseFloat(amount).toLocaleString('ru-RU') + ' RUB',
+    give: fmtNum(amount) + ' RUB',
     get: result + ' USDT',
     method: 'СБП',
     address: wallet || '—'
@@ -4582,7 +4627,49 @@ function openOrderStatus(type, data) {
   // Таб "Главная" (из экспресс-формы)
   TAB_MAP['screen-order-status'] = 'screen1';
   setOrderStatus('waiting');
+  // Таймер 10 минут для покупки (RUB→USDT, ссылка СБП ограничена)
+  if (type === 'buy') { startOsTimer(600); } else { stopOsTimer(); }
   goTo('screen-order-status');
+}
+/* ── Таймер оплаты ── */
+var _osTimerInterval = null;
+var _osTimerSeconds = 0;
+function startOsTimer(seconds) {
+  stopOsTimer();
+  _osTimerSeconds = seconds;
+  var wrap = document.getElementById('os-timer-wrap');
+  var timerEl = document.getElementById('os-timer');
+  if (wrap) wrap.style.display = 'block';
+  renderOsTimer();
+  _osTimerInterval = setInterval(function() {
+    _osTimerSeconds--;
+    if (_osTimerSeconds <= 0) {
+      stopOsTimer();
+      if (timerEl) timerEl.textContent = '0:00';
+      // Можно автоматически отменить заявку
+      setOrderStatus('cancelled');
+      return;
+    }
+    renderOsTimer();
+  }, 1000);
+}
+function renderOsTimer() {
+  var el = document.getElementById('os-timer');
+  if (!el) return;
+  var m = Math.floor(_osTimerSeconds / 60);
+  var s = _osTimerSeconds % 60;
+  el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+  // Красный при < 1 мин
+  if (_osTimerSeconds <= 60) {
+    el.style.color = '#FF5555';
+    var wrap = document.getElementById('os-timer-wrap');
+    if (wrap) { var pill = wrap.querySelector('div'); if (pill) { pill.style.background = 'rgba(255,85,85,0.1)'; pill.style.borderColor = 'rgba(255,85,85,0.3)'; } }
+  }
+}
+function stopOsTimer() {
+  if (_osTimerInterval) { clearInterval(_osTimerInterval); _osTimerInterval = null; }
+  var wrap = document.getElementById('os-timer-wrap');
+  if (wrap) wrap.style.display = 'none';
 }
 function setOrderStatus(status) {
   _osStatus = status;
@@ -4642,14 +4729,16 @@ function viewHistOrder(orderId, give, get, method, type, status) {
       if (el('os-copy-label')) el('os-copy-label').textContent = 'Скопировать';
     }
   }
+  // Таймер: не показываем для просмотра из истории (кроме "Ожидает оплаты" + buy)
+  stopOsTimer();
   // Подсветка таба "История" вместо "Главная"
   TAB_MAP['screen-order-status'] = 'screen3';
   setOrderStatus(status);
   goTo('screen-order-status');
 }
 function orderPaySBP() {
-  var amount = window._ebSbpAmount || '0';
-  var sbpUrl = 'https://qr.nspk.ru/pay?sum=' + Math.round(parseFloat(amount) * 100) + '&cur=RUB';
+  var amount = parseFloat(window._ebSbpAmount) || 0;
+  var sbpUrl = 'https://qr.nspk.ru/pay?sum=' + Math.round(amount * 100) + '&cur=RUB';
   window.open(sbpUrl, '_blank');
   /* После оплаты: показать "Я оплатил" как основную, "Оплатить повторно" мелко */
   var paidBtn = document.getElementById('os-paid-btn');
@@ -4671,6 +4760,7 @@ function orderPaySBP() {
 }
 function orderConfirmPaid() {
   setOrderStatus('process');
+  stopOsTimer();
   if (window._osSbpTimer) clearTimeout(window._osSbpTimer);
 }
 function orderCopyAddr() {
@@ -4797,7 +4887,7 @@ function openForm(method) {
   startFormTicker();
 }
 function calcConvert() {
-  const amount = parseFloat(document.getElementById('form-amount').value) || 0;
+  const amount = parseAmount(document.getElementById('form-amount').value) || 0;
   const baseRate = classicRate - 2.59;
   const cryptoBase = CRYPTO_RATES[sellCurrency] || 1;
   const rate = baseRate * cryptoBase;
@@ -4831,7 +4921,7 @@ function updateMinLabel() {
   if (val)   val.textContent   = formatted + ' ' + sellCurrency;
 }
 function updateCTA() {
-  const amount   = parseFloat(document.getElementById('form-amount').value) || 0;
+  const amount   = parseAmount(document.getElementById('form-amount').value) || 0;
   const phone    = (document.getElementById('form-phone')?.value  || '').replace(/\D/g,'');
   const card     = (document.getElementById('form-card')?.value   || '').replace(/\D/g,'');
   const rekvOk   = paymentMethod === 'sbp' ? phone.length === 11 : card.length === 16;
@@ -4941,7 +5031,7 @@ function submitForm() {
     return;
   }
   // Заполняем экран подтверждения
-  const amount  = document.getElementById('form-amount').value || '0';
+  const amount  = parseAmount(document.getElementById('form-amount').value);
   const result  = document.getElementById('form-result')?.textContent || '0';
   const rate    = document.getElementById('form-rate-display')?.textContent || '';
   const phone   = document.getElementById('form-phone')?.value || '';
@@ -4951,7 +5041,7 @@ function submitForm() {
   let network = '';
   allChips.forEach(c => { if (c.style.color === 'rgb(232, 98, 26)' || c.style.color === '#E8621A') network = c.textContent; });
   if (!network && allChips.length > 0) network = allChips[0].textContent;
-  document.getElementById('conf-amount').textContent    = parseFloat(amount).toLocaleString('ru-RU');
+  document.getElementById('conf-amount').textContent    = fmtNum(amount);
   document.getElementById('conf-result').textContent    = result;
   document.getElementById('conf-rate').textContent      = rate;
   document.getElementById('conf-curr').textContent      = sellCurrency;
@@ -5389,16 +5479,16 @@ function toggleTfiCountryDrop() { var d = document.getElementById('tfi-country-d
 function selectTfiCountry(c) { tfiCountry = c; var l = document.getElementById('tfi-country-label'); if(l) { l.textContent = c; l.style.color = '#F5F0E8'; } var d = document.getElementById('tfi-country-drop'); if(d) d.style.display = 'none'; checkTfInvoiceCTA(); }
 function filterTfiCountries() { var q = (document.getElementById('tfi-country-search')?.value || '').toLowerCase(); var filtered = TF_COUNTRIES.filter(function(c) { return c.toLowerCase().indexOf(q) !== -1; }); renderCountryList('tfi-country-list', filtered, 'selectTfiCountry'); }
 function checkTfInvoiceCTA() {
-  var amt = parseFloat(document.getElementById('tfi-amount')?.value || '0') || 0;
+  var amt = parseAmount(document.getElementById('tfi-amount')?.value) || 0;
   var desc = (document.getElementById('tfi-desc')?.value || '').trim();
   var ok = amt > 0 && tfiCountry && desc.length > 1;
   var cta = document.getElementById('tfi-cta');
   if (cta) { cta.style.opacity = ok ? '1' : '0.4'; cta.style.pointerEvents = ok ? 'auto' : 'none'; }
 }
 function submitTfInvoice() {
-  var amt = document.getElementById('tfi-amount')?.value || '0';
+  var amt = parseAmount(document.getElementById('tfi-amount')?.value);
   var desc = document.getElementById('tfi-desc')?.value || '—';
-  _tfConfirmData = { type: 'Оплата по инвойсу', amount: parseFloat(amt).toLocaleString('ru-RU', {maximumFractionDigits:2}) + ' ' + tfiCurr, country: tfiCountry, detail: desc, detailLabel: 'Описание' };
+  _tfConfirmData = { type: 'Оплата по инвойсу', amount: fmtNum(amt) + ' ' + tfiCurr, country: tfiCountry, detail: desc, detailLabel: 'Описание' };
   showTfConfirm();
 }
 
@@ -5423,16 +5513,16 @@ function toggleTfvCountryDrop() { var d = document.getElementById('tfv-country-d
 function selectTfvCountry(c) { tfvCountry = c; var l = document.getElementById('tfv-country-label'); if(l) { l.textContent = c; l.style.color = '#F5F0E8'; } var d = document.getElementById('tfv-country-drop'); if(d) d.style.display = 'none'; checkTfVedCTA(); }
 function filterTfvCountries() { var q = (document.getElementById('tfv-country-search')?.value || '').toLowerCase(); var filtered = TF_COUNTRIES.filter(function(c) { return c.toLowerCase().indexOf(q) !== -1; }); renderCountryList('tfv-country-list', filtered, 'selectTfvCountry'); }
 function checkTfVedCTA() {
-  var amt = parseFloat(document.getElementById('tfv-amount')?.value || '0') || 0;
+  var amt = parseAmount(document.getElementById('tfv-amount')?.value) || 0;
   var desc = (document.getElementById('tfv-desc')?.value || '').trim();
   var ok = amt > 0 && tfvCountry && desc.length > 1;
   var cta = document.getElementById('tfv-cta');
   if (cta) { cta.style.opacity = ok ? '1' : '0.4'; cta.style.pointerEvents = ok ? 'auto' : 'none'; }
 }
 function submitTfVed() {
-  var amt = document.getElementById('tfv-amount')?.value || '0';
+  var amt = parseAmount(document.getElementById('tfv-amount')?.value);
   var desc = document.getElementById('tfv-desc')?.value || '—';
-  _tfConfirmData = { type: 'Платежный агент/ВЭД', amount: parseFloat(amt).toLocaleString('ru-RU', {maximumFractionDigits:2}) + ' ' + tfvCurr, country: tfvCountry, detail: desc, detailLabel: 'Описание' };
+  _tfConfirmData = { type: 'Платежный агент/ВЭД', amount: fmtNum(amt) + ' ' + tfvCurr, country: tfvCountry, detail: desc, detailLabel: 'Описание' };
   showTfConfirm();
 }
 
@@ -5469,16 +5559,16 @@ function formatCardInput(el) {
   el.value = v.replace(/(.{4})/g, '$1 ').trim();
 }
 function checkTfCardCTA() {
-  var amt = parseFloat(document.getElementById('tfc-amount')?.value || '0') || 0;
+  var amt = parseAmount(document.getElementById('tfc-amount')?.value) || 0;
   var card = (document.getElementById('tfc-card')?.value || '').replace(/\s/g, '');
   var ok = amt > 0 && tfcBank && card.length >= 13;
   var cta = document.getElementById('tfc-cta');
   if (cta) { cta.style.opacity = ok ? '1' : '0.4'; cta.style.pointerEvents = ok ? 'auto' : 'none'; }
 }
 function submitTfCard() {
-  var amt = document.getElementById('tfc-amount')?.value || '0';
+  var amt = parseAmount(document.getElementById('tfc-amount')?.value);
   var card = document.getElementById('tfc-card')?.value || '—';
-  _tfConfirmData = { type: 'Пополнение карты', amount: parseFloat(amt).toLocaleString('ru-RU', {maximumFractionDigits:2}) + ' ' + tfcCurr, country: tfcBank, detail: card, detailLabel: 'Карта', countryLabel: 'Банк' };
+  _tfConfirmData = { type: 'Пополнение карты', amount: fmtNum(amt) + ' ' + tfcCurr, country: tfcBank, detail: card, detailLabel: 'Карта', countryLabel: 'Банк' };
   showTfConfirm();
 }
 
@@ -5506,14 +5596,14 @@ function selectTfaPlatform(p) {
   checkTfAlipayCTA();
 }
 function checkTfAlipayCTA() {
-  var amt = parseFloat(document.getElementById('tfa-amount')?.value || '0') || 0;
+  var amt = parseAmount(document.getElementById('tfa-amount')?.value) || 0;
   var ok = amt > 0 && tfaPlatform;
   var cta = document.getElementById('tfa-cta');
   if (cta) { cta.style.opacity = ok ? '1' : '0.4'; cta.style.pointerEvents = ok ? 'auto' : 'none'; }
 }
 function submitTfAlipay() {
-  var amt = document.getElementById('tfa-amount')?.value || '0';
-  _tfConfirmData = { type: tfaPlatform, amount: parseFloat(amt).toLocaleString('ru-RU', {maximumFractionDigits:2}) + ' CNY', country: '🇨🇳 Китай', detail: tfaPlatform, detailLabel: 'Платформа' };
+  var amt = parseAmount(document.getElementById('tfa-amount')?.value);
+  _tfConfirmData = { type: tfaPlatform, amount: fmtNum(amt) + ' CNY', country: '🇨🇳 Китай', detail: tfaPlatform, detailLabel: 'Платформа' };
   showTfConfirm();
 }
 
