@@ -1490,7 +1490,76 @@ div[style*="overflow-y: auto"] {
   </div></div>
 </div><!-- /screen-express-sell -->
 <!-- ── ЭКРАН: Успех экспресс-продажи ── -->
-<!-- legacy screen-success-express-sell удалён — заменён модалкой es-status-modal -->
+<!-- ── ЭКРАН: Статус заявки (экспресс) ── -->
+<div class="phone screen" id="screen-order-status">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 14px 8px;">
+    <div onclick="goBack()" class="back-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg></div>
+    <div class="screen-title">Статус заявки</div>
+    <div id="os-order-id" style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:rgba(245,240,232,0.4);">#CRX-0000</div>
+  </div>
+  <div style="padding:0 14px;display:flex;flex-direction:column;gap:10px;flex:1;overflow-y:auto;">
+    <!-- Статус-индикатор -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:16px;text-align:center;">
+      <div style="display:flex;justify-content:center;gap:8px;margin-bottom:10px;">
+        <div class="os-dot" style="width:10px;height:10px;border-radius:50%;background:#E8621A;"></div>
+        <div class="os-dot" style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.1);"></div>
+        <div class="os-dot" style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.1);"></div>
+        <div class="os-dot" style="width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.1);"></div>
+      </div>
+      <div id="os-status-text" style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#E8621A;">Ожидает оплаты</div>
+      <div id="os-status-sub" style="font-size:11px;color:rgba(245,240,232,0.4);margin-top:4px;">Оплатите заявку для продолжения</div>
+    </div>
+    <!-- Информация о заявке -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:12px;color:rgba(245,240,232,0.5);font-family:'Syne',sans-serif;">Отдаёте</span>
+        <span id="os-give" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;">—</span>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,0.05);"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:12px;color:rgba(245,240,232,0.5);font-family:'Syne',sans-serif;">Получаете</span>
+        <span id="os-get" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#4CAF7D;">—</span>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,0.05);"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:12px;color:rgba(245,240,232,0.5);font-family:'Syne',sans-serif;">Способ оплаты</span>
+        <span id="os-method" style="font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;">СБП</span>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,0.05);"></div>
+      <div id="os-addr-row" style="display:flex;justify-content:space-between;align-items:center;">
+        <span id="os-addr-label" style="font-size:12px;color:rgba(245,240,232,0.5);font-family:'Syne',sans-serif;">Адрес получения</span>
+        <span id="os-addr" style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(245,240,232,0.7);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">—</span>
+      </div>
+    </div>
+    <!-- Действия: покупка (СБП) -->
+    <div id="os-actions-buy" style="display:none;flex-direction:column;gap:8px;">
+      <div id="os-pay-btn" onclick="orderPaySBP()" class="cta-primary" style="display:flex;align-items:center;justify-content:center;gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"><path d="M2 6l6-4 6 4M3 6v6h10V6"/></svg>
+        Оплатить через СБП →
+      </div>
+      <div id="os-paid-btn" onclick="orderConfirmPaid()" style="display:none;background:rgba(76,175,125,0.1);border:1.5px solid rgba(76,175,125,0.3);border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#4CAF7D;cursor:pointer;">
+        Я оплатил ✓
+      </div>
+    </div>
+    <!-- Действия: продажа (отправка крипты) -->
+    <div id="os-actions-sell" style="display:none;flex-direction:column;gap:8px;">
+      <div style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(232,98,26,0.2);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span style="font-size:11px;color:rgba(245,240,232,0.5);font-family:'Syne',sans-serif;">Адрес для отправки USDT TRC20</span>
+          <span id="os-copy-label" onclick="orderCopyAddr()" style="font-size:10px;color:#E8621A;cursor:pointer;font-weight:600;font-family:'Syne',sans-serif;">Скопировать</span>
+        </div>
+        <div id="os-send-addr" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:#F5F0E8;word-break:break-all;line-height:1.5;">—</div>
+      </div>
+      <div id="os-sent-btn" onclick="orderConfirmSent()" class="cta-primary" style="display:flex;align-items:center;justify-content:center;gap:6px;">
+        Отправил ✓
+      </div>
+    </div>
+    <!-- Ссылка на историю -->
+    <div onclick="goTo('screen3')" style="text-align:center;padding:8px;cursor:pointer;">
+      <span style="font-size:12px;color:rgba(232,98,26,0.7);border-bottom:1px dashed rgba(232,98,26,0.4);font-family:'Syne',sans-serif;font-weight:500;">Перейти в историю сделок</span>
+    </div>
+  </div>
+</div>
 <!-- ── ЭКРАН: Подтверждение покупки ── -->
 <div class="phone screen" id="screen-confirm-buy">
   <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;">
@@ -2555,91 +2624,7 @@ div[style*="overflow-y: auto"] {
     <div onclick="closeVerifyPendingModal()" style="background:#E8621A;border-radius:14px;padding:15px;text-align:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;">Понятно</div>
   </div>
 </div>
-<!-- ── Модалка: Статус обмена (Экспресс покупка) ── -->
-<div id="eb-status-overlay" onclick="closeEbStatusModal()" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9000;"></div>
-<div id="eb-status-modal" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.95);background:#1C1C1C;border-radius:20px;z-index:9001;padding:24px 20px;width:calc(100% - 32px);max-width:360px;opacity:0;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);">
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
-    <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#F5F0E8;">Статус обмена</div>
-    <div onclick="closeEbStatusModal()" style="width:28px;height:28px;border-radius:50%;background:rgba(245,240,232,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="rgba(245,240,232,0.5)" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l8 8M10 2l-8 8"/></svg>
-    </div>
-  </div>
-  <div style="font-size:12px;color:rgba(245,240,232,0.45);margin-bottom:18px;">Ваша заявка на обмен принята в обработку.</div>
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
-    <span style="font-size:13px;color:rgba(245,240,232,0.5);">Вы отдаете</span>
-    <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#F5F0E8;" id="eb-modal-give">— RUB</span>
-  </div>
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
-    <span style="font-size:13px;color:rgba(245,240,232,0.5);">Вы получаете</span>
-    <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#E8621A;" id="eb-modal-get">— USDT</span>
-  </div>
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
-    <span style="font-size:13px;color:rgba(245,240,232,0.5);">Способ оплаты</span>
-    <span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:#F5F0E8;">СБП</span>
-  </div>
-  <!-- Адрес получения (полный, для проверки) -->
-  <div style="margin-top:10px;background:rgba(76,175,125,0.06);border:1px solid rgba(76,175,125,0.2);border-radius:12px;padding:12px;">
-    <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
-      <div style="width:6px;height:6px;border-radius:50%;background:#4CAF7D;"></div>
-      <span style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:#4CAF7D;">Адрес получения — проверьте</span>
-    </div>
-    <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:#F5F0E8;word-break:break-all;background:rgba(255,255,255,0.04);border-radius:8px;padding:8px 10px;border:1px solid rgba(255,255,255,0.07);" id="eb-modal-wallet">—</div>
-  </div>
-  <!-- Кнопки оплаты -->
-  <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px;">
-    <div id="eb-modal-pay-btn" onclick="ebPayViaSBP()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;">Оплатить через СБП →</div>
-    <div id="eb-modal-paid-btn" onclick="ebConfirmPaid()" style="display:none;background:rgba(76,175,125,0.12);border:1px solid rgba(76,175,125,0.25);border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:600;color:#4CAF7D;cursor:pointer;">Я оплатил</div>
-  </div>
-</div>
-
-<!-- ── Модалка: Статус обмена (Экспресс продажа) ── -->
-<div id="es-status-overlay" onclick="closeEsStatusModal()" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9000;"></div>
-<div id="es-status-modal" style="display:none;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.95);background:#1C1C1C;border-radius:20px;z-index:9001;padding:24px 20px;width:calc(100% - 32px);max-width:360px;opacity:0;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);">
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
-    <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#F5F0E8;">Статус обмена</div>
-    <div onclick="closeEsStatusModal()" style="width:28px;height:28px;border-radius:50%;background:rgba(245,240,232,0.08);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;">
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="rgba(245,240,232,0.5)" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l8 8M10 2l-8 8"/></svg>
-    </div>
-  </div>
-  <div style="font-size:12px;color:rgba(245,240,232,0.45);margin-bottom:14px;">Отправьте USDT на указанный адрес.</div>
-  <!-- Суммы -->
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
-    <span style="font-size:13px;color:rgba(245,240,232,0.5);">Вы отправляете</span>
-    <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#F5F0E8;" id="es-modal-s-give">— USDT</span>
-  </div>
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
-    <span style="font-size:13px;color:rgba(245,240,232,0.5);">Вы получаете</span>
-    <span style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#4CAF7D;" id="es-modal-s-get">— ₽</span>
-  </div>
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
-    <span style="font-size:13px;color:rgba(245,240,232,0.5);">На счёт</span>
-    <span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:#F5F0E8;" id="es-modal-s-bank">—</span>
-  </div>
-  <!-- Проверка номера телефона -->
-  <div style="margin-top:10px;background:rgba(232,98,26,0.06);border:1px solid rgba(232,98,26,0.2);border-radius:10px;padding:10px 12px;">
-    <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
-      <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E8621A" stroke-width="1.3"/><path d="M7 5v3M7 9.5v.3" stroke="#E8621A" stroke-width="1.3" stroke-linecap="round"/></svg>
-      <span style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:#E8621A;">Проверьте номер получения</span>
-    </div>
-    <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;" id="es-modal-s-phone-check">+7 (999) 123-45-67</div>
-  </div>
-  <!-- Адрес кошелька -->
-  <div style="margin-top:14px;background:rgba(232,98,26,0.06);border:1px solid rgba(232,98,26,0.2);border-radius:12px;padding:12px;">
-    <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
-      <div style="width:6px;height:6px;border-radius:50%;background:#E8621A;"></div>
-      <span style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:#E8621A;">Адрес для отправки USDT TRC20</span>
-    </div>
-    <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:#F5F0E8;word-break:break-all;background:rgba(255,255,255,0.04);border-radius:8px;padding:8px 10px;border:1px solid rgba(255,255,255,0.07);" id="es-modal-s-addr">—</div>
-  </div>
-  <!-- Кнопки -->
-  <div style="display:flex;gap:10px;margin-top:16px;">
-    <div onclick="esModalCopyAddr()" style="flex:1;background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="4" width="9" height="9" rx="2" stroke="#fff" stroke-width="1.3"/><path d="M4 4V3a2 2 0 012-2h5a2 2 0 012 2v5a2 2 0 01-2 2h-1" stroke="#fff" stroke-width="1.3"/></svg>
-      <span id="es-modal-copy-label">Скопировать</span>
-    </div>
-    <div onclick="esConfirmSent()" style="flex:1;background:rgba(76,175,125,0.12);border:1px solid rgba(76,175,125,0.25);border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:14px;font-weight:600;color:#4CAF7D;cursor:pointer;">Отправил ✓</div>
-  </div>
-</div>
+<!-- Старые модалки (eb-status-modal, es-status-modal) удалены — заменены на screen-order-status -->
 
 <!-- Модальное окно Лимиты -->
   <div id="limits-overlay" onclick="closeLimitsModal()" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.65);z-index:9000;border-radius:0;"></div>
@@ -2935,6 +2920,7 @@ const TAB_MAP = {
   'screen-confirm-cash': 'screen1',
   'screen-express-buy': 'screen1',
   'screen-express-sell': 'screen1',
+  'screen-order-status': 'screen1',
   'screen3': 'screen3', 'screen-transfer': 'screen1', 'screen-transfer-form': 'screen1', 'screen-transfer-ok': 'screen1',
   'screen-wallet': 'screen-more',
   'screen-card': 'screen-more',
@@ -4292,78 +4278,17 @@ function updateEsCTA() {
 }
 let _esTimerInterval = null;
 function submitExpressSell() {
-  const amount  = document.getElementById('es-amount')?.value || '0';
-  const result  = document.getElementById('es-result')?.textContent || '0';
-  const bank    = window._esSelectedBank || '—';
-  // Заполняем модалку
-  const give = document.getElementById('es-modal-s-give');
-  const get  = document.getElementById('es-modal-s-get');
-  const bk   = document.getElementById('es-modal-s-bank');
-  const addr = document.getElementById('es-modal-s-addr');
-  if (give) give.textContent = parseFloat(amount).toFixed(4) + ' USDT';
-  if (get)  get.textContent  = result + ' ₽';
-  if (bk)   bk.textContent   = bank;
-  if (addr) addr.textContent = ES_WALLET_ADDRESS;
-  // Сброс лейбла копирования
-  const copyLbl = document.getElementById('es-modal-copy-label');
-  if (copyLbl) copyLbl.textContent = 'Скопировать';
-  // Показываем модалку
-  openEsStatusModal();
+  const amount = document.getElementById('es-amount')?.value || '0';
+  const result = document.getElementById('es-result')?.textContent || '0';
+  const bank   = window._esSelectedBank || '—';
+  openOrderStatus('sell', {
+    give: parseFloat(amount).toFixed(4) + ' USDT',
+    get:  result + ' ₽',
+    method: bank,
+    address: bank
+  });
 }
-function openEsStatusModal() {
-  var overlay = document.getElementById('es-status-overlay');
-  var modal = document.getElementById('es-status-modal');
-  if (!overlay || !modal) return;
-  overlay.style.display = 'block';
-  modal.style.display = 'block';
-  setTimeout(function() { modal.style.opacity = '1'; modal.style.transform = 'translate(-50%,-50%) scale(1)'; }, 10);
-}
-function closeEsStatusModal() {
-  var modal = document.getElementById('es-status-modal');
-  var overlay = document.getElementById('es-status-overlay');
-  if (modal) {
-    modal.style.opacity = '0';
-    modal.style.transform = 'translate(-50%,-50%) scale(0.95)';
-    setTimeout(function() {
-      modal.style.display = 'none';
-      if (overlay) overlay.style.display = 'none';
-    }, 300);
-  }
-}
-function esModalCopyAddr() {
-  var addr = ES_WALLET_ADDRESS;
-  if (navigator.clipboard?.writeText) {
-    navigator.clipboard.writeText(addr).then(function() {
-      var lbl = document.getElementById('es-modal-copy-label');
-      if (lbl) { lbl.textContent = 'Скопировано ✓'; setTimeout(function() { lbl.textContent = 'Скопировать'; }, 2000); }
-    });
-  }
-}
-function esConfirmSent() {
-  var modal = document.getElementById('es-status-modal');
-  var overlay = document.getElementById('es-status-overlay');
-  if (modal) {
-    modal.style.opacity = '0';
-    modal.style.transform = 'translate(-50%,-50%) scale(0.95)';
-    setTimeout(function() {
-      modal.style.display = 'none';
-      if (overlay) overlay.style.display = 'none';
-      goTo('screen3'); // → Заявки (Активные)
-    }, 300);
-  }
-}
-function copyEsWallet() {
-  const addr = ES_WALLET_ADDRESS;
-  if (navigator.clipboard?.writeText) {
-    navigator.clipboard.writeText(addr).then(() => {
-      // Try both copy label elements
-      ['es-copy-label', 'es-success-copy-label'].forEach(id => {
-        const lbl = document.getElementById(id);
-        if (lbl) { lbl.textContent = 'Скопировано ✓'; setTimeout(() => { lbl.textContent = 'Скопировать адрес'; }, 2000); }
-      });
-    });
-  }
-}
+/* старые модалки (openEsStatusModal, closeEsStatusModal, esModalCopyAddr, esConfirmSent, copyEsWallet) удалены — заменены на openOrderStatus('sell') */
 /* ── ЭКСПРЕСС ПОКУПКА ── */
 const EXPRESS_MIN_RUB = 1000;
 function calcExpress() {
@@ -4443,84 +4368,99 @@ function pasteExpressWallet() {
   }
 }
 function submitExpressBuy() {
-  const amount = document.getElementById('express-amount')?.value || '0';
-  const result = document.getElementById('express-result')?.textContent || '0';
-  const wallet = document.getElementById('express-wallet')?.value.trim() || '';
-  const rate   = document.getElementById('express-rate-display')?.textContent || '';
-  // Заполняем модалку статуса
-  const mGive   = document.getElementById('eb-modal-give');
-  const mGet    = document.getElementById('eb-modal-get');
-  const mWallet = document.getElementById('eb-modal-wallet');
-  if (mGive)   mGive.textContent   = parseFloat(amount).toLocaleString('ru-RU') + ' RUB';
-  if (mGet)    mGet.textContent    = result + ' USDT';
-  if (mWallet) mWallet.textContent = wallet || '—';
-  // TODO: Сгенерировать реальный СБП диплинк с суммой
+  var amount = document.getElementById('express-amount')?.value || '0';
+  var result = document.getElementById('express-result')?.textContent || '0';
+  var wallet = document.getElementById('express-wallet')?.value.trim() || '';
   window._ebSbpAmount = amount;
-  // Показываем модалку
-  openEbStatusModal();
+  openOrderStatus('buy', {
+    give: parseFloat(amount).toLocaleString('ru-RU') + ' RUB',
+    get: result + ' USDT',
+    method: 'СБП',
+    address: wallet || '—'
+  });
 }
-function openEbStatusModal() {
-  var overlay = document.getElementById('eb-status-overlay');
-  var modal = document.getElementById('eb-status-modal');
-  if (!overlay || !modal) return;
-  overlay.style.display = 'block';
-  modal.style.display = 'block';
-  setTimeout(function() { modal.style.opacity = '1'; modal.style.transform = 'translate(-50%,-50%) scale(1)'; }, 10);
+/* ══ ORDER STATUS SCREEN ══ */
+var _osType = 'buy';
+var _osStatus = 'waiting';
+var OS_STATUSES = {
+  waiting:   { text: 'Ожидает оплаты',  sub: 'Оплатите заявку для продолжения', color: '#E8621A', dots: 1 },
+  process:   { text: 'В процессе',       sub: 'Оператор обрабатывает вашу заявку', color: '#3B82F6', dots: 2 },
+  completed: { text: 'Завершена',         sub: 'Обмен успешно выполнен', color: '#4CAF7D', dots: 3 },
+  cancelled: { text: 'Отменена',          sub: 'Заявка была отменена', color: '#FF5555', dots: 4 }
+};
+function openOrderStatus(type, data) {
+  _osType = type;
+  _osStatus = 'waiting';
+  var orderId = '#CRX-' + (2848 + Math.floor(Math.random() * 999));
+  var el = function(id) { return document.getElementById(id); };
+  if (el('os-order-id')) el('os-order-id').textContent = orderId;
+  if (el('os-give'))     el('os-give').textContent     = data.give;
+  if (el('os-get'))      el('os-get').textContent      = data.get;
+  if (el('os-method'))   el('os-method').textContent   = data.method;
+  if (el('os-addr'))     el('os-addr').textContent     = data.address;
+  // Лейбл адреса
+  if (el('os-addr-label')) el('os-addr-label').textContent = type === 'buy' ? 'Адрес получения' : 'На счёт';
+  // Показать нужные действия
+  if (el('os-actions-buy'))  el('os-actions-buy').style.display  = type === 'buy' ? 'flex' : 'none';
+  if (el('os-actions-sell')) el('os-actions-sell').style.display  = type === 'sell' ? 'flex' : 'none';
+  // Сброс кнопок
+  if (el('os-pay-btn'))  { el('os-pay-btn').style.display = 'flex'; el('os-pay-btn').innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"><path d="M2 6l6-4 6 4M3 6v6h10V6"/></svg> Оплатить через СБП →'; }
+  if (el('os-paid-btn')) el('os-paid-btn').style.display = 'none';
+  if (el('os-sent-btn')) el('os-sent-btn').style.display = 'flex';
+  // Адрес для отправки (sell)
+  if (type === 'sell' && el('os-send-addr')) el('os-send-addr').textContent = ES_WALLET_ADDRESS;
+  if (el('os-copy-label')) el('os-copy-label').textContent = 'Скопировать';
+  setOrderStatus('waiting');
+  goTo('screen-order-status');
 }
-function closeEbStatusModal() {
-  var modal = document.getElementById('eb-status-modal');
-  var overlay = document.getElementById('eb-status-overlay');
-  if (modal) {
-    modal.style.opacity = '0';
-    modal.style.transform = 'translate(-50%,-50%) scale(0.95)';
-    setTimeout(function() {
-      modal.style.display = 'none';
-      if (overlay) overlay.style.display = 'none';
-      goTo('screen1');
-    }, 300);
+function setOrderStatus(status) {
+  _osStatus = status;
+  var cfg = OS_STATUSES[status];
+  if (!cfg) return;
+  var txt = document.getElementById('os-status-text');
+  var sub = document.getElementById('os-status-sub');
+  if (txt) { txt.textContent = cfg.text; txt.style.color = cfg.color; }
+  if (sub) sub.textContent = cfg.sub;
+  // Обновляем точки
+  var dots = document.querySelectorAll('#screen-order-status .os-dot');
+  for (var i = 0; i < dots.length; i++) {
+    dots[i].style.background = i < cfg.dots ? cfg.color : 'rgba(255,255,255,0.1)';
+  }
+  // Скрываем кнопки оплаты если не "Ожидает"
+  var showPay = status === 'waiting';
+  var payBtn = document.getElementById('os-pay-btn');
+  var paidBtn = document.getElementById('os-paid-btn');
+  var sentBtn = document.getElementById('os-sent-btn');
+  if (_osType === 'buy') {
+    if (payBtn) payBtn.style.display = showPay ? 'flex' : 'none';
+    if (paidBtn) paidBtn.style.display = 'none';
+  } else {
+    if (sentBtn) sentBtn.style.display = showPay ? 'flex' : 'none';
   }
 }
-function ebConfirmPaid() {
-  var modal = document.getElementById('eb-status-modal');
-  var overlay = document.getElementById('eb-status-overlay');
-  if (modal) {
-    modal.style.opacity = '0';
-    modal.style.transform = 'translate(-50%,-50%) scale(0.95)';
-    setTimeout(function() {
-      modal.style.display = 'none';
-      if (overlay) overlay.style.display = 'none';
-      // Сброс кнопок для следующего раза
-      var payBtn = document.getElementById('eb-modal-pay-btn');
-      var paidBtn = document.getElementById('eb-modal-paid-btn');
-      if (payBtn) payBtn.textContent = 'Оплатить через СБП →';
-      if (paidBtn) paidBtn.style.display = 'none';
-      goTo('screen3'); // → Заявки
-    }, 300);
-  }
-}
-function ebPayViaSBP() {
-  // TODO: В продакшне здесь будет реальный СБП диплинк от API
+function orderPaySBP() {
   var amount = window._ebSbpAmount || '0';
   var sbpUrl = 'https://qr.nspk.ru/pay?sum=' + amount + '00&cur=RUB';
   window.open(sbpUrl, '_blank');
-  // Показываем кнопку "Я оплатил" — модалка остаётся
-  var paidBtn = document.getElementById('eb-modal-paid-btn');
+  var paidBtn = document.getElementById('os-paid-btn');
   if (paidBtn) paidBtn.style.display = 'block';
-  // Меняем текст кнопки "Оплатить" на "Оплатить повторно"
-  var payBtn = document.getElementById('eb-modal-pay-btn');
-  if (payBtn) payBtn.textContent = 'Оплатить повторно';
-  // НЕ закрываем модалку — клиент может нажать повторно
-  return; // убираем автозакрытие
-  var modal = document.getElementById('eb-status-modal');
-  var overlay = document.getElementById('eb-status-overlay');
-  setTimeout(function() {
-    if (modal) { modal.style.opacity = '0'; modal.style.transform = 'translate(-50%,-50%) scale(0.95)'; }
-    setTimeout(function() {
-      if (modal) modal.style.display = 'none';
-      if (overlay) overlay.style.display = 'none';
-      goTo('screen3');
-    }, 300);
-  }, 1000);
+  var payBtn = document.getElementById('os-pay-btn');
+  if (payBtn) payBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"><path d="M2 6l6-4 6 4M3 6v6h10V6"/></svg> Оплатить повторно';
+}
+function orderConfirmPaid() {
+  setOrderStatus('process');
+}
+function orderCopyAddr() {
+  var addr = ES_WALLET_ADDRESS;
+  if (navigator.clipboard?.writeText) {
+    navigator.clipboard.writeText(addr).then(function() {
+      var lbl = document.getElementById('os-copy-label');
+      if (lbl) { lbl.textContent = 'Скопировано ✓'; setTimeout(function() { lbl.textContent = 'Скопировать'; }, 2000); }
+    });
+  }
+}
+function orderConfirmSent() {
+  setOrderStatus('process');
 }
 let formRateTimer = null;
 function startFormTicker() {
