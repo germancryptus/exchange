@@ -117,6 +117,7 @@ body {
   flex-direction: column;
 }
 .phone {
+  display: flex;
   background: var(--bg);
   flex-direction: column;
   overflow: hidden;
@@ -330,14 +331,8 @@ input[type=number] { -moz-appearance:textfield; }
   0%, 90%, 100% { opacity: 1; }
   95%           { opacity: 0.5; }
 }
-.phone       { }
 .header      { animation: fadeUp 0.5s 0.05s ease both; }
-
 .bottom-nav  { animation: fadeUp 0.5s 0.15s ease both; }
-.screen.active {
-  display: flex;
-  flex-direction: column;
-}
 /* ── OVERFLOW FIXES ── */
 /* Все прямые дочерние div экранов с flex:1 получают overflow-y:auto */
 .screen > div[style*="flex:1"],
@@ -476,9 +471,7 @@ div[style*="overflow-y: auto"] {
 .detail-row-divider {
   height:1px;background:rgba(255,255,255,0.06);margin:0 14px;
 }
-.support-line { display:none; }
-.support-text { display:none; }
-.support-link { display:none; }
+/* support-line/text/link removed — dead code */
 .net-chip {
   border-radius:20px;padding:4px 12px;font-family:'Syne',sans-serif;
   font-size:9px;font-weight:600;cursor:pointer;
@@ -677,11 +670,6 @@ div[style*="overflow-y: auto"] {
       </div>
     </div>
   </div>
-  <!-- "Напишите нам" внутри скролла — прилипает к низу контента -->
-  <div style="text-align:center;padding:16px 14px 4px;margin-top:auto;">
-    <span class="support-text">Есть вопросы? </span>
-    <span class="support-link" onclick="window.open('https://t.me/cryptus_exchange','_blank')">Напишите нам</span>
-  </div>
   </div><!-- /SCROLLABLE CONTENT -->
   <!-- BOTTOM NAV -->
   <div class="bottom-nav">
@@ -816,11 +804,6 @@ div[style*="overflow-y: auto"] {
     <div id="sheet-cta" onclick="sheetCTAClick()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#fff;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
       Продолжить →
     </div>
-  </div>
-  <!-- SUPPORT LINE -->
-  <div class="support-line">
-    <span class="support-text">Есть вопросы? </span>
-    <span class="support-link" onclick="window.open('https://t.me/cryptus_exchange','_blank')">Напишите нам</span>
   </div>
   <!-- BOTTOM NAV -->
   <div class="bottom-nav">
@@ -1027,11 +1010,6 @@ div[style*="overflow-y: auto"] {
     <div id="form-cta" onclick="submitForm()" class="cta-primary cta-disabled">
       Продолжить →
     </div>
-  </div>
-  <!-- SUPPORT LINE -->
-  <div class="support-line">
-    <span class="support-text">Есть вопросы? </span>
-    <span class="support-link" onclick="window.open('https://t.me/cryptus_exchange','_blank')">Напишите нам</span>
   </div>
   <div class="bottom-nav">
     <div class="nav-inner">
@@ -1805,11 +1783,6 @@ div[style*="overflow-y: auto"] {
         </div>
       </div>
     </div>
-    <!-- SUPPORT LINE -->
-    <div style="text-align:center;padding:8px 0 4px;">
-      <span class="support-text">Есть вопросы? </span>
-      <span class="support-link" onclick="window.open('https://t.me/cryptus_exchange','_blank')">Напишите нам</span>
-    </div>
     <div style="height:4px;"></div>
   </div>
   <div class="bottom-nav"><div class="nav-inner">
@@ -2315,11 +2288,6 @@ div[style*="overflow-y: auto"] {
     </div>
   </div><!-- /hist-section-history -->
   </div><!-- /history-list -->
-  <!-- SUPPORT LINE -->
-  <div class="support-line">
-    <span class="support-text">Есть вопросы? </span>
-    <span class="support-link" onclick="window.open('https://t.me/cryptus_exchange','_blank')">Напишите нам</span>
-  </div>
   <div class="bottom-nav">
     <div class="nav-inner">
       <div class="nav-item" onclick="goTo('screen1')" style="cursor:pointer;">
@@ -2379,11 +2347,6 @@ div[style*="overflow-y: auto"] {
     </div>
     <div style="font-size:12px;color:rgba(245,240,232,0.5);">Уведомим вас о запуске</div>
   </div>
-  <!-- SUPPORT LINE -->
-  <div class="support-line">
-    <span class="support-text">Есть вопросы? </span>
-    <span class="support-link" onclick="window.open('https://t.me/cryptus_exchange','_blank')">Напишите нам</span>
-  </div>
   <div class="bottom-nav">
     <div class="nav-inner">
       <div class="nav-item" onclick="goTo('screen1')" style="cursor:pointer;">
@@ -2442,11 +2405,6 @@ div[style*="overflow-y: auto"] {
       </div>
     </div>
     <div style="font-size:12px;color:rgba(245,240,232,0.5);">Уведомим вас о запуске</div>
-  </div>
-  <!-- SUPPORT LINE -->
-  <div class="support-line">
-    <span class="support-text">Есть вопросы? </span>
-    <span class="support-link" onclick="window.open('https://t.me/cryptus_exchange','_blank')">Напишите нам</span>
   </div>
   <div class="bottom-nav">
     <div class="nav-inner">
@@ -3209,16 +3167,10 @@ const CLASSIC_BASE   = 86.48;
 const INSTANT_SPREAD = 1.28;
 let classicRate = CLASSIC_BASE;
 function tick() {
-  const delta = (Math.random() - 0.49) * 0.04;
+  const delta = (Math.random() - 0.5) * 0.04;
   classicRate = Math.max(84, Math.min(89, classicRate + delta));
   const instantRate = classicRate - INSTANT_SPREAD;
-  /* Экран 1 — хедер и rate-блок */
-  const cEl    = document.getElementById('sheet-classic-rate');
-  const iEl    = document.getElementById('sheet-instant-rate');
-  const cSubEl = null // removed;
-  if (cEl)    cEl.textContent    = classicRate.toFixed(2);
-  if (iEl)    iEl.textContent    = instantRate.toFixed(2) + ' ₽';
-  if (cSubEl) cSubEl.textContent = classicRate.toFixed(2) + ' ₽';
+  /* Экран 1 — хедер и rate-блок (записывается ниже в блоке шторки) */
   const cardBuyEl  = document.getElementById('card-buy');
   const cardSellEl = document.getElementById('card-sell');
   const cashBuyEl  = document.getElementById('cash-buy');
@@ -3662,8 +3614,7 @@ let cashFiat = 'RUB';
 const FIAT_RATES = { RUB: 1, USD: 0.011, EUR: 0.010, AED: 0.0437, THB: 0.397, TRY: 0.434, GEL: 0.032 };
 const FIAT_SYMBOLS = { RUB: '₽', USD: '$', EUR: '€', AED: 'د.إ', THB: '฿', TRY: '₺', GEL: '₾' };
 let cashGiveFiat = 'RUB';
-const GIVE_FIAT_SYMBOLS = { RUB: '₽', USD: '$', EUR: '€', AED: 'د.إ', THB: '฿', TRY: '₺', GEL: '₾' };
-const GIVE_FIAT_COLORS = { RUB: '#4CAF7D', USD: '#1C7C4A', EUR: '#003399' };
+/* GIVE_FIAT_SYMBOLS removed — use FIAT_SYMBOLS */
 let cashGetCrypto = 'USDT';
 /* TODO: Когда будет создан HTML для режима "Купить крипто за наличные",
    добавить функции toggleCashGetCryptoMenu, setCashGetCrypto,
@@ -3696,18 +3647,17 @@ function setCashFiat(fiat) {
 }
 function calcCash() {
   const amount = parseFloat(document.getElementById('cash-amount').value) || 0;
+  const fiatRate = FIAT_RATES[cashGiveFiat] || 1;
   const rate = (classicRate - 2.59) * (CRYPTO_RATES[cashCurrency] || 1);
   let result = 0;
   if (cashIntent === 'sell') {
-    result = amount * rate;
+    result = amount * rate / fiatRate;
     const resEl = document.getElementById('cash-result');
     if (resEl) resEl.textContent = result > 0 ? Math.round(result).toLocaleString('ru-RU') : '0';
-    // Валюта отображается через dropdown cash-fiat-label
   } else {
-    result = amount / rate;
+    result = amount * fiatRate / rate;
     const resEl = document.getElementById('cash-result');
     if (resEl) resEl.textContent = result > 0 ? (result < 1 ? result.toFixed(6) : result.toFixed(4)) : '0';
-    // Валюта отображается через dropdown
   }
   // Рамка суммы
   const min = cashIntent === 'sell' ? 800 : Math.round((classicRate + 0.72) * 800);
@@ -3864,18 +3814,18 @@ function updateCashRate() {
   const rate = getCashCityRate() * (CRYPTO_RATES[cryptoCurr] || 1) * fiatRate;
   const rateEl   = document.getElementById('cash-rate-display');
   const rateCurr = document.getElementById('cash-rate-curr');
-  const sym = cashIntent === 'sell' ? (FIAT_SYMBOLS[cashFiat] || '₽') : (GIVE_FIAT_SYMBOLS[cashGiveFiat] || '₽');
+  const sym = cashIntent === 'sell' ? (FIAT_SYMBOLS[cashFiat] || '₽') : (FIAT_SYMBOLS[cashGiveFiat] || '₽');
   if (rateEl)   rateEl.textContent   = rate >= 100 ? Math.round(rate).toLocaleString('ru-RU') + ' ' + sym : rate.toFixed(2) + ' ' + sym;
   if (rateCurr) rateCurr.textContent = cryptoCurr;
 }
 var cashNetwork = 'TRC20';
-var cashGiveFiatCurr = 'RUB';
+/* cashGiveFiatCurr removed — use cashGiveFiat */
 function toggleCashGiveFiatMenu() {
   var menu = document.getElementById('cash-give-fiat-menu');
   if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
 }
 function setCashGiveFiat(curr, sym) {
-  cashGiveFiatCurr = curr;
+  /* cashGiveFiatCurr removed */
   cashGiveFiat = curr;
   var icon  = document.getElementById('cash-give-fiat-icon');
   var symEl = document.getElementById('cash-give-fiat-sym');
@@ -4026,7 +3976,7 @@ function submitCashForm() {
   } else {
     if (confGiveAmt)  confGiveAmt.textContent  = parseFloat(amount).toLocaleString('ru-RU');
     if (confGiveCurr) confGiveCurr.textContent = cashGiveFiat || 'RUB';
-    if (confGiveIcon) { confGiveIcon.style.background = '#4CAF7D'; confGiveIcon.innerHTML = '<span style="font-family:Arial;font-size:14px;font-weight:800;color:#fff;">' + (GIVE_FIAT_SYMBOLS[cashGiveFiat] || '₽') + '</span>'; }
+    if (confGiveIcon) { confGiveIcon.style.background = '#4CAF7D'; confGiveIcon.innerHTML = '<span style="font-family:Arial;font-size:14px;font-weight:800;color:#fff;">' + (FIAT_SYMBOLS[cashGiveFiat] || '₽') + '</span>'; }
     if (confGetAmt)   confGetAmt.textContent   = result;
     if (confGetCurr)  confGetCurr.textContent  = cashGetCrypto || 'USDT';
     if (confGetIcon)  confGetIcon.innerHTML     = '<img src="' + (ICONS_URLS[cashGetCrypto] || ICONS_URLS['USDT']) + '" width="32" height="32" style="border-radius:50%;object-fit:cover;">';
@@ -4054,14 +4004,15 @@ function submitBuyForm() {
   let network = '';
   allChips.forEach(c => { if (c.style.color === 'rgb(232, 98, 26)' || c.style.color === '#E8621A') network = c.textContent; });
   if (!network && allChips.length > 0) network = allChips[0].textContent;
-  document.getElementById('buy-conf-amount').textContent  = parseFloat(amount).toLocaleString('ru-RU');
-  document.getElementById('buy-conf-result').textContent  = result;
-  document.getElementById('buy-conf-rate').textContent    = rate;
-  document.getElementById('buy-conf-curr-rate').textContent = buyCurrency;
-  document.getElementById('buy-conf-curr-label').textContent = buyCurrency;
-  document.getElementById('buy-conf-network').textContent = network;
-  document.getElementById('buy-conf-bank').textContent    = selectedBuyBank || '—';
-  document.getElementById('buy-conf-wallet').textContent  = wallet;
+  var _s = function(id, val) { var e = document.getElementById(id); if (e) e.textContent = val; };
+  _s('buy-conf-amount', parseFloat(amount).toLocaleString('ru-RU'));
+  _s('buy-conf-result', result);
+  _s('buy-conf-rate', rate);
+  _s('buy-conf-curr-rate', buyCurrency);
+  _s('buy-conf-curr-label', buyCurrency);
+  _s('buy-conf-network', network);
+  _s('buy-conf-bank', selectedBuyBank || '—');
+  _s('buy-conf-wallet', wallet);
   const confIcon = document.getElementById('buy-conf-curr-icon');
   if (confIcon) confIcon.innerHTML = `<img src="${ICONS_URLS[buyCurrency]}" width="32" height="32" style="border-radius:50%;object-fit:cover;">`;
   isExpressFlow = false;
@@ -4129,8 +4080,8 @@ function openSheet(intent) {
   const bs    = document.getElementById('bottom-sheet');
   const title = document.getElementById('sheet-title');
   const cta   = document.getElementById('sheet-cta');
-  title.textContent = 'Выберите способ';
-  cta.textContent   = 'Продолжить →';
+  if (title) title.textContent = 'Выберите способ';
+  if (cta) cta.textContent   = 'Продолжить →';
   // Сброс к классическому
   selectMethod('classic');
   document.getElementById('sheet-overlay').style.display = 'block';
@@ -4147,10 +4098,12 @@ function toggleMethodInfo() {
 }
 function closeSheet() {
   const bs = document.getElementById('bottom-sheet');
+  if (!bs) return;
   bs.style.transform = 'translateY(100%)';
   setTimeout(() => {
     bs.style.display = 'none';
-    document.getElementById('sheet-overlay').style.display = 'none';
+    var overlay = document.getElementById('sheet-overlay');
+    if (overlay) overlay.style.display = 'none';
   }, 350);
 }
 function selectMethod(method) {
@@ -4656,7 +4609,7 @@ function setOrderStatus(status) {
 }
 function orderPaySBP() {
   var amount = window._ebSbpAmount || '0';
-  var sbpUrl = 'https://qr.nspk.ru/pay?sum=' + amount + '00&cur=RUB';
+  var sbpUrl = 'https://qr.nspk.ru/pay?sum=' + Math.round(parseFloat(amount) * 100) + '&cur=RUB';
   window.open(sbpUrl, '_blank');
   var paidBtn = document.getElementById('os-paid-btn');
   if (paidBtn) paidBtn.style.display = 'block';
@@ -4914,7 +4867,9 @@ function formatPhone(el) {
   updateCTA();
 }
 function selectNet(el) {
-  document.querySelectorAll('.net-chip').forEach(c => {
+  var container = el.parentElement;
+  if (!container) return;
+  container.querySelectorAll('.net-chip').forEach(c => {
     c.style.borderColor = 'rgba(255,255,255,0.1)';
     c.style.color = 'rgba(245,240,232,0.4)';
     c.style.background = 'rgba(255,255,255,0.04)';
@@ -5053,11 +5008,7 @@ window.addEventListener('load', () => {
     subEl.style.letterSpacing = spacing.toFixed(2) + 'px';
   }
 });
-const rateData = {
-  cash: { buy: 84.54, sell: 82.77 },
-  card: { buy: 86.49, sell: 83.90 }
-};
-let activeTab = 'card';
+/* rateData and activeTab removed — dead code */
 /* ── Auto slider ── */
 let currentSlide = 0;
 const titles = ['Безналичные', 'Наличные МСК'];
@@ -5546,6 +5497,11 @@ function copyTfOrderId() {
   if (navigator.clipboard) { navigator.clipboard.writeText(id); }
   var btn = document.querySelector('#tf-ok-id')?.nextElementSibling;
   /* no-op visual feedback for MVP */
+}
+
+/* ══ УТИЛИТЫ ══ */
+function openTelegram() {
+  window.open('https://t.me/cryptus_support', '_blank');
 }
 </script>
 </body>
