@@ -3438,10 +3438,10 @@ function toggleCashHowItWorks() {
 }
 /* ── Cash fiat currency ── */
 let cashFiat = 'RUB';
-const FIAT_RATES = { RUB: 1, USD: 0.011, EUR: 0.010 }; // примерные коэффициенты
-const FIAT_SYMBOLS = { RUB: '₽', USD: '$', EUR: '€' };
+const FIAT_RATES = { RUB: 1, USD: 0.011, EUR: 0.010, AED: 0.0437 }; // примерные коэффициенты
+const FIAT_SYMBOLS = { RUB: '₽', USD: '$', EUR: '€', AED: 'د.إ' };
 let cashGiveFiat = 'RUB';
-const GIVE_FIAT_SYMBOLS = { RUB: '₽', USD: '$', EUR: '€' };
+const GIVE_FIAT_SYMBOLS = { RUB: '₽', USD: '$', EUR: '€', AED: 'د.إ' };
 const GIVE_FIAT_COLORS = { RUB: '#4CAF7D', USD: '#1C7C4A', EUR: '#003399' };
 let cashGetCrypto = 'USDT';
 /* TODO: Когда будет создан HTML для режима "Купить крипто за наличные",
@@ -3453,7 +3453,7 @@ function toggleCashFiatMenu() {
 }
 function setCashFiat(fiat) {
   cashFiat = fiat;
-  const FIAT_COLORS = { RUB: '#4CAF7D', USD: '#1C7C4A', EUR: '#003399' };
+  const FIAT_COLORS = { RUB: '#4CAF7D', USD: '#1C7C4A', EUR: '#003399', AED: '#C8102E' };
   const sym   = document.getElementById('cash-fiat-symbol');
   const label = document.getElementById('cash-fiat-label');
   const icon  = document.getElementById('cash-fiat-icon');
@@ -3464,7 +3464,7 @@ function setCashFiat(fiat) {
   document.querySelectorAll('#cash-fiat-menu > div').forEach(o => {
     // Find the label span (last span with currency code)
     const spans = o.querySelectorAll('span');
-    const sp = [...spans].find(s => ['RUB','USD','EUR'].includes(s.textContent));
+    const sp = [...spans].find(s => ['RUB','USD','EUR','AED'].includes(s.textContent));
     const isActive = sp?.textContent === fiat;
     o.style.background = isActive ? 'rgba(76,175,125,0.08)' : 'transparent';
     if (sp) sp.style.color = isActive ? '#4CAF7D' : 'rgba(245,240,232,0.8)';
@@ -3660,7 +3660,7 @@ function setCashGiveFiat(curr, sym) {
   var symEl = document.getElementById('cash-give-fiat-sym');
   var label = document.getElementById('cash-give-fiat-label');
   var menu  = document.getElementById('cash-give-fiat-menu');
-  var colors = { RUB: '#E8621A', USD: '#1C7C4A', EUR: '#003399' };
+  var colors = { RUB: '#E8621A', USD: '#1C7C4A', EUR: '#003399', AED: '#C8102E' };
   if (icon)  icon.style.background = colors[curr] || '#E8621A';
   if (symEl) symEl.textContent = sym;
   if (label) label.textContent = curr;
