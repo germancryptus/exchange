@@ -1905,9 +1905,21 @@ div[style*="overflow-y: auto"] {
               <div style="width:28px;height:28px;border-radius:50%;background:#003399;display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:800;color:#fff;">€</span></div>
               <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(245,240,232,0.8);">EUR</span>
             </div>
-            <div onclick="setCashGiveFiat('AED','د')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;">
-              <div style="width:28px;height:28px;border-radius:50%;background:#C4986B;display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:800;color:#fff;">د</span></div>
+            <div onclick="setCashGiveFiat('AED','د.إ')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#C8102E;display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:800;color:#fff;">د</span></div>
               <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(245,240,232,0.8);">AED</span>
+            </div>
+            <div onclick="setCashGiveFiat('THB','฿')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#1E3A5F;display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:800;color:#fff;">฿</span></div>
+              <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(245,240,232,0.8);">THB</span>
+            </div>
+            <div onclick="setCashGiveFiat('TRY','₺')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#E30A17;display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:800;color:#fff;">₺</span></div>
+              <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(245,240,232,0.8);">TRY</span>
+            </div>
+            <div onclick="setCashGiveFiat('GEL','₾')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;">
+              <div style="width:28px;height:28px;border-radius:50%;background:#DA291C;display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:800;color:#fff;">₾</span></div>
+              <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(245,240,232,0.8);">GEL</span>
             </div>
           </div>
         </div>
@@ -1969,8 +1981,20 @@ div[style*="overflow-y: auto"] {
             <span style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:rgba(245,240,232,0.8);">EUR</span>
           </div>
           <div onclick="setCashFiat('AED')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;">
-            <div style="width:32px;height:32px;border-radius:50%;background:#C4986B;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:14px;font-weight:800;color:#fff;">د</span></div>
+            <div style="width:32px;height:32px;border-radius:50%;background:#C8102E;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:14px;font-weight:800;color:#fff;">د</span></div>
             <span style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:rgba(245,240,232,0.8);">AED</span>
+          </div>
+          <div onclick="setCashFiat('THB')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#1E3A5F;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:14px;font-weight:800;color:#fff;">฿</span></div>
+            <span style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:rgba(245,240,232,0.8);">THB</span>
+          </div>
+          <div onclick="setCashFiat('TRY')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#E30A17;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:14px;font-weight:800;color:#fff;">₺</span></div>
+            <span style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:rgba(245,240,232,0.8);">TRY</span>
+          </div>
+          <div onclick="setCashFiat('GEL')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#DA291C;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:14px;font-weight:800;color:#fff;">₾</span></div>
+            <span style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:rgba(245,240,232,0.8);">GEL</span>
           </div>
         </div>
         <!-- Выбор крипто + сети для режима Купить -->
@@ -3438,10 +3462,10 @@ function toggleCashHowItWorks() {
 }
 /* ── Cash fiat currency ── */
 let cashFiat = 'RUB';
-const FIAT_RATES = { RUB: 1, USD: 0.011, EUR: 0.010, AED: 0.0437 }; // примерные коэффициенты
-const FIAT_SYMBOLS = { RUB: '₽', USD: '$', EUR: '€', AED: 'د.إ' };
+const FIAT_RATES = { RUB: 1, USD: 0.011, EUR: 0.010, AED: 0.0437, THB: 0.397, TRY: 0.434, GEL: 0.032 };
+const FIAT_SYMBOLS = { RUB: '₽', USD: '$', EUR: '€', AED: 'د.إ', THB: '฿', TRY: '₺', GEL: '₾' };
 let cashGiveFiat = 'RUB';
-const GIVE_FIAT_SYMBOLS = { RUB: '₽', USD: '$', EUR: '€', AED: 'د.إ' };
+const GIVE_FIAT_SYMBOLS = { RUB: '₽', USD: '$', EUR: '€', AED: 'د.إ', THB: '฿', TRY: '₺', GEL: '₾' };
 const GIVE_FIAT_COLORS = { RUB: '#4CAF7D', USD: '#1C7C4A', EUR: '#003399' };
 let cashGetCrypto = 'USDT';
 /* TODO: Когда будет создан HTML для режима "Купить крипто за наличные",
@@ -3453,18 +3477,18 @@ function toggleCashFiatMenu() {
 }
 function setCashFiat(fiat) {
   cashFiat = fiat;
-  const FIAT_COLORS = { RUB: '#4CAF7D', USD: '#1C7C4A', EUR: '#003399', AED: '#C8102E' };
+  const FIAT_COLORS = { RUB: '#4CAF7D', USD: '#1C7C4A', EUR: '#003399', AED: '#C8102E', THB: '#1E3A5F', TRY: '#E30A17', GEL: '#DA291C' };
+  const ALL_FIATS = ['RUB','USD','EUR','AED','THB','TRY','GEL'];
   const sym   = document.getElementById('cash-fiat-symbol');
   const label = document.getElementById('cash-fiat-label');
   const icon  = document.getElementById('cash-fiat-icon');
   const menu  = document.getElementById('cash-fiat-menu');
   if (sym)   sym.textContent   = FIAT_SYMBOLS[fiat];
   if (label) label.textContent = fiat;
-  if (icon)  icon.style.background = FIAT_COLORS[fiat];
+  if (icon)  icon.style.background = FIAT_COLORS[fiat] || '#4CAF7D';
   document.querySelectorAll('#cash-fiat-menu > div').forEach(o => {
-    // Find the label span (last span with currency code)
     const spans = o.querySelectorAll('span');
-    const sp = [...spans].find(s => ['RUB','USD','EUR','AED'].includes(s.textContent));
+    const sp = [...spans].find(s => ALL_FIATS.includes(s.textContent));
     const isActive = sp?.textContent === fiat;
     o.style.background = isActive ? 'rgba(76,175,125,0.08)' : 'transparent';
     if (sp) sp.style.color = isActive ? '#4CAF7D' : 'rgba(245,240,232,0.8)';
@@ -3660,7 +3684,7 @@ function setCashGiveFiat(curr, sym) {
   var symEl = document.getElementById('cash-give-fiat-sym');
   var label = document.getElementById('cash-give-fiat-label');
   var menu  = document.getElementById('cash-give-fiat-menu');
-  var colors = { RUB: '#E8621A', USD: '#1C7C4A', EUR: '#003399', AED: '#C8102E' };
+  var colors = { RUB: '#E8621A', USD: '#1C7C4A', EUR: '#003399', AED: '#C8102E', THB: '#1E3A5F', TRY: '#E30A17', GEL: '#DA291C' };
   if (icon)  icon.style.background = colors[curr] || '#E8621A';
   if (symEl) symEl.textContent = sym;
   if (label) label.textContent = curr;
@@ -4757,6 +4781,8 @@ function toggleCashCountryMenu() {
   var menu = document.getElementById('cash-country-menu');
   if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
 }
+var COUNTRY_FIAT = { 'Россия': 'RUB', 'ОАЭ': 'AED', 'Турция': 'TRY', 'Таиланд': 'THB', 'Грузия': 'GEL' };
+var COUNTRY_FIAT_SYM = { 'Россия': '₽', 'ОАЭ': 'د.إ', 'Турция': '₺', 'Таиланд': '฿', 'Грузия': '₾' };
 function selectCashCountry(flag, name) {
   cashCountry = name;
   var flagEl = document.getElementById('cash-country-flag');
@@ -4769,6 +4795,11 @@ function selectCashCountry(flag, name) {
     var sp = o.querySelector('span:last-child');
     o.style.background = (sp && sp.textContent === name) ? 'rgba(232,98,26,0.08)' : 'transparent';
   });
+  // Автовыбор местной валюты
+  var localFiat = COUNTRY_FIAT[name] || 'RUB';
+  var localSym  = COUNTRY_FIAT_SYM[name] || '₽';
+  setCashFiat(localFiat);
+  setCashGiveFiat(localFiat, localSym);
   // Сбросить город при смене страны
   clearCashCity();
 }
