@@ -690,6 +690,83 @@ div[style*="overflow-y: auto"] {
       </div>
     </div>
   </div>
+  <!-- PROMO CAROUSEL -->
+  <div style="margin:10px 14px 14px;">
+    <div style="display:flex;justify-content:center;gap:4px;margin-bottom:8px;">
+      <span id="promo-dot-0" style="width:12px;height:5px;border-radius:3px;background:#E8621A;transition:all 0.3s;"></span>
+      <span id="promo-dot-1" style="width:5px;height:5px;border-radius:3px;background:rgba(245,240,232,0.2);transition:all 0.3s;"></span>
+      <span id="promo-dot-2" style="width:5px;height:5px;border-radius:3px;background:rgba(245,240,232,0.2);transition:all 0.3s;"></span>
+      <span id="promo-dot-3" style="width:5px;height:5px;border-radius:3px;background:rgba(245,240,232,0.2);transition:all 0.3s;"></span>
+    </div>
+    <div style="overflow:hidden;border-radius:16px;">
+      <div id="promo-slider" style="display:flex;width:400%;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);">
+        <!-- Баннер 1: Экспресс обмен -->
+        <div onclick="goTo('screen-express-buy')" style="width:25%;flex-shrink:0;cursor:pointer;background:linear-gradient(135deg,#1A1A1A 0%,rgba(232,98,26,0.2) 100%);border:1px solid rgba(232,98,26,0.15);border-radius:16px;padding:16px 18px;position:relative;overflow:hidden;min-height:110px;display:flex;align-items:center;gap:14px;">
+          <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(232,98,26,0.08);"></div>
+          <div style="position:absolute;bottom:-30px;right:30px;width:60px;height:60px;border-radius:50%;background:rgba(232,98,26,0.05);"></div>
+          <div style="width:48px;height:48px;border-radius:14px;background:rgba(232,98,26,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L4.094 12.688c-.35.422-.525.633-.523.81a.5.5 0 00.185.39c.138.112.41.112.955.112H12l-1 8 8.906-10.688c.35-.422.525-.633.523-.81a.5.5 0 00-.185-.39c-.138-.112-.41-.112-.955-.112H12l1-8z" fill="#E8621A"/></svg>
+          </div>
+          <div style="flex:1;position:relative;z-index:1;">
+            <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;margin-bottom:4px;">Обмен за 10 минут</div>
+            <div style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(245,240,232,0.5);line-height:1.3;margin-bottom:8px;">Покупка и продажа USDT без ожидания</div>
+            <div style="display:inline-flex;align-items:center;gap:4px;background:rgba(232,98,26,0.2);border-radius:8px;padding:4px 10px;">
+              <span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:#E8621A;">Попробовать</span>
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="#E8621A" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Баннер 2: Крипто-кошелёк -->
+        <div onclick="goTo('screen-wallet')" style="width:25%;flex-shrink:0;cursor:pointer;background:linear-gradient(135deg,#1A1A1A 0%,rgba(59,130,246,0.18) 100%);border:1px solid rgba(59,130,246,0.15);border-radius:16px;padding:16px 18px;position:relative;overflow:hidden;min-height:110px;display:flex;align-items:center;gap:14px;">
+          <div style="position:absolute;top:-15px;right:-15px;width:70px;height:70px;border-radius:50%;background:rgba(59,130,246,0.08);"></div>
+          <div style="position:absolute;bottom:-25px;right:40px;width:50px;height:50px;border-radius:50%;background:rgba(59,130,246,0.05);"></div>
+          <div style="width:48px;height:48px;border-radius:14px;background:rgba(59,130,246,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="#3B82F6" stroke-width="1.8"/><path d="M3 10h18" stroke="#3B82F6" stroke-width="1.8"/><circle cx="16" cy="14" r="1.5" fill="#3B82F6"/><path d="M7 6V5a2 2 0 012-2h6a2 2 0 012 2v1" stroke="#3B82F6" stroke-width="1.8"/></svg>
+          </div>
+          <div style="flex:1;position:relative;z-index:1;">
+            <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;margin-bottom:4px;">Крипто-кошелёк</div>
+            <div style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(245,240,232,0.5);line-height:1.3;margin-bottom:8px;">Ваши ключи — ваши монеты</div>
+            <div style="display:inline-flex;align-items:center;gap:4px;background:rgba(59,130,246,0.15);border-radius:8px;padding:4px 10px;">
+              <span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:#3B82F6;">Узнать больше</span>
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Баннер 3: Крипто-карта -->
+        <div onclick="goTo('screen-card')" style="width:25%;flex-shrink:0;cursor:pointer;background:linear-gradient(135deg,#1A1A1A 0%,rgba(76,175,125,0.18) 100%);border:1px solid rgba(76,175,125,0.15);border-radius:16px;padding:16px 18px;position:relative;overflow:hidden;min-height:110px;display:flex;align-items:center;gap:14px;">
+          <div style="position:absolute;top:-18px;right:-18px;width:75px;height:75px;border-radius:50%;background:rgba(76,175,125,0.08);"></div>
+          <div style="position:absolute;bottom:-20px;right:35px;width:55px;height:55px;border-radius:50%;background:rgba(76,175,125,0.05);"></div>
+          <div style="width:48px;height:48px;border-radius:14px;background:rgba(76,175,125,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="5" width="20" height="14" rx="3" stroke="#4CAF7D" stroke-width="1.8"/><path d="M2 10h20" stroke="#4CAF7D" stroke-width="1.8"/><path d="M6 15h4" stroke="#4CAF7D" stroke-width="1.8" stroke-linecap="round"/><path d="M14 15h4" stroke="#4CAF7D" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <div style="flex:1;position:relative;z-index:1;">
+            <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;margin-bottom:4px;">Крипто-карта</div>
+            <div style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(245,240,232,0.5);line-height:1.3;margin-bottom:8px;">USDT → ₽ при каждой оплате</div>
+            <div style="display:inline-flex;align-items:center;gap:4px;background:rgba(76,175,125,0.15);border-radius:8px;padding:4px 10px;">
+              <span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:#4CAF7D;">Узнать больше</span>
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="#4CAF7D" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </div>
+          </div>
+        </div>
+        <!-- Баннер 4: Реферальная программа -->
+        <div onclick="goTo('screen-menu')" style="width:25%;flex-shrink:0;cursor:pointer;background:linear-gradient(135deg,#1A1A1A 0%,rgba(168,85,247,0.18) 100%);border:1px solid rgba(168,85,247,0.15);border-radius:16px;padding:16px 18px;position:relative;overflow:hidden;min-height:110px;display:flex;align-items:center;gap:14px;">
+          <div style="position:absolute;top:-15px;right:-10px;width:70px;height:70px;border-radius:50%;background:rgba(168,85,247,0.08);"></div>
+          <div style="position:absolute;bottom:-28px;right:30px;width:55px;height:55px;border-radius:50%;background:rgba(168,85,247,0.05);"></div>
+          <div style="width:48px;height:48px;border-radius:14px;background:rgba(168,85,247,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 12v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6" stroke="#A855F7" stroke-width="1.8"/><path d="M12 20V11" stroke="#A855F7" stroke-width="1.8"/><path d="M2 8h20v4H2V8z" stroke="#A855F7" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 8c0-2 1-4 3.5-4S18 5.5 18 7c0 .6-.3 1-1 1h-5z" stroke="#A855F7" stroke-width="1.8"/><path d="M12 8c0-2-1-4-3.5-4S6 5.5 6 7c0 .6.3 1 1 1h5z" stroke="#A855F7" stroke-width="1.8"/></svg>
+          </div>
+          <div style="flex:1;position:relative;z-index:1;">
+            <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;margin-bottom:4px;">Пригласи друга</div>
+            <div style="font-family:'Inter',sans-serif;font-size:11px;color:rgba(245,240,232,0.5);line-height:1.3;margin-bottom:8px;">Получи бонус за каждого друга</div>
+            <div style="display:inline-flex;align-items:center;gap:4px;background:rgba(168,85,247,0.15);border-radius:8px;padding:4px 10px;">
+              <span style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:#A855F7;">Пригласить</span>
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="#A855F7" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   </div><!-- /SCROLLABLE CONTENT -->
   <!-- BOTTOM NAV -->
   <div class="bottom-nav">
@@ -5267,6 +5344,54 @@ setInterval(() => goToSlide(currentSlide === 0 ? 1 : 0), 4000);
     }
   }, { passive: true });
 })();
+/* ── Promo carousel ── */
+var promoSlide = 0;
+var promoTotal = 4;
+var promoAutoTimer = null;
+
+function goToPromo(idx) {
+  promoSlide = idx;
+  var slider = document.getElementById('promo-slider');
+  if (slider) slider.style.transform = 'translateX(-' + (idx * 25) + '%)';
+  for (var i = 0; i < promoTotal; i++) {
+    var dot = document.getElementById('promo-dot-' + i);
+    if (!dot) continue;
+    dot.style.background = i === idx ? '#E8621A' : 'rgba(245,240,232,0.2)';
+    dot.style.width = i === idx ? '12px' : '5px';
+  }
+}
+
+function startPromoAuto() {
+  if (promoAutoTimer) clearInterval(promoAutoTimer);
+  promoAutoTimer = setInterval(function() {
+    goToPromo((promoSlide + 1) % promoTotal);
+  }, 4000);
+}
+startPromoAuto();
+
+/* Touch swipe for promo carousel */
+(function() {
+  var slider = document.getElementById('promo-slider');
+  if (!slider) return;
+  var sx = 0, sy = 0, sw = false;
+  slider.addEventListener('touchstart', function(e) {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+    sw = true;
+  }, { passive: true });
+  slider.addEventListener('touchend', function(e) {
+    if (!sw) return;
+    sw = false;
+    var dx = e.changedTouches[0].clientX - sx;
+    var dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 30 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) goToPromo(Math.min(promoSlide + 1, promoTotal - 1));
+      else goToPromo(Math.max(promoSlide - 1, 0));
+      startPromoAuto(); // reset timer on manual swipe
+    }
+  }, { passive: true });
+})();
+
 /* ── Verify pill toggle (demo: cycles Not verified → Pending → Verified) ── */
 function toggleVerify() {
   const v = document.getElementById('pill-verified');
