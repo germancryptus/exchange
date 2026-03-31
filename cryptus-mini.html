@@ -3456,7 +3456,7 @@ function calcBuy() {
   const minRub = getBuyMinRub();
   const ab = document.getElementById('buy-amount-box');
   const mv = document.getElementById('buy-min-val');
-  if (ab) ab.style.borderColor = amount > 0 && amount < minRub ? 'rgba(255,85,85,0.5)' : amount >= minRub ? 'rgba(255,255,255,0.12)' : 'rgba(255,85,85,0.5)';
+  if (ab) ab.style.borderColor = amount === 0 ? 'rgba(255,255,255,0.07)' : amount < minRub ? 'rgba(255,85,85,0.5)' : 'rgba(255,255,255,0.12)';
   if (mv) mv.style.color = amount > 0 && amount < minRub ? '#FF5555' : '#4CAF7D';
   updateBuyCTA();
 }
@@ -3478,7 +3478,7 @@ function updateBuyCTA() {
       if (hintEl) { hintEl.textContent = '✓ Формат верный'; hintEl.style.color = '#4CAF7D'; hintEl.style.display = 'block'; }
     }
   } else {
-    if (wb) wb.style.borderColor = 'rgba(255,85,85,0.5)';
+    if (wb) wb.style.borderColor = 'rgba(255,255,255,0.07)';
     if (hintEl) hintEl.style.display = 'none';
   }
   const belowMin = amount > 0 && amount < minRub;
@@ -4566,9 +4566,8 @@ function calcExpress() {
   if (rateEl) rateEl.textContent = rate.toFixed(2) + ' ₽';
   const gb = document.getElementById('express-give-box');
   const mv = document.getElementById('express-min-val');
-  if (gb) gb.style.borderColor = amount > 0 && amount < EXPRESS_MIN_RUB
-    ? 'rgba(255,85,85,0.5)' : amount >= EXPRESS_MIN_RUB
-    ? 'rgba(255,255,255,0.12)' : 'rgba(255,85,85,0.5)';
+  if (gb) gb.style.borderColor = amount === 0 ? 'rgba(255,255,255,0.07)' : amount < EXPRESS_MIN_RUB
+    ? 'rgba(255,85,85,0.5)' : 'rgba(255,255,255,0.12)';
   if (mv) mv.style.color = amount > 0 && amount < EXPRESS_MIN_RUB ? '#FF5555' : '#E8621A';
   updateExpressCTA();
 }
@@ -4580,7 +4579,7 @@ function validateExpressWallet() {
   const val = input.value.trim();
   if (!val) {
     if (hint) hint.style.display = 'none';
-    if (box) box.style.borderColor = 'rgba(255,85,85,0.5)';
+    if (box) box.style.borderColor = 'rgba(255,255,255,0.07)';
     updateExpressCTA(); return;
   }
   // TRC20: starts with T, length 34
@@ -5005,9 +5004,11 @@ function updateCTA() {
   /* ── Поле суммы ── */
   const amountBox = document.getElementById('field-amount-box');
   if (amountBox) {
-    amountBox.style.borderColor = amount >= min
-      ? 'rgba(232,98,26,0.3)'
-      : 'rgba(255,85,85,0.5)';
+    amountBox.style.borderColor = amount === 0
+      ? 'rgba(255,255,255,0.07)'
+      : amount >= min
+        ? 'rgba(232,98,26,0.3)'
+        : 'rgba(255,85,85,0.5)';
     amountBox.style.borderWidth = '1.5px';
   }
   /* ── Подсветка минимума ── */
@@ -5015,10 +5016,13 @@ function updateCTA() {
   if (minVal) minVal.style.color = belowMin ? '#FF5555' : '#E8621A';
   /* ── Поле реквизитов ── */
   const payBox = document.getElementById('field-payment-box');
+  const rekvInput = paymentMethod === 'sbp' ? phone : card;
   if (payBox) {
-    payBox.style.borderColor = rekvOk
+    payBox.style.borderColor = rekvInput.length === 0
       ? 'rgba(255,255,255,0.07)'
-      : 'rgba(255,85,85,0.5)';
+      : rekvOk
+        ? 'rgba(255,255,255,0.07)'
+        : 'rgba(255,85,85,0.5)';
   }
   /* ── Текстовые ошибки ── */
   const errAmount = document.getElementById('err-amount');
