@@ -307,6 +307,17 @@ body {
 .drop-scroll::-webkit-scrollbar { width: 3px; }
 .drop-scroll::-webkit-scrollbar-track { background: transparent; }
 .drop-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+/* ── Dropdown backdrop overlay ── */
+.drop-backdrop {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 90;
+  animation: backdropIn 0.15s ease;
+}
+.drop-backdrop.visible { display: block; }
+@keyframes backdropIn { from { opacity: 0; } to { opacity: 1; } }
 /* ── Validation error text ── */
 .field-error {
   font-size: 11px; color: #FF5555; margin: 4px 14px 0; padding-left: 2px;
@@ -869,7 +880,7 @@ div[style*="overflow-y: auto"] {
         </div>
       </div>
       <!-- Dropdown меню валют -->
-      <div id="currency-menu" class="drop-scroll" style="display:none;position:absolute;right:16px;background:#1E1E1E;border-radius:16px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:20;margin-top:6px;min-width:180px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
+      <div id="currency-menu" class="drop-scroll" style="display:none;position:absolute;right:16px;background:#1E1E1E;border-radius:16px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:100;margin-top:6px;min-width:180px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
         <div onclick="setCurrency('USDT')" class="curr-opt" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;cursor:pointer;background:rgba(232,98,26,0.08);">
           <img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/usdt.svg" width="26" height="26" style="border-radius:50%;object-fit:cover;">
           <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">USDT</span>
@@ -938,7 +949,7 @@ div[style*="overflow-y: auto"] {
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M3 5l4 4 4-4"/></svg>
       </div>
       <!-- Банк дропдаун -->
-      <div id="bank-menu" class="drop-scroll" style="display:none;position:absolute;left:0;right:0;top:100%;background:#1E1E1E;border-radius:14px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:30;margin-top:4px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
+      <div id="bank-menu" class="drop-scroll" style="display:none;position:absolute;left:0;right:0;top:100%;background:#1E1E1E;border-radius:14px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:100;margin-top:4px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
         <div onclick="selectBank('Тинькофф', '#FFDD2D', '#000')" class="bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;transition:background 0.12s;">
           <div style="width:32px;height:32px;border-radius:8px;background:#FFDD2D;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
             <span style="font-family:'Arial',sans-serif;font-size:11px;font-weight:900;color:#000;">T</span>
@@ -1223,7 +1234,7 @@ div[style*="overflow-y: auto"] {
         </div>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M3 5l4 4 4-4"/></svg>
       </div>
-      <div id="buy-bank-menu" class="drop-scroll" style="display:none;position:absolute;left:0;right:0;top:100%;background:#1E1E1E;border-radius:14px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:30;margin-top:4px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
+      <div id="buy-bank-menu" class="drop-scroll" style="display:none;position:absolute;left:0;right:0;top:100%;background:#1E1E1E;border-radius:14px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:100;margin-top:4px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
         <div onclick="selectBuyBank('Тинькофф','#FFDD2D','#000')" class="buy-bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#FFDD2D;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:11px;font-weight:900;color:#000;">T</span></div><span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">Тинькофф</span></div>
         <div onclick="selectBuyBank('Сбербанк','#21A038','#fff')" class="buy-bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#21A038;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><path d="M21 3l-9 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></div><span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">Сбербанк</span></div>
         <div onclick="selectBuyBank('Альфа-банк','#EF3124','#fff')" class="buy-bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#EF3124;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:14px;font-weight:900;color:#fff;">α</span></div><span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">Альфа-банк</span></div>
@@ -1246,7 +1257,7 @@ div[style*="overflow-y: auto"] {
           <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
         </div>
       </div>
-      <div id="buy-currency-menu" class="drop-scroll" style="display:none;position:absolute;right:0;background:#1E1E1E;border-radius:16px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:20;margin-top:6px;min-width:180px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
+      <div id="buy-currency-menu" class="drop-scroll" style="display:none;position:absolute;right:0;background:#1E1E1E;border-radius:16px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:100;margin-top:6px;min-width:180px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
         <div onclick="setBuyCurrency('USDT')" class="buy-curr-opt" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;cursor:pointer;background:rgba(232,98,26,0.08);"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/usdt.svg" width="26" height="26" style="border-radius:50%;"><span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">USDT</span></div>
         <div onclick="setBuyCurrency('ETH')" class="buy-curr-opt" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;cursor:pointer;"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/eth.svg" width="26" height="26" style="border-radius:50%;"><span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(245,240,232,0.8);">ETH</span></div>
         <div onclick="setBuyCurrency('BTC')" class="buy-curr-opt" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;cursor:pointer;"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/btc.svg" width="26" height="26" style="border-radius:50%;"><span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(245,240,232,0.8);">BTC</span></div>
@@ -1434,7 +1445,7 @@ div[style*="overflow-y: auto"] {
         </div>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M3 5l4 4 4-4"/></svg>
       </div>
-      <div id="es-bank-menu" class="drop-scroll" style="display:none;position:absolute;left:0;right:0;top:100%;background:#1E1E1E;border-radius:14px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:30;margin-top:4px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
+      <div id="es-bank-menu" class="drop-scroll" style="display:none;position:absolute;left:0;right:0;top:100%;background:#1E1E1E;border-radius:14px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:100;margin-top:4px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
         <div onclick="selectEsBank('Тинькофф','#FFDD2D','#000')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#FFDD2D;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:11px;font-weight:900;color:#000;">T</span></div><span style="font-size:14px;font-weight:500;color:#F5F0E8;">Тинькофф</span></div>
         <div onclick="selectEsBank('Сбербанк','#21A038','#fff')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#21A038;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><path d="M21 3l-9 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></div><span style="font-size:14px;font-weight:500;color:#F5F0E8;">Сбербанк</span></div>
         <div onclick="selectEsBank('Альфа-банк','#EF3124','#fff')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#EF3124;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:14px;font-weight:900;color:#fff;">α</span></div><span style="font-size:14px;font-weight:500;color:#F5F0E8;">Альфа-банк</span></div>
@@ -1508,12 +1519,18 @@ div[style*="overflow-y: auto"] {
     <div style="background:#1A1A1A;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:12px;">
       <div style="display:flex;justify-content:space-between;align-items:center;">
         <span style="font-size:12px;color:rgba(245,240,232,0.5);font-family:'Syne',sans-serif;">Отдаёте</span>
-        <span id="os-give" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;">—</span>
+        <span style="display:flex;align-items:center;gap:6px;">
+          <img id="os-give-icon" src="" width="18" height="18" style="border-radius:50%;display:none;">
+          <span id="os-give" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;">—</span>
+        </span>
       </div>
       <div style="height:1px;background:rgba(255,255,255,0.05);"></div>
       <div style="display:flex;justify-content:space-between;align-items:center;">
         <span style="font-size:12px;color:rgba(245,240,232,0.5);font-family:'Syne',sans-serif;">Получаете</span>
-        <span id="os-get" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#4CAF7D;">—</span>
+        <span style="display:flex;align-items:center;gap:6px;">
+          <img id="os-get-icon" src="" width="18" height="18" style="border-radius:50%;display:none;">
+          <span id="os-get" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#4CAF7D;">—</span>
+        </span>
       </div>
       <div style="height:1px;background:rgba(255,255,255,0.05);"></div>
       <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -1678,8 +1695,9 @@ div[style*="overflow-y: auto"] {
   <div class="scroll-content">
     <!-- Фото паспорта — разворот с фото -->
     <div id="verify-step-1" onclick="markStep(1)" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;transition:border-color 0.2s;">
-      <div style="width:40px;height:40px;border-radius:10px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <div style="width:40px;height:40px;border-radius:10px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2.5"/><path d="M3 18c0-2 2.5-4 6-4M15 9h3M15 13h2"/></svg>
+        <span style="position:absolute;top:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:#E8621A;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:9px;font-weight:700;color:#fff;">1</span>
       </div>
       <div style="flex:1;">
         <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;margin-bottom:2px;">Фото паспорта</div>
@@ -1691,8 +1709,9 @@ div[style*="overflow-y: auto"] {
     </div>
     <!-- Фото паспорта — разворот с регистрацией -->
     <div id="verify-step-2" onclick="markStep(2)" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;transition:border-color 0.2s;">
-      <div style="width:40px;height:40px;border-radius:10px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <div style="width:40px;height:40px;border-radius:10px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h8M7 17h6"/></svg>
+        <span style="position:absolute;top:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:#E8621A;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:9px;font-weight:700;color:#fff;">2</span>
       </div>
       <div style="flex:1;">
         <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;margin-bottom:2px;">Фото паспорта</div>
@@ -1704,8 +1723,9 @@ div[style*="overflow-y: auto"] {
     </div>
     <!-- Селфи -->
     <div id="verify-step-3" onclick="markStep(3)" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;transition:border-color 0.2s;">
-      <div style="width:40px;height:40px;border-radius:10px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <div style="width:40px;height:40px;border-radius:10px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        <span style="position:absolute;top:-4px;right:-4px;width:18px;height:18px;border-radius:50%;background:#E8621A;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:9px;font-weight:700;color:#fff;">3</span>
       </div>
       <div style="flex:1;">
         <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;margin-bottom:2px;">Селфи</div>
@@ -1830,7 +1850,7 @@ div[style*="overflow-y: auto"] {
         </div>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M3 5l4 4 4-4"/></svg>
       </div>
-      <div id="cash-country-menu" style="display:none;position:absolute;left:0;right:0;top:100%;background:#1E1E1E;border-radius:14px;border:1px solid rgba(255,255,255,0.1);padding:6px;z-index:30;margin-top:4px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
+      <div id="cash-country-menu" style="display:none;position:absolute;left:0;right:0;top:100%;background:#1E1E1E;border-radius:14px;border:1px solid rgba(255,255,255,0.1);padding:6px;z-index:100;margin-top:4px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
         <div onclick="selectCashCountry('🇷🇺','Россия')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;background:rgba(232,98,26,0.08);"><span style="font-size:18px;">🇷🇺</span><span style="font-size:14px;font-weight:500;color:#F5F0E8;">Россия</span></div>
         <div onclick="selectCashCountry('🇦🇪','ОАЭ')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><span style="font-size:18px;">🇦🇪</span><span style="font-size:14px;font-weight:500;color:rgba(245,240,232,0.8);">ОАЭ</span></div>
         <div onclick="selectCashCountry('🇹🇷','Турция')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><span style="font-size:18px;">🇹🇷</span><span style="font-size:14px;font-weight:500;color:rgba(245,240,232,0.8);">Турция</span></div>
@@ -1852,7 +1872,7 @@ div[style*="overflow-y: auto"] {
         </div>
       </div>
       <!-- Autocomplete dropdown -->
-      <div id="cash-city-menu" style="display:none;position:absolute;left:0;right:0;top:100%;background:#1E1E1E;border-radius:14px;border:1px solid rgba(255,255,255,0.1);padding:6px;z-index:30;margin-top:4px;box-shadow:0 12px 32px rgba(0,0,0,0.6);max-height:240px;overflow-y:auto;">
+      <div id="cash-city-menu" style="display:none;position:absolute;left:0;right:0;top:100%;background:#1E1E1E;border-radius:14px;border:1px solid rgba(255,255,255,0.1);padding:6px;z-index:100;margin-top:4px;box-shadow:0 12px 32px rgba(0,0,0,0.6);max-height:240px;overflow-y:auto;">
       </div>
     </div>
     <!-- 2. Поля суммы — скрыты до выбора города -->
@@ -1882,7 +1902,7 @@ div[style*="overflow-y: auto"] {
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"><path d="M2 3.5l3 3 3-3"/></svg>
           </div>
           <!-- Фиат dropdown для buy -->
-          <div id="cash-give-fiat-menu" class="drop-scroll" style="display:none;position:absolute;right:16px;background:#1E1E1E;border-radius:16px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:20;margin-top:6px;min-width:175px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
+          <div id="cash-give-fiat-menu" class="drop-scroll" style="display:none;position:absolute;right:16px;background:#1E1E1E;border-radius:16px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:100;margin-top:6px;min-width:175px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
             <div onclick="setCashGiveFiat('RUB','₽')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;background:rgba(232,98,26,0.08);">
               <div style="width:28px;height:28px;border-radius:50%;background:#E8621A;display:flex;align-items:center;justify-content:center;"><span style="font-size:13px;font-weight:800;color:#fff;">₽</span></div>
               <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">RUB</span>
@@ -1913,7 +1933,7 @@ div[style*="overflow-y: auto"] {
             </div>
           </div>
         </div>
-        <div id="cash-currency-menu" class="drop-scroll" style="display:none;position:absolute;right:16px;background:#1E1E1E;border-radius:16px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:20;margin-top:6px;min-width:180px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
+        <div id="cash-currency-menu" class="drop-scroll" style="display:none;position:absolute;right:16px;background:#1E1E1E;border-radius:16px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:100;margin-top:6px;min-width:180px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
           <div onclick="setCashCurrency('USDT')" style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;cursor:pointer;background:rgba(232,98,26,0.08);"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/usdt.svg" width="26" height="26" style="border-radius:50%;"><span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#E8621A;">USDT</span></div>
           <div onclick="setCashCurrency('ETH')"  style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;cursor:pointer;"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/eth.svg" width="26" height="26" style="border-radius:50%;"><span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(245,240,232,0.8);">ETH</span></div>
           <div onclick="setCashCurrency('BTC')"  style="display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:10px;cursor:pointer;"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/btc.svg" width="26" height="26" style="border-radius:50%;"><span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:rgba(245,240,232,0.8);">BTC</span></div>
@@ -1957,7 +1977,7 @@ div[style*="overflow-y: auto"] {
           </div>
         </div>
         <!-- Dropdown — точно как у выбора крипты -->
-        <div id="cash-fiat-menu" class="drop-scroll" style="display:none;position:absolute;right:0;top:100%;background:#1E1E1E;border-radius:16px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:30;margin-top:4px;min-width:175px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
+        <div id="cash-fiat-menu" class="drop-scroll" style="display:none;position:absolute;right:0;top:100%;background:#1E1E1E;border-radius:16px;border:1px solid rgba(255,255,255,0.1);padding:8px;z-index:100;margin-top:4px;min-width:175px;box-shadow:0 12px 32px rgba(0,0,0,0.6);">
           <div onclick="setCashFiat('RUB')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;background:rgba(76,175,125,0.08);">
             <div style="width:32px;height:32px;border-radius:50%;background:#4CAF7D;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:14px;font-weight:800;color:#fff;">₽</span></div>
             <span style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#4CAF7D;">RUB</span>
@@ -3515,8 +3535,7 @@ async function pasteWalletAddress() {
   }, 3000);
 }
 function toggleBuyBankMenu() {
-  const menu = document.getElementById('buy-bank-menu');
-  if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  toggleDropMenu('buy-bank-menu');
 }
 function selectBuyBank(name, color, textColor) {
   selectedBuyBank = name;
@@ -3527,11 +3546,11 @@ function selectBuyBank(name, color, textColor) {
   if (icon)  { icon.style.background = color; icon.innerHTML = `<span style="font-family:'Arial',sans-serif;font-size:10px;font-weight:700;color:${textColor};">${name.substring(0,3).toUpperCase()}</span>`; }
   if (bw)    bw.style.borderColor = 'rgba(255,255,255,0.07)';
   document.getElementById('buy-bank-menu').style.display = 'none';
+  hideDropBackdrop();
   updateBuyCTA();
 }
 function toggleBuyCurrencyMenu() {
-  const menu = document.getElementById('buy-currency-menu');
-  if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  toggleDropMenu('buy-currency-menu');
 }
 function setBuyCurrency(curr) {
   buyCurrency = curr;
@@ -3546,6 +3565,7 @@ function setBuyCurrency(curr) {
     if (sp) sp.style.color = isActive ? '#E8621A' : 'rgba(245,240,232,0.8)';
   });
   document.getElementById('buy-currency-menu').style.display = 'none';
+  hideDropBackdrop();
   renderBuyNetChips(curr);
   // Update smart placeholder + min label
   var minR = getBuyMinRub();
@@ -3672,8 +3692,7 @@ let cashGetCrypto = 'USDT';
    добавить функции toggleCashGetCryptoMenu, setCashGetCrypto,
    toggleCashGiveFiatMenu, setCashGiveFiat и соответствующие dropdowns */
 function toggleCashFiatMenu() {
-  const menu = document.getElementById('cash-fiat-menu');
-  if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  toggleDropMenu('cash-fiat-menu');
 }
 function setCashFiat(fiat) {
   cashFiat = fiat;
@@ -3694,6 +3713,7 @@ function setCashFiat(fiat) {
     if (sp) sp.style.color = isActive ? '#4CAF7D' : 'rgba(245,240,232,0.8)';
   });
   if (menu)  menu.style.display = 'none';
+  hideDropBackdrop();
   updateCashRate();
   calcCash();
 }
@@ -3720,8 +3740,7 @@ function calcCash() {
   updateCashCTA();
 }
 function toggleCashCurrencyMenu() {
-  const menu = document.getElementById('cash-currency-menu');
-  if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  toggleDropMenu('cash-currency-menu');
 }
 function setCashCurrency(curr, recalc = true) {
   cashCurrency = curr;
@@ -3744,6 +3763,7 @@ function setCashCurrency(curr, recalc = true) {
   });
   const menu = document.getElementById('cash-currency-menu');
   if (menu) menu.style.display = 'none';
+  hideDropBackdrop();
   updateCashRate();
   renderCashNetChips(curr);
   // Update smart placeholder + min label при смене валюты
@@ -3873,8 +3893,7 @@ function updateCashRate() {
 var cashNetwork = 'TRC20';
 /* cashGiveFiatCurr removed — use cashGiveFiat */
 function toggleCashGiveFiatMenu() {
-  var menu = document.getElementById('cash-give-fiat-menu');
-  if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  toggleDropMenu('cash-give-fiat-menu');
 }
 function setCashGiveFiat(curr, sym) {
   /* cashGiveFiatCurr removed */
@@ -3888,6 +3907,7 @@ function setCashGiveFiat(curr, sym) {
   if (symEl) symEl.textContent = sym;
   if (label) label.textContent = curr;
   if (menu)  menu.style.display = 'none';
+  hideDropBackdrop();
   // Обновить active state в меню
   menu?.querySelectorAll(':scope > div').forEach(function(o) {
     var sp = o.querySelector('span:last-child');
@@ -4259,10 +4279,39 @@ function formatCard(el) {
   }
   updateCTA();
 }
+/* ── Backdrop для дропдаунов ── */
+var _allDropMenuIds = ['bank-menu','currency-menu','buy-bank-menu','buy-currency-menu','es-bank-menu','cash-give-fiat-menu','cash-currency-menu','cash-fiat-menu'];
+function showDropBackdrop() {
+  var bd = document.getElementById('drop-backdrop');
+  if (bd) bd.classList.add('visible');
+}
+function hideDropBackdrop() {
+  var bd = document.getElementById('drop-backdrop');
+  if (bd) bd.classList.remove('visible');
+  _allDropMenuIds.forEach(function(id) {
+    var m = document.getElementById(id);
+    if (m) m.style.display = 'none';
+  });
+}
+function toggleDropMenu(menuId) {
+  var menu = document.getElementById(menuId);
+  if (!menu) return;
+  var isOpen = menu.style.display !== 'none';
+  // Закрыть все остальные
+  _allDropMenuIds.forEach(function(id) {
+    var m = document.getElementById(id);
+    if (m) m.style.display = 'none';
+  });
+  if (isOpen) {
+    hideDropBackdrop();
+  } else {
+    menu.style.display = 'block';
+    showDropBackdrop();
+  }
+}
 let selectedBank = null;
 function toggleBankMenu() {
-  const menu = document.getElementById('bank-menu');
-  if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  toggleDropMenu('bank-menu');
 }
 function selectBank(name, color, textColor) {
   selectedBank = name;
@@ -4274,14 +4323,9 @@ function selectBank(name, color, textColor) {
   const bankBox = document.getElementById('bank-wrapper');
   if (bankBox) bankBox.style.borderColor = 'rgba(255,255,255,0.12)';
   document.getElementById('bank-menu').style.display = 'none';
+  hideDropBackdrop();
   updateCTA();
 }
-document.addEventListener('click', function(e) {
-  const menu = document.getElementById('bank-menu');
-  if (menu && !e.target.closest('#bank-menu') && !e.target.closest('[onclick="toggleBankMenu()"]')) {
-    menu.style.display = 'none';
-  }
-});
 let sellCurrency = 'USDT';
 const CRYPTO_RATES = {
   USDT: 1,
@@ -4318,9 +4362,7 @@ function renderNetChips(currency) {
   }).join('');
 }
 function toggleCurrencyMenu() {
-  const menu = document.getElementById('currency-menu');
-  if (!menu) return;
-  menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  toggleDropMenu('currency-menu');
 }
 const CURRENCY_ICONS = {
   USDT: `<img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/usdt.svg" width="24" height="24" style="border-radius:50%;object-fit:cover;">`,
@@ -4347,6 +4389,7 @@ function setCurrency(curr) {
     if (sp) sp.style.color = isActive ? '#E8621A' : 'rgba(245,240,232,0.8)';
   });
   document.getElementById('currency-menu').style.display = 'none';
+  hideDropBackdrop();
   updateMinLabel();
   // Update smart placeholder
   var min = getMinInCurrency();
@@ -4356,7 +4399,7 @@ function setCurrency(curr) {
   renderNetChips(curr);
   calcConvert();
 }
-// Закрывать меню при клике вне
+// Закрывать меню при клике вне — теперь backdrop обрабатывает это
 document.addEventListener('click', function(e) {
   const menu = document.getElementById('currency-menu');
   if (menu && !e.target.closest('#currency-menu') && !e.target.closest('[onclick="toggleCurrencyMenu()"]')) {
@@ -4446,12 +4489,12 @@ function selectEsBank(name, bg, fg) {
   if (label) { label.textContent = name; label.style.color = '#F5F0E8'; }
   if (icon)  { icon.style.background = bg; icon.innerHTML = `<span style="font-size:10px;font-weight:800;color:${fg};">${name.slice(0,1)}</span>`; }
   if (menu)  menu.style.display = 'none';
+  hideDropBackdrop();
   if (box)   box.style.borderColor = 'rgba(255,255,255,0.12)';
   updateEsCTA();
 }
 function toggleEsBankMenu() {
-  const menu = document.getElementById('es-bank-menu');
-  if (menu) menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+  toggleDropMenu('es-bank-menu');
 }
 function formatEsPhone(input) {
   let v = input.value.replace(/\D/g, '');
@@ -4636,9 +4679,30 @@ function openOrderStatus(type, data) {
   // Таб "Главная" (из экспресс-формы)
   TAB_MAP['screen-order-status'] = 'screen1';
   setOrderStatus('waiting');
+  updateOsIcons();
   // Таймер 10 минут для покупки (RUB→USDT, ссылка СБП ограничена)
   if (type === 'buy') { startOsTimer(600); } else { stopOsTimer(); }
   goTo('screen-order-status');
+}
+/* ── Иконки крипты в инфо-блоке статуса ── */
+function updateOsIcons() {
+  var pairs = [['os-give','os-give-icon'], ['os-get','os-get-icon']];
+  pairs.forEach(function(p) {
+    var txt = (document.getElementById(p[0]) || {}).textContent || '';
+    var icon = document.getElementById(p[1]);
+    if (!icon) return;
+    var match = txt.match(/\b(USDT|USDC|ETH|BTC|SOL|BNB)\b/i);
+    if (match && typeof ICONS_URLS !== 'undefined') {
+      var key = match[1].toUpperCase();
+      if (ICONS_URLS[key]) { icon.src = ICONS_URLS[key]; icon.style.display = 'inline'; return; }
+    }
+    // Для RUB — показываем ₽ бейдж
+    if (/RUB|₽/.test(txt)) {
+      icon.src = ''; icon.style.display = 'none';
+    } else {
+      icon.src = ''; icon.style.display = 'none';
+    }
+  });
 }
 /* ── Таймер оплаты ── */
 var _osTimerInterval = null;
@@ -4743,6 +4807,7 @@ function viewHistOrder(orderId, give, get, method, type, status) {
   // Подсветка таба "История" вместо "Главная"
   TAB_MAP['screen-order-status'] = 'screen3';
   setOrderStatus(status);
+  updateOsIcons();
   goTo('screen-order-status');
 }
 function orderPaySBP() {
@@ -5236,9 +5301,9 @@ window.addEventListener('DOMContentLoaded', function() {
       '<span class="nav-label">Заявки</span></div>' +
     '<div class="nav-item nav-item-main" onclick="goTo(\'screen1\')" style="cursor:pointer;">' +
       '<div class="nav-main-circle">' +
-        '<svg width="24" height="24" viewBox="0 0 22 22" fill="none"><path d="M3 10L11 3l8 7v9H14v-6H8v6H3V10Z" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+        '<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M7 10l5-6 5 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 14l-5 6-5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
       '</div>' +
-      '<span class="nav-label" style="margin-top:5px;">Главная</span></div>' +
+      '<span class="nav-label" style="margin-top:5px;">Обмен</span></div>' +
     '<div class="nav-item" onclick="goTo(\'screen-more\')" style="cursor:pointer;">' +
       '<div class="nav-side-circle"><svg width="16" height="16" viewBox="0 0 22 22" fill="none"><path d="M4 7h14M4 11h14M4 15h14" stroke="rgba(245,240,232,0.4)" stroke-width="1.6" stroke-linecap="round"/></svg></div>' +
       '<span class="nav-label">Меню</span></div>' +
@@ -5657,5 +5722,6 @@ function openTelegram() {
   window.open('https://t.me/cryptus_support', '_blank');
 }
 </script>
+<div id="drop-backdrop" class="drop-backdrop" onclick="hideDropBackdrop()"></div>
 </body>
 </html>
