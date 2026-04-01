@@ -5322,7 +5322,7 @@ function goToSlide(idx) {
   if (dot0) { dot0.style.background = idx === 0 ? '#E8621A' : 'rgba(245,240,232,0.2)'; dot0.style.width = idx === 0 ? '12px' : '5px'; dot0.style.borderRadius = '3px'; }
   if (dot1) { dot1.style.background = idx === 1 ? '#E8621A' : 'rgba(245,240,232,0.2)'; dot1.style.width = idx === 1 ? '12px' : '5px'; dot1.style.borderRadius = '3px'; }
 }
-setInterval(() => goToSlide(currentSlide === 0 ? 1 : 0), 6000);
+setInterval(() => goToSlide(currentSlide === 0 ? 1 : 0), 3000);
 /* ── Touch swipe for rate slider ── */
 (function() {
   const slider = document.getElementById('rate-slider');
