@@ -5322,7 +5322,7 @@ function goToSlide(idx) {
   if (dot0) { dot0.style.background = idx === 0 ? '#E8621A' : 'rgba(245,240,232,0.2)'; dot0.style.width = idx === 0 ? '12px' : '5px'; dot0.style.borderRadius = '3px'; }
   if (dot1) { dot1.style.background = idx === 1 ? '#E8621A' : 'rgba(245,240,232,0.2)'; dot1.style.width = idx === 1 ? '12px' : '5px'; dot1.style.borderRadius = '3px'; }
 }
-setInterval(() => goToSlide(currentSlide === 0 ? 1 : 0), 4000);
+setInterval(() => goToSlide(currentSlide === 0 ? 1 : 0), 6000);
 /* ── Touch swipe for rate slider ── */
 (function() {
   const slider = document.getElementById('rate-slider');
@@ -5369,7 +5369,7 @@ function startPromoAuto() {
 }
 startPromoAuto();
 
-/* Touch swipe for promo carousel */
+/* Touch swipe for promo carousel (cyclic + drag visual) */
 (function() {
   var slider = document.getElementById('promo-slider');
   if (!slider) return;
@@ -5378,16 +5378,27 @@ startPromoAuto();
     sx = e.touches[0].clientX;
     sy = e.touches[0].clientY;
     sw = true;
+    slider.style.transition = 'none';
+  }, { passive: true });
+  slider.addEventListener('touchmove', function(e) {
+    if (!sw) return;
+    var dx = e.touches[0].clientX - sx;
+    var base = -(promoSlide * 25);
+    var drag = (dx / slider.parentElement.offsetWidth) * 25;
+    slider.style.transform = 'translateX(' + (base + drag) + '%)';
   }, { passive: true });
   slider.addEventListener('touchend', function(e) {
     if (!sw) return;
     sw = false;
+    slider.style.transition = 'transform 0.5s cubic-bezier(0.4,0,0.2,1)';
     var dx = e.changedTouches[0].clientX - sx;
     var dy = e.changedTouches[0].clientY - sy;
     if (Math.abs(dx) > 30 && Math.abs(dx) > Math.abs(dy)) {
-      if (dx < 0) goToPromo(Math.min(promoSlide + 1, promoTotal - 1));
-      else goToPromo(Math.max(promoSlide - 1, 0));
-      startPromoAuto(); // reset timer on manual swipe
+      if (dx < 0) goToPromo((promoSlide + 1) % promoTotal);
+      else goToPromo((promoSlide - 1 + promoTotal) % promoTotal);
+      startPromoAuto();
+    } else {
+      goToPromo(promoSlide);
     }
   }, { passive: true });
 })();
