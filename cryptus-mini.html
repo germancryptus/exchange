@@ -1283,6 +1283,7 @@ div[style*="overflow-y: auto"] {
     <div style="font-size:10px;color:rgba(245,240,232,0.35);text-align:center;margin:-4px 0 2px;">Оператор подтвердит заявку и начнёт обмен</div>
     <div onclick="goTo('screen1')" class="cta-secondary" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Главная</div>
   </div>
+  <div class="bottom-nav"></div>
 </div><!-- /screen-success -->
 <!-- ── ЭКРАН: Форма покупки USDT ── -->
 <div class="phone screen" id="screen-form-buy">
@@ -1661,6 +1662,7 @@ div[style*="overflow-y: auto"] {
       <span style="font-size:12px;color:rgba(232,98,26,0.7);border-bottom:1px dashed rgba(232,98,26,0.4);font-family:'Inter',sans-serif;font-weight:500;">Перейти в историю сделок</span>
     </div>
   </div>
+  <div class="bottom-nav"></div>
 </div>
 <!-- ── ЭКРАН: Подтверждение покупки ── -->
 <div class="phone screen" id="screen-confirm-buy">
@@ -1773,6 +1775,7 @@ div[style*="overflow-y: auto"] {
     <div style="font-size:10px;color:rgba(245,240,232,0.35);text-align:center;margin:-4px 0 2px;">Оператор подтвердит заявку и начнёт обмен</div>
     <div onclick="goTo('screen1')" class="cta-secondary" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Главная</div>
   </div>
+  <div class="bottom-nav"></div>
 </div><!-- /screen-success-buy -->
 <!-- ── ЭКРАН: Верификация ── -->
 <div class="phone screen" id="screen-verify">
@@ -2294,6 +2297,7 @@ div[style*="overflow-y: auto"] {
     <div onclick="goTo('screen1')" class="cta-secondary" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Главная</div>
   </div>
   </div>
+  <div class="bottom-nav"></div>
 </div><!-- /screen-success-cash -->
 <div class="phone screen" id="screen3">
   <!-- HEADER -->
@@ -2675,6 +2679,7 @@ div[style*="overflow-y: auto"] {
   <div style="padding:8px 14px 12px;flex-shrink:0;">
     <div id="tfi-cta" onclick="submitTfInvoice()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;opacity:0.4;pointer-events:none;">Оставить заявку →</div>
   </div>
+  <div class="bottom-nav"></div>
 </div>
 
 <!-- ══ ЭКРАН: Платежный агент / ВЭД ══ -->
@@ -2728,6 +2733,7 @@ div[style*="overflow-y: auto"] {
   <div style="padding:8px 14px 12px;flex-shrink:0;">
     <div id="tfv-cta" onclick="submitTfVed()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;opacity:0.4;pointer-events:none;">Оставить заявку →</div>
   </div>
+  <div class="bottom-nav"></div>
 </div>
 
 <!-- ══ ЭКРАН: Пополнение зарубежных карт ══ -->
@@ -2778,6 +2784,7 @@ div[style*="overflow-y: auto"] {
   <div style="padding:8px 14px 12px;flex-shrink:0;">
     <div id="tfc-cta" onclick="submitTfCard()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;opacity:0.4;pointer-events:none;">Оставить заявку →</div>
   </div>
+  <div class="bottom-nav"></div>
 </div>
 
 <!-- ══ ЭКРАН: Alipay и WeChat ══ -->
@@ -2819,6 +2826,7 @@ div[style*="overflow-y: auto"] {
   <div style="padding:8px 14px 12px;flex-shrink:0;">
     <div id="tfa-cta" onclick="submitTfAlipay()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;opacity:0.4;pointer-events:none;">Продолжить →</div>
   </div>
+  <div class="bottom-nav"></div>
 </div>
 
 <!-- ══ ЭКРАН: Подтверждение перевода ══ -->
@@ -2863,6 +2871,7 @@ div[style*="overflow-y: auto"] {
   <div style="padding:8px 14px 12px;flex-shrink:0;">
     <div onclick="confirmTransfer()" style="background:#E8621A;border-radius:14px;padding:14px;text-align:center;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;cursor:pointer;">Подтвердить заявку →</div>
   </div>
+  <div class="bottom-nav"></div>
 </div>
 
 <!-- ══ ЭКРАН: Успех перевода ══ -->
@@ -2904,6 +2913,7 @@ div[style*="overflow-y: auto"] {
     </div>
     <div onclick="goTo('screen1')" class="cta-secondary">В главное меню</div>
   </div>
+  <div class="bottom-nav"></div>
 </div>
 <!-- ── Шторка: На проверке ── -->
 <div id="verify-pending-overlay" onclick="closeVerifyPendingModal()" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9000;"></div>
@@ -3107,10 +3117,22 @@ div[style*="overflow-y: auto"] {
 </div>
 <div class="phone screen" id="screen-more">
   <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;">
-    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:#F5F0E8;">Меню</div>
+    <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:#F5F0E8;">Ещё</div>
   </div>
   <div style="padding:0 14px;display:flex;flex-direction:column;gap:8px;flex:1;overflow-y:auto;">
-    <div style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);">
+    <!-- Профиль -->
+    <div onclick="goTo('screen-profile')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
+      <div style="width:40px;height:40px;border-radius:12px;background:rgba(232,98,26,0.15);display:flex;align-items:center;justify-content:center;">
+        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="4" stroke="#E8621A" stroke-width="1.6"/><path d="M3 20c0-3.5 3.5-6 8-6s8 2.5 8 6" stroke="#E8621A" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </div>
+      <div style="flex:1;">
+        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">Профиль</div>
+        <div style="font-size:11px;color:rgba(245,240,232,0.5);">Настройки аккаунта</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
+    </div>
+    <!-- Крипто-кошелёк -->
+    <div onclick="goTo('screen-wallet')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
       <div style="width:40px;height:40px;border-radius:12px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;">
         <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><rect x="2" y="6" width="18" height="13" rx="2.5" stroke="#E8621A" stroke-width="1.6"/><path d="M2 10h18" stroke="#E8621A" stroke-width="1.6"/><circle cx="16" cy="14" r="1.5" fill="#E8621A"/></svg>
       </div>
@@ -3120,13 +3142,25 @@ div[style*="overflow-y: auto"] {
       </div>
       <div style="font-size:9px;font-weight:700;font-family:'Inter',sans-serif;padding:4px 10px;border-radius:8px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);">СКОРО</div>
     </div>
-    <div style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);">
+    <!-- Крипто-карта -->
+    <div onclick="goTo('screen-card')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
       <div style="width:40px;height:40px;border-radius:12px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;">
         <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><rect x="2" y="5" width="18" height="14" rx="2.5" stroke="#E8621A" stroke-width="1.6"/><path d="M2 9h18" stroke="#E8621A" stroke-width="1.6"/><path d="M5 14h4" stroke="#E8621A" stroke-width="1.6" stroke-linecap="round"/></svg>
       </div>
       <div style="flex:1;">
         <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">Крипто-карта</div>
         <div style="font-size:11px;color:rgba(245,240,232,0.5);">Оплата криптой в магазинах</div>
+      </div>
+      <div style="font-size:9px;font-weight:700;font-family:'Inter',sans-serif;padding:4px 10px;border-radius:8px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);">СКОРО</div>
+    </div>
+    <!-- E-SIM -->
+    <div onclick="goTo('screen-esim')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
+      <div style="width:40px;height:40px;border-radius:12px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;">
+        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><rect x="5" y="2" width="12" height="18" rx="2.5" stroke="#E8621A" stroke-width="1.6"/><path d="M9 17h4" stroke="#E8621A" stroke-width="1.6" stroke-linecap="round"/><path d="M8 5h6" stroke="#E8621A" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </div>
+      <div style="flex:1;">
+        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">E-SIM</div>
+        <div style="font-size:11px;color:rgba(245,240,232,0.5);">Виртуальные SIM для путешествий</div>
       </div>
       <div style="font-size:9px;font-weight:700;font-family:'Inter',sans-serif;padding:4px 10px;border-radius:8px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);">СКОРО</div>
     </div>
@@ -3141,17 +3175,8 @@ div[style*="overflow-y: auto"] {
       </div>
       <div style="font-size:9px;font-weight:700;font-family:'Inter',sans-serif;padding:4px 10px;border-radius:8px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);">СКОРО</div>
     </div>
-    <!-- Верификация -->
-    <div onclick="goTo('screen-verify')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
-      <div style="width:40px;height:40px;border-radius:12px;background:rgba(76,175,125,0.1);display:flex;align-items:center;justify-content:center;">
-        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><path d="M9 11l2 2 4-4" stroke="#4CAF7D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="3" width="16" height="16" rx="3" stroke="#4CAF7D" stroke-width="1.6"/></svg>
-      </div>
-      <div style="flex:1;">
-        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">Верификация</div>
-        <div style="font-size:11px;color:rgba(245,240,232,0.5);">Для экспресс-обмена</div>
-      </div>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
-    </div>
+    <!-- Разделитель -->
+    <div style="height:1px;background:rgba(255,255,255,0.06);margin:6px 0;"></div>
     <!-- Частые вопросы -->
     <div onclick="goTo('screen-faq')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
       <div style="width:40px;height:40px;border-radius:12px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;">
@@ -3163,8 +3188,6 @@ div[style*="overflow-y: auto"] {
       </div>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
     </div>
-    <!-- Разделитель -->
-    <div style="height:1px;background:rgba(255,255,255,0.06);margin:6px 0;"></div>
     <!-- Техническая поддержка -->
     <div onclick="window.open('https://t.me/cryptus_exchange','_blank')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
       <div style="width:40px;height:40px;border-radius:12px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;">
@@ -3175,12 +3198,128 @@ div[style*="overflow-y: auto"] {
       </div>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
     </div>
+    <!-- О сервисе -->
+    <div onclick="goTo('screen-about')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
+      <div style="width:40px;height:40px;border-radius:12px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;">
+        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="rgba(245,240,232,0.5)" stroke-width="1.5"/><path d="M11 10v5" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="7.5" r="0.7" fill="rgba(245,240,232,0.5)"/></svg>
+      </div>
+      <div style="flex:1;">
+        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">О сервисе</div>
+        <div style="font-size:11px;color:rgba(245,240,232,0.5);">АМЛ политика и соглашение</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
+    </div>
+    <div style="height:8px;"></div>
   </div>
-  <div class="bottom-nav"><div class="nav-inner">
-    <div class="nav-item" onclick="goTo('screen1')"><svg width="20" height="20" viewBox="0 0 22 22" fill="none"><path d="M3 10L11 3l8 7v9H14v-6H8v6H3V10Z" stroke="rgba(245,240,232,0.5)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-label">Главная</span></div>
-    <div class="nav-item" onclick="goTo('screen3')"><svg width="20" height="20" viewBox="0 0 22 22" fill="none"><path d="M4 7h14M4 11h9M4 15h11" stroke="rgba(245,240,232,0.5)" stroke-width="1.6" stroke-linecap="round"/></svg><span class="nav-label">История</span></div>
-    <div class="nav-item active" onclick="goTo('screen-more')"><svg width="20" height="20" viewBox="0 0 22 22" fill="none"><circle cx="6" cy="11" r="1.5" fill="#fff"/><circle cx="11" cy="11" r="1.5" fill="#fff"/><circle cx="16" cy="11" r="1.5" fill="#fff"/></svg><span class="nav-label">Ещё</span></div>
-  </div></div>
+  <div class="bottom-nav"></div>
+</div>
+<!-- ══ ЭКРАН: Профиль ══ -->
+<div class="phone screen" id="screen-profile">
+  <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;">
+    <div onclick="goBack()" class="back-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg></div>
+    <div class="screen-title">Профиль</div>
+  </div>
+  <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:10px;">
+    <!-- Имя + username -->
+    <div style="text-align:center;padding:10px 0;">
+      <div style="width:56px;height:56px;border-radius:50%;background:rgba(232,98,26,0.15);border:2px solid rgba(232,98,26,0.3);display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px;">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="10" r="4.5" stroke="#E8621A" stroke-width="1.8"/><path d="M4 23c0-4 4-7 9-7s9 3 9 7" stroke="#E8621A" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </div>
+      <div id="profile-name" style="font-family:'Inter',sans-serif;font-size:18px;font-weight:800;color:#F5F0E8;">Пользователь</div>
+      <div id="profile-username" style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(245,240,232,0.4);margin-top:2px;">@username</div>
+    </div>
+    <!-- Верификация -->
+    <div id="profile-verify-card" onclick="goTo('screen-verify')" style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(232,98,26,0.2);cursor:pointer;display:flex;align-items:center;gap:12px;">
+      <div id="profile-verify-icon" style="width:40px;height:40px;border-radius:50%;background:rgba(232,98,26,0.1);border:1.5px solid rgba(232,98,26,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#E8621A" stroke-width="1.5"/><path d="M9 6v.5" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"/><path d="M9 8.5v4" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div style="flex:1;">
+        <div id="profile-verify-title" style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;">Верификация не пройдена</div>
+        <div id="profile-verify-sub" style="font-size:11px;color:rgba(245,240,232,0.5);margin-top:2px;">Для мгновенной покупки USDT</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
+    </div>
+    <!-- Тарифы и лимиты -->
+    <div onclick="openLimitsModal()" style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;display:flex;align-items:center;justify-content:space-between;">
+      <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;">Тарифы и лимиты</div>
+      <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:500;color:rgba(245,240,232,0.4);">Подробнее ›</div>
+    </div>
+    <!-- Привязка почты -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);">
+      <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:rgba(245,240,232,0.5);margin-bottom:8px;">Привязка почты</div>
+      <div style="display:flex;gap:8px;">
+        <input id="profile-email" type="email" placeholder="example@gmail.com" style="flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 12px;font-family:'Inter',sans-serif;font-size:13px;color:#F5F0E8;outline:none;">
+        <div onclick="alert('Функция будет доступна в ближайшем обновлении')" style="background:rgba(245,240,232,0.1);border-radius:10px;padding:10px 16px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:rgba(245,240,232,0.6);cursor:pointer;white-space:nowrap;">Привязать</div>
+      </div>
+      <div style="font-size:10px;color:rgba(245,240,232,0.35);margin-top:6px;">Привяжите почту для получения уведомлений об операциях</div>
+    </div>
+    <!-- Телефон -->
+    <div style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);">
+      <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:rgba(245,240,232,0.5);margin-bottom:6px;">Номер телефона</div>
+      <div id="profile-phone" style="font-family:'Inter',sans-serif;font-size:15px;font-weight:600;color:rgba(245,240,232,0.4);">Не указан</div>
+    </div>
+    <div style="height:8px;"></div>
+  </div>
+  </div>
+  <div class="bottom-nav"></div>
+</div>
+<!-- ══ ЭКРАН: E-SIM ══ -->
+<div class="phone screen" id="screen-esim">
+  <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;">
+    <div onclick="goBack()" class="back-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg></div>
+    <div class="screen-title">E-SIM</div>
+  </div>
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 30px;">
+    <div style="width:72px;height:72px;border-radius:50%;background:rgba(232,98,26,0.1);border:2px solid rgba(232,98,26,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="7" y="3" width="18" height="26" rx="3.5" stroke="#E8621A" stroke-width="2"/><path d="M13 25h6" stroke="#E8621A" stroke-width="2" stroke-linecap="round"/><path d="M11 7h10" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </div>
+    <div style="font-size:9px;font-weight:700;font-family:'Inter',sans-serif;padding:4px 14px;border-radius:8px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);margin-bottom:14px;">СКОРО</div>
+    <div style="font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:#F5F0E8;margin-bottom:6px;">Виртуальные SIM-карты</div>
+    <div style="font-size:13px;color:rgba(245,240,232,0.45);line-height:1.5;">Подключайте eSIM для путешествий<br>без роуминга. Работает в 150+ странах.</div>
+  </div>
+  <div class="bottom-nav"></div>
+</div>
+<!-- ══ ЭКРАН: О сервисе ══ -->
+<div class="phone screen" id="screen-about">
+  <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;">
+    <div onclick="goBack()" class="back-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg></div>
+    <div class="screen-title">О сервисе</div>
+  </div>
+  <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:10px;">
+    <!-- Логотип + версия -->
+    <div style="text-align:center;padding:16px 0 8px;">
+      <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#F5F0E8;letter-spacing:4px;">CRYPTUS</div>
+      <div style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;color:#E8621A;margin-top:2px;">EXCHANGE</div>
+      <div style="font-size:11px;color:rgba(245,240,232,0.3);margin-top:8px;">Версия 1.0</div>
+    </div>
+    <!-- АМЛ политика -->
+    <div onclick="alert('АМЛ политика будет доступна по ссылке')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
+      <div style="width:40px;height:40px;border-radius:12px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;">
+        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><path d="M11 2L4 5v5c0 5 3 9 7 10 4-1 7-5 7-10V5l-7-3z" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11l2 2 4-4" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div style="flex:1;">
+        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">АМЛ политика</div>
+        <div style="font-size:11px;color:rgba(245,240,232,0.5);">Политика противодействия отмыванию</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
+    </div>
+    <!-- Пользовательское соглашение -->
+    <div onclick="alert('Пользовательское соглашение будет доступно по ссылке')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
+      <div style="width:40px;height:40px;border-radius:12px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;">
+        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><rect x="4" y="2" width="14" height="18" rx="2.5" stroke="rgba(245,240,232,0.5)" stroke-width="1.5"/><path d="M8 7h6M8 11h6M8 15h4" stroke="rgba(245,240,232,0.5)" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </div>
+      <div style="flex:1;">
+        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">Пользовательское соглашение</div>
+        <div style="font-size:11px;color:rgba(245,240,232,0.5);">Условия использования сервиса</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
+    </div>
+    <div style="height:8px;"></div>
+  </div>
+  </div>
+  <div class="bottom-nav"></div>
 </div>
 </div><!-- /phone-shell -->
 <script>
@@ -3254,6 +3393,7 @@ function goTo(screenId) {
   target.style.display = 'flex';
   target.classList.add('active');
   if (screenId === 'screen-cash') setTimeout(initCashHowItWorks, 50);
+  if (screenId === 'screen-profile') setTimeout(initProfile, 50);
   updateTabBar(screenId);
 }
 /* Маппинг экранов → активная вкладка */
@@ -3272,6 +3412,9 @@ const TAB_MAP = {
   'screen-card': 'screen-more',
   'screen-more': 'screen-more',
   'screen-faq': 'screen-more',
+  'screen-profile': 'screen-more',
+  'screen-esim': 'screen-more',
+  'screen-about': 'screen-more',
 };
 function updateTabBar(screenId) {
   const activeTab = TAB_MAP[screenId] || 'screen1';
@@ -3421,6 +3564,60 @@ function goToVerification() {
   closeSheet();
   setTimeout(() => goTo('screen-verify'), 380);
 }
+/* ── Инициализация экрана «Профиль» ── */
+function initProfile() {
+  // Имя и username из Telegram WebApp
+  var tg = window.Telegram && Telegram.WebApp;
+  var user = tg && tg.initDataUnsafe && tg.initDataUnsafe.user;
+  var nameEl = document.getElementById('profile-name');
+  var usernameEl = document.getElementById('profile-username');
+  var phoneEl = document.getElementById('profile-phone');
+  if (user) {
+    var fullName = (user.first_name || '') + (user.last_name ? ' ' + user.last_name : '');
+    if (nameEl) nameEl.textContent = fullName || 'Пользователь';
+    if (usernameEl) usernameEl.textContent = user.username ? '@' + user.username : '';
+    // Телефон Telegram не передаёт в initDataUnsafe — оставляем "Не указан"
+  }
+  // Статус верификации
+  var verified = getVerifiedStatus();
+  var pending = getPendingStatus();
+  var card = document.getElementById('profile-verify-card');
+  var icon = document.getElementById('profile-verify-icon');
+  var title = document.getElementById('profile-verify-title');
+  var sub = document.getElementById('profile-verify-sub');
+  if (verified) {
+    if (icon) icon.innerHTML = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#4CAF7D" stroke-width="1.5"/><path d="M5.5 9l2.5 2.5 4.5-4.5" stroke="#4CAF7D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    if (icon) icon.style.borderColor = 'rgba(76,175,125,0.3)';
+    if (icon) icon.style.background = 'rgba(76,175,125,0.1)';
+    if (title) title.textContent = 'Верификация пройдена';
+    if (title) title.style.color = '#4CAF7D';
+    if (sub) sub.textContent = 'Экспресс-обмен доступен';
+    if (card) card.style.borderColor = 'rgba(76,175,125,0.2)';
+    if (card) card.onclick = null;
+    if (card) card.style.cursor = 'default';
+  } else if (pending) {
+    if (icon) icon.innerHTML = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#FFC107" stroke-width="1.5"/><path d="M9 6v3.5l2 1" stroke="#FFC107" stroke-width="1.4" stroke-linecap="round"/></svg>';
+    if (icon) icon.style.borderColor = 'rgba(255,193,7,0.3)';
+    if (icon) icon.style.background = 'rgba(255,193,7,0.1)';
+    if (title) title.textContent = 'Верификация на проверке';
+    if (title) title.style.color = '#FFC107';
+    if (sub) sub.textContent = 'Ожидайте подтверждения';
+    if (card) card.style.borderColor = 'rgba(255,193,7,0.2)';
+    if (card) card.onclick = null;
+    if (card) card.style.cursor = 'default';
+  } else {
+    if (icon) icon.innerHTML = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#E8621A" stroke-width="1.5"/><path d="M9 6v.5" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"/><path d="M9 8.5v4" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"/></svg>';
+    if (icon) icon.style.borderColor = 'rgba(232,98,26,0.3)';
+    if (icon) icon.style.background = 'rgba(232,98,26,0.1)';
+    if (title) title.textContent = 'Верификация не пройдена';
+    if (title) title.style.color = '#F5F0E8';
+    if (sub) sub.textContent = 'Для мгновенной покупки USDT';
+    if (card) card.style.borderColor = 'rgba(232,98,26,0.2)';
+    if (card) card.onclick = function() { goTo('screen-verify'); };
+    if (card) card.style.cursor = 'pointer';
+  }
+}
+
 function completeVerify() {
   // Переключаем в статус "На проверке"
   var v = document.getElementById('pill-verified');
@@ -5461,7 +5658,7 @@ window.addEventListener('DOMContentLoaded', function() {
       '<span class="nav-label" style="margin-top:5px;">Обмен</span></div>' +
     '<div class="nav-item" onclick="goTo(\'screen-more\')" style="cursor:pointer;">' +
       '<div class="nav-side-circle"><svg width="16" height="16" viewBox="0 0 22 22" fill="none"><path d="M4 7h14M4 11h14M4 15h14" stroke="rgba(245,240,232,0.4)" stroke-width="1.6" stroke-linecap="round"/></svg></div>' +
-      '<span class="nav-label">Меню</span></div>' +
+      '<span class="nav-label">Ещё</span></div>' +
   '</div>';
   document.querySelectorAll('.bottom-nav').forEach(function(nav) {
     nav.innerHTML = NAV_HTML;
