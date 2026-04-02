@@ -160,12 +160,16 @@ body {
 }
 .verify-pill:hover { opacity: 0.85; }
 .verified {
-  background: rgba(76,175,125,0.12);
-  border: 1px solid rgba(76,175,125,0.25);
+  background: rgba(13,13,18,0.55);
+  border: 1px solid rgba(76,175,125,0.3);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 .unverified {
-  background: rgba(232,98,26,0.12);
+  background: rgba(13,13,18,0.55);
   border: 1px solid rgba(232,98,26,0.3);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   animation: pulse-border 2s infinite;
 }
 @keyframes pulse-border {
@@ -553,7 +557,7 @@ div[style*="overflow-y: auto"] {
       <span class="pill-text">Верификация →</span>
     </div>
     <!-- На проверке (скрыт по умолчанию) -->
-    <div class="verify-pill" id="pill-pending" onclick="toggleVerify()" style="display:none;background:rgba(255,193,7,0.12);border:1px solid rgba(255,193,7,0.25);cursor:pointer;">
+    <div class="verify-pill" id="pill-pending" onclick="toggleVerify()" style="display:none;background:rgba(13,13,18,0.55);border:1px solid rgba(255,193,7,0.25);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);cursor:pointer;">
       <div class="pill-icon" style="background:rgba(255,193,7,0.2);">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#FFC107" stroke-width="1.6" stroke-linecap="round"><circle cx="6" cy="6" r="4.5"/><path d="M6 4v2.5l1.5 1"/></svg>
       </div>
