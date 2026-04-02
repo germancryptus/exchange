@@ -1157,7 +1157,7 @@ div[style*="overflow-y: auto"] {
           <img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/usdt.svg" width="32" height="32" style="border-radius:50%;object-fit:cover;">
         </div>
         <div style="font-family:'Inter',sans-serif;font-size:26px;font-weight:800;color:#F5F0E8;font-variant-numeric:tabular-nums;" id="conf-amount">0</div>
-        <div style="font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:rgba(232,98,26,0.8);" id="conf-curr-label">USDT</div>
+        <div style="font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:rgba(245,240,232,0.5);" id="conf-curr-label">USDT</div>
       </div>
     </div>
     <!-- Курс между блоками -->
@@ -1264,6 +1264,16 @@ div[style*="overflow-y: auto"] {
           <div style="width:18px;height:18px;border-radius:50%;background:#4CAF7D;display:flex;align-items:center;justify-content:center;"><span style="font-size:9px;font-weight:800;color:#fff;">₽</span></div>
           <span style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:#4CAF7D;" id="success-result">— ₽</span>
         </div>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,0.06);margin:0 14px;"></div>
+      <div style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:11px;color:rgba(245,240,232,0.5);font-family:'Inter',sans-serif;">Банк</span>
+        <span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:rgba(245,240,232,0.7);" id="success-bank">—</span>
+      </div>
+      <div style="height:1px;background:rgba(255,255,255,0.06);margin:0 14px;"></div>
+      <div style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:11px;color:rgba(245,240,232,0.5);font-family:'Inter',sans-serif;" id="success-rekv-label">Реквизиты</span>
+        <span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:rgba(245,240,232,0.7);" id="success-rekv">—</span>
       </div>
       <div style="height:1px;background:rgba(255,255,255,0.06);margin:0 14px;"></div>
       <div style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;">
@@ -1694,7 +1704,7 @@ div[style*="overflow-y: auto"] {
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
         <div id="buy-conf-curr-icon" style="width:32px;height:32px;border-radius:50%;overflow:hidden;flex-shrink:0;"><img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/color/usdt.svg" width="32" height="32" style="border-radius:50%;object-fit:cover;"></div>
         <div style="font-family:'Inter',sans-serif;font-size:30px;font-weight:800;color:#E8621A;font-variant-numeric:tabular-nums;" id="buy-conf-result">0</div>
-        <div style="font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:rgba(232,98,26,0.8);" id="buy-conf-curr-label">USDT</div>
+        <div style="font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:rgba(245,240,232,0.5);" id="buy-conf-curr-label">USDT</div>
       </div>
       <div style="padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);">
         <div style="font-size:10px;color:#4CAF7D;font-weight:600;margin-bottom:4px;">Адрес кошелька</div>
@@ -5718,6 +5728,16 @@ function confirmOrder() {
   if (elAmt) elAmt.textContent = amount + ' ' + curr;
   if (elRes) elRes.textContent = result + ' ₽';
   if (elIco) elIco.innerHTML = '<img src="' + (ICONS_URLS[curr] || ICONS_URLS['USDT']) + '" width="18" height="18" style="border-radius:50%;object-fit:cover;">';
+  // Банк и реквизиты
+  var bank = document.getElementById('conf-bank-badge') ? document.getElementById('conf-bank-badge').textContent : '—';
+  var rekvLabel = document.getElementById('conf-rekv-label') ? document.getElementById('conf-rekv-label').textContent : 'Реквизиты';
+  var rekvVal   = document.getElementById('conf-rekv') ? document.getElementById('conf-rekv').textContent : '—';
+  var sBank = document.getElementById('success-bank');
+  var sRekvL = document.getElementById('success-rekv-label');
+  var sRekv  = document.getElementById('success-rekv');
+  if (sBank) sBank.textContent = bank;
+  if (sRekvL) sRekvL.textContent = rekvLabel;
+  if (sRekv) sRekv.textContent = rekvVal;
   goTo('screen-success');
 }
 /* ══ CONFIRM CASH ORDER (наличный) ══ */
