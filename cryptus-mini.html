@@ -2451,7 +2451,11 @@ div[style*="overflow-y: auto"] {
 </div><!-- /screen3 -->
 <!-- ── ЭКРАН: Кошелёк ── -->
 <div class="phone screen" id="screen-wallet">
-  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:max(14px, env(safe-area-inset-top, 14px)) 14px 0;text-align:center;gap:0;overflow-y:auto;">
+  <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;">
+    <div onclick="goBack()" class="back-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg></div>
+    <div class="screen-title">Крипто-кошелёк</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:0 14px;text-align:center;gap:0;overflow-y:auto;">
     <!-- Иконка -->
     <div style="width:88px;height:88px;border-radius:24px;background:rgba(232,98,26,0.08);border:1px solid rgba(232,98,26,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:28px;">
       <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="4" y="12" width="36" height="26" rx="5" stroke="#E8621A" stroke-width="2"/><path d="M4 20h36" stroke="#E8621A" stroke-width="2"/><circle cx="32" cy="30" r="3" fill="#E8621A"/></svg>
@@ -2510,7 +2514,11 @@ div[style*="overflow-y: auto"] {
 </div><!-- /screen-wallet -->
 <!-- ── ЭКРАН: Карта ── -->
 <div class="phone screen" id="screen-card">
-  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:max(14px, env(safe-area-inset-top, 14px)) 14px 0;text-align:center;gap:0;overflow-y:auto;">
+  <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;">
+    <div onclick="goBack()" class="back-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3L5 8l5 5"/></svg></div>
+    <div class="screen-title">Крипто-карта</div>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:0 14px;text-align:center;gap:0;overflow-y:auto;">
     <!-- Иконка карты -->
     <div style="width:88px;height:88px;border-radius:24px;background:rgba(76,175,125,0.08);border:1px solid rgba(76,175,125,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:28px;">
       <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="4" y="10" width="36" height="28" rx="5" stroke="#4CAF7D" stroke-width="2"/><path d="M4 18h36" stroke="#4CAF7D" stroke-width="2"/><path d="M10 28h8" stroke="#4CAF7D" stroke-width="2" stroke-linecap="round"/></svg>
