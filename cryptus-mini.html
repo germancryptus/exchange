@@ -3134,95 +3134,72 @@ div[style*="overflow-y: auto"] {
   <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 8px;">
     <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:#F5F0E8;">Ещё</div>
   </div>
-  <div style="padding:0 14px;display:flex;flex-direction:column;gap:8px;flex:1;overflow-y:auto;">
-    <!-- Профиль -->
-    <div onclick="goTo('screen-profile')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
-      <div style="width:40px;height:40px;border-radius:12px;background:rgba(232,98,26,0.15);display:flex;align-items:center;justify-content:center;">
-        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="4" stroke="#E8621A" stroke-width="1.6"/><path d="M3 20c0-3.5 3.5-6 8-6s8 2.5 8 6" stroke="#E8621A" stroke-width="1.6" stroke-linecap="round"/></svg>
+  <div style="padding:0 14px;display:flex;flex-direction:column;gap:12px;flex:1;overflow-y:auto;">
+    <!-- ── Профиль-карточка ── -->
+    <div onclick="goTo('screen-profile')" style="background:#1A1A1A;border-radius:14px;padding:16px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;display:flex;align-items:center;gap:14px;">
+      <div style="width:46px;height:46px;border-radius:50%;background:rgba(232,98,26,0.12);border:1.5px solid rgba(232,98,26,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="8" r="4" stroke="#E8621A" stroke-width="1.6"/><path d="M3 20c0-3.5 3.5-6 8-6s8 2.5 8 6" stroke="#E8621A" stroke-width="1.6" stroke-linecap="round"/></svg>
       </div>
-      <div style="flex:1;">
-        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">Профиль</div>
-        <div style="font-size:11px;color:rgba(245,240,232,0.5);">Настройки аккаунта</div>
+      <div style="flex:1;min-width:0;">
+        <div id="more-profile-name" style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#F5F0E8;">Пользователь</div>
+        <div id="more-verify-badge" style="display:inline-flex;align-items:center;gap:4px;margin-top:3px;font-size:10px;font-weight:600;color:#4CAF7D;">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#4CAF7D" stroke-width="1.1"/><path d="M3 5l1.5 1.5L7 4" stroke="#4CAF7D" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Верифицирован
+        </div>
       </div>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
+      <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:500;color:rgba(245,240,232,0.4);">Профиль ›</div>
     </div>
-    <!-- Крипто-кошелёк -->
-    <div onclick="goTo('screen-wallet')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
-      <div style="width:40px;height:40px;border-radius:12px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;">
-        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><rect x="2" y="6" width="18" height="13" rx="2.5" stroke="#E8621A" stroke-width="1.6"/><path d="M2 10h18" stroke="#E8621A" stroke-width="1.6"/><circle cx="16" cy="14" r="1.5" fill="#E8621A"/></svg>
+    <!-- ── Продукты: сетка 2×2 ── -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div onclick="goTo('screen-wallet')" style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="6" width="18" height="13" rx="2.5" stroke="rgba(245,240,232,0.4)" stroke-width="1.5"/><path d="M2 10h18" stroke="rgba(245,240,232,0.4)" stroke-width="1.5"/><circle cx="16" cy="14" r="1.5" fill="rgba(245,240,232,0.4)"/></svg>
+          <div style="font-size:8px;font-weight:700;font-family:'Inter',sans-serif;padding:2px 7px;border-radius:6px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);">СКОРО</div>
+        </div>
+        <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:#F5F0E8;">Кошелёк</div>
+        <div style="font-size:10px;color:rgba(245,240,232,0.4);line-height:1.3;">Хранение BTC, ETH, USDT</div>
       </div>
-      <div style="flex:1;">
-        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">Крипто-кошелёк</div>
-        <div style="font-size:11px;color:rgba(245,240,232,0.5);">Хранение BTC, ETH, USDT</div>
+      <div onclick="goTo('screen-card')" style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="5" width="18" height="14" rx="2.5" stroke="rgba(245,240,232,0.4)" stroke-width="1.5"/><path d="M2 9h18" stroke="rgba(245,240,232,0.4)" stroke-width="1.5"/><path d="M5 14h4" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div style="font-size:8px;font-weight:700;font-family:'Inter',sans-serif;padding:2px 7px;border-radius:6px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);">СКОРО</div>
+        </div>
+        <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:#F5F0E8;">Карта</div>
+        <div style="font-size:10px;color:rgba(245,240,232,0.4);line-height:1.3;">Оплата криптой везде</div>
       </div>
-      <div style="font-size:9px;font-weight:700;font-family:'Inter',sans-serif;padding:4px 10px;border-radius:8px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);">СКОРО</div>
+      <div onclick="goTo('screen-esim')" style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="5" y="2" width="12" height="18" rx="2.5" stroke="rgba(245,240,232,0.4)" stroke-width="1.5"/><path d="M9 17h4" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div style="font-size:8px;font-weight:700;font-family:'Inter',sans-serif;padding:2px 7px;border-radius:6px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);">СКОРО</div>
+        </div>
+        <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:#F5F0E8;">E-SIM</div>
+        <div style="font-size:10px;color:rgba(245,240,232,0.4);line-height:1.3;">SIM для путешествий</div>
+      </div>
+      <div style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="8" cy="8" r="3" stroke="rgba(245,240,232,0.4)" stroke-width="1.4"/><circle cx="16" cy="10" r="2.5" stroke="rgba(245,240,232,0.4)" stroke-width="1.4"/><path d="M1 19c0-3 2.5-5.5 7-5.5s7 2.5 7 5.5" stroke="rgba(245,240,232,0.4)" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <div style="font-size:8px;font-weight:700;font-family:'Inter',sans-serif;padding:2px 7px;border-radius:6px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);">СКОРО</div>
+        </div>
+        <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:#F5F0E8;">Рефералы</div>
+        <div style="font-size:10px;color:rgba(245,240,232,0.4);line-height:1.3;">Приглашай и зарабатывай</div>
+      </div>
     </div>
-    <!-- Крипто-карта -->
-    <div onclick="goTo('screen-card')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
-      <div style="width:40px;height:40px;border-radius:12px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;">
-        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><rect x="2" y="5" width="18" height="14" rx="2.5" stroke="#E8621A" stroke-width="1.6"/><path d="M2 9h18" stroke="#E8621A" stroke-width="1.6"/><path d="M5 14h4" stroke="#E8621A" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <!-- ── Поддержка: текстовый список ── -->
+    <div style="background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
+      <div onclick="goTo('screen-faq')" style="padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
+        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:#F5F0E8;">Частые вопросы</div>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
       </div>
-      <div style="flex:1;">
-        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">Крипто-карта</div>
-        <div style="font-size:11px;color:rgba(245,240,232,0.5);">Оплата криптой в магазинах</div>
+      <div style="height:1px;background:rgba(255,255,255,0.06);margin:0 16px;"></div>
+      <div onclick="window.open('https://t.me/cryptus_exchange','_blank')" style="padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
+        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:#F5F0E8;">Поддержка</div>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
       </div>
-      <div style="font-size:9px;font-weight:700;font-family:'Inter',sans-serif;padding:4px 10px;border-radius:8px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);">СКОРО</div>
-    </div>
-    <!-- E-SIM -->
-    <div onclick="goTo('screen-esim')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
-      <div style="width:40px;height:40px;border-radius:12px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;">
-        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><rect x="5" y="2" width="12" height="18" rx="2.5" stroke="#E8621A" stroke-width="1.6"/><path d="M9 17h4" stroke="#E8621A" stroke-width="1.6" stroke-linecap="round"/><path d="M8 5h6" stroke="#E8621A" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <div style="height:1px;background:rgba(255,255,255,0.06);margin:0 16px;"></div>
+      <div onclick="goTo('screen-about')" style="padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
+        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:#F5F0E8;">О сервисе</div>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
       </div>
-      <div style="flex:1;">
-        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">E-SIM</div>
-        <div style="font-size:11px;color:rgba(245,240,232,0.5);">Виртуальные SIM для путешествий</div>
-      </div>
-      <div style="font-size:9px;font-weight:700;font-family:'Inter',sans-serif;padding:4px 10px;border-radius:8px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);">СКОРО</div>
-    </div>
-    <!-- Реферальная система -->
-    <div style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);">
-      <div style="width:40px;height:40px;border-radius:12px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;">
-        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><circle cx="8" cy="8" r="3" stroke="#E8621A" stroke-width="1.5"/><circle cx="16" cy="10" r="2.5" stroke="#E8621A" stroke-width="1.5"/><path d="M1 19c0-3 2.5-5.5 7-5.5s7 2.5 7 5.5" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"/><path d="M15 15c2.5 0 5 1.5 5 3.5" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </div>
-      <div style="flex:1;">
-        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">Реферальная система</div>
-        <div style="font-size:11px;color:rgba(245,240,232,0.5);">Приглашай друзей и зарабатывай</div>
-      </div>
-      <div style="font-size:9px;font-weight:700;font-family:'Inter',sans-serif;padding:4px 10px;border-radius:8px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.2);">СКОРО</div>
-    </div>
-    <!-- Разделитель -->
-    <div style="height:1px;background:rgba(255,255,255,0.06);margin:6px 0;"></div>
-    <!-- Частые вопросы -->
-    <div onclick="goTo('screen-faq')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
-      <div style="width:40px;height:40px;border-radius:12px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;">
-        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="rgba(245,240,232,0.5)" stroke-width="1.5"/><path d="M9 9a2.5 2.5 0 013.5 2c0 1.5-2 2-2 2" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="15.5" r="0.5" fill="rgba(245,240,232,0.5)"/></svg>
-      </div>
-      <div style="flex:1;">
-        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">Частые вопросы</div>
-        <div style="font-size:11px;color:rgba(245,240,232,0.5);">FAQ по обменам и сервису</div>
-      </div>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
-    </div>
-    <!-- Техническая поддержка -->
-    <div onclick="window.open('https://t.me/cryptus_exchange','_blank')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
-      <div style="width:40px;height:40px;border-radius:12px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;">
-        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><path d="M11 3a8 8 0 00-8 8v3a2 2 0 002 2h1a1 1 0 001-1v-3a1 1 0 00-1-1H5a6 6 0 0112 0h-1a1 1 0 00-1 1v3a1 1 0 001 1h1a2 2 0 002-2v-3a8 8 0 00-8-8z" stroke="rgba(245,240,232,0.6)" stroke-width="1.5" stroke-linecap="round"/></svg>
-      </div>
-      <div style="flex:1;">
-        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">Техническая поддержка</div>
-      </div>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
-    </div>
-    <!-- О сервисе -->
-    <div onclick="goTo('screen-about')" style="display:flex;align-items:center;gap:12px;padding:14px;background:#1A1A1A;border-radius:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;">
-      <div style="width:40px;height:40px;border-radius:12px;background:rgba(245,240,232,0.06);display:flex;align-items:center;justify-content:center;">
-        <svg width="20" height="20" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="rgba(245,240,232,0.5)" stroke-width="1.5"/><path d="M11 10v5" stroke="rgba(245,240,232,0.5)" stroke-width="1.5" stroke-linecap="round"/><circle cx="11" cy="7.5" r="0.7" fill="rgba(245,240,232,0.5)"/></svg>
-      </div>
-      <div style="flex:1;">
-        <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;">О сервисе</div>
-        <div style="font-size:11px;color:rgba(245,240,232,0.5);">АМЛ политика и соглашение</div>
-      </div>
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
     </div>
     <div style="height:8px;"></div>
   </div>
@@ -3413,6 +3390,7 @@ function goTo(screenId) {
   target.classList.add('active');
   if (screenId === 'screen-cash') setTimeout(initCashHowItWorks, 50);
   if (screenId === 'screen-profile') setTimeout(initProfile, 50);
+  if (screenId === 'screen-more') setTimeout(initMoreScreen, 50);
   updateTabBar(screenId);
 }
 /* Маппинг экранов → активная вкладка */
@@ -3582,6 +3560,31 @@ function renderVerifyBadge() {
 function goToVerification() {
   closeSheet();
   setTimeout(() => goTo('screen-verify'), 380);
+}
+/* ── Инициализация экрана «Ещё» ── */
+function initMoreScreen() {
+  var tg = window.Telegram && Telegram.WebApp;
+  var user = tg && tg.initDataUnsafe && tg.initDataUnsafe.user;
+  var nameEl = document.getElementById('more-profile-name');
+  if (user && nameEl) {
+    var fullName = (user.first_name || '') + (user.last_name ? ' ' + user.last_name : '');
+    nameEl.textContent = fullName || 'Пользователь';
+  }
+  var badge = document.getElementById('more-verify-badge');
+  if (badge) {
+    var verified = getVerifiedStatus();
+    var pending = getPendingStatus();
+    if (verified) {
+      badge.innerHTML = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#4CAF7D" stroke-width="1.1"/><path d="M3 5l1.5 1.5L7 4" stroke="#4CAF7D" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg> Верифицирован';
+      badge.style.color = '#4CAF7D';
+    } else if (pending) {
+      badge.innerHTML = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#FFC107" stroke-width="1.1"/><path d="M5 3.5v2l1 .7" stroke="#FFC107" stroke-width="1" stroke-linecap="round"/></svg> На проверке';
+      badge.style.color = '#FFC107';
+    } else {
+      badge.innerHTML = '<svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#E8621A" stroke-width="1.1"/><path d="M5 3.5v1" stroke="#E8621A" stroke-width="1.1" stroke-linecap="round"/><path d="M5 6v1.5" stroke="#E8621A" stroke-width="1.1" stroke-linecap="round"/></svg> Не верифицирован';
+      badge.style.color = '#E8621A';
+    }
+  }
 }
 /* ── Инициализация экрана «Профиль» ── */
 function initProfile() {
