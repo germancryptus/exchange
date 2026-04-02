@@ -3263,8 +3263,12 @@ div[style*="overflow-y: auto"] {
     </div>
     <!-- Телефон -->
     <div style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);">
-      <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:rgba(245,240,232,0.5);margin-bottom:6px;">Номер телефона</div>
-      <div id="profile-phone" style="font-family:'Inter',sans-serif;font-size:15px;font-weight:600;color:rgba(245,240,232,0.4);">Не указан</div>
+      <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:rgba(245,240,232,0.5);margin-bottom:8px;">Номер телефона</div>
+      <div style="display:flex;gap:8px;">
+        <input id="profile-phone" type="tel" placeholder="+7 (___) ___-__-__" style="flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 12px;font-family:'Inter',sans-serif;font-size:13px;color:#F5F0E8;outline:none;">
+        <div onclick="alert('Функция будет доступна в ближайшем обновлении')" style="background:rgba(245,240,232,0.1);border-radius:10px;padding:10px 16px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:rgba(245,240,232,0.6);cursor:pointer;white-space:nowrap;">Привязать</div>
+      </div>
+      <div style="font-size:10px;color:rgba(245,240,232,0.35);margin-top:6px;">Для связи по вопросам обмена</div>
     </div>
     <div style="height:8px;"></div>
   </div>
