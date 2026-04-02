@@ -693,10 +693,10 @@ div[style*="overflow-y: auto"] {
   <!-- PROMO CAROUSEL -->
   <div style="margin:10px 14px 14px;">
     <div style="display:flex;justify-content:center;gap:4px;margin-bottom:8px;">
-      <span id="promo-dot-0" style="width:12px;height:5px;border-radius:3px;background:#E8621A;transition:all 0.3s;"></span>
-      <span id="promo-dot-1" style="width:5px;height:5px;border-radius:3px;background:rgba(245,240,232,0.2);transition:all 0.3s;"></span>
-      <span id="promo-dot-2" style="width:5px;height:5px;border-radius:3px;background:rgba(245,240,232,0.2);transition:all 0.3s;"></span>
-      <span id="promo-dot-3" style="width:5px;height:5px;border-radius:3px;background:rgba(245,240,232,0.2);transition:all 0.3s;"></span>
+      <span id="promo-dot-0" onclick="goToPromo(0);startPromoAuto();" style="cursor:pointer;width:12px;height:5px;border-radius:3px;background:#E8621A;transition:all 0.3s;"></span>
+      <span id="promo-dot-1" onclick="goToPromo(1);startPromoAuto();" style="cursor:pointer;width:5px;height:5px;border-radius:3px;background:rgba(245,240,232,0.2);transition:all 0.3s;"></span>
+      <span id="promo-dot-2" onclick="goToPromo(2);startPromoAuto();" style="cursor:pointer;width:5px;height:5px;border-radius:3px;background:rgba(245,240,232,0.2);transition:all 0.3s;"></span>
+      <span id="promo-dot-3" onclick="goToPromo(3);startPromoAuto();" style="cursor:pointer;width:5px;height:5px;border-radius:3px;background:rgba(245,240,232,0.2);transition:all 0.3s;"></span>
     </div>
     <div style="overflow:hidden;border-radius:16px;">
       <div id="promo-slider" style="display:flex;width:400%;transition:transform 0.5s cubic-bezier(0.4,0,0.2,1);">
@@ -991,6 +991,7 @@ div[style*="overflow-y: auto"] {
           <div onclick="selectNet(this)" class="net-chip" style="border-radius:20px;padding:4px 12px;font-family:'Inter',sans-serif;font-size:9px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.1);color:rgba(245,240,232,0.5);background:rgba(255,255,255,0.04);">ERC20</div>
           <div onclick="selectNet(this)" class="net-chip" style="border-radius:20px;padding:4px 12px;font-family:'Inter',sans-serif;font-size:9px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.1);color:rgba(245,240,232,0.5);background:rgba(255,255,255,0.04);">BEP20</div>
           <div onclick="selectNet(this)" class="net-chip" style="border-radius:20px;padding:4px 12px;font-family:'Inter',sans-serif;font-size:9px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.1);color:rgba(245,240,232,0.5);background:rgba(255,255,255,0.04);">TON</div>
+          <div onclick="selectNet(this)" class="net-chip" style="border-radius:20px;padding:4px 12px;font-family:'Inter',sans-serif;font-size:9px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.1);color:rgba(245,240,232,0.5);background:rgba(255,255,255,0.04);">SOL</div>
         </div>
       </div>
     </div>
@@ -1167,7 +1168,7 @@ div[style*="overflow-y: auto"] {
     <div class="confirm-block-green">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
         <div class="confirm-label">Я ПОЛУЧАЮ</div>
-        <div style="font-family:'Inter',sans-serif;font-size:11px;color:#4CAF7D;background:rgba(76,175,125,0.1);border:1px solid rgba(76,175,125,0.2);border-radius:6px;padding:3px 10px;white-space:nowrap;" id="conf-bank-badge">Тинькофф</div>
+        <div style="font-family:'Inter',sans-serif;font-size:11px;color:#4CAF7D;background:rgba(76,175,125,0.1);border:1px solid rgba(76,175,125,0.2);border-radius:6px;padding:3px 10px;white-space:nowrap;" id="conf-bank-badge">—</div>
       </div>
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
         <div style="width:32px;height:32px;border-radius:50%;background:#4CAF7D;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -1349,6 +1350,7 @@ div[style*="overflow-y: auto"] {
           <div onclick="selectBuyNet(this)" class="buy-net-chip" style="border-radius:20px;padding:4px 12px;font-family:'Inter',sans-serif;font-size:9px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.1);color:rgba(245,240,232,0.5);background:rgba(255,255,255,0.04);">ERC20</div>
           <div onclick="selectBuyNet(this)" class="buy-net-chip" style="border-radius:20px;padding:4px 12px;font-family:'Inter',sans-serif;font-size:9px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.1);color:rgba(245,240,232,0.5);background:rgba(255,255,255,0.04);">BEP20</div>
           <div onclick="selectBuyNet(this)" class="buy-net-chip" style="border-radius:20px;padding:4px 12px;font-family:'Inter',sans-serif;font-size:9px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.1);color:rgba(245,240,232,0.5);background:rgba(255,255,255,0.04);">TON</div>
+          <div onclick="selectBuyNet(this)" class="buy-net-chip" style="border-radius:20px;padding:4px 12px;font-family:'Inter',sans-serif;font-size:9px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.1);color:rgba(245,240,232,0.5);background:rgba(255,255,255,0.04);">SOL</div>
         </div>
       </div>
     </div>
@@ -1430,7 +1432,7 @@ div[style*="overflow-y: auto"] {
         <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:rgba(245,240,232,0.6);">Адрес кошелька <span style="color:#E8621A;font-weight:600;">TRC20</span></div>
         <div onclick="pasteExpressWallet()" style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:#E8621A;cursor:pointer;background:rgba(232,98,26,0.1);border:1px solid rgba(232,98,26,0.25);border-radius:6px;padding:3px 10px;">Вставить</div>
       </div>
-      <input id="express-wallet" type="text" placeholder="Txxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      <input id="express-wallet" type="text" placeholder="Вставьте адрес TRC20"
         style="background:transparent;border:none;outline:none;font-family:'Inter',sans-serif;font-size:13px;font-weight:500;color:#F5F0E8;width:100%;letter-spacing:0.3px;"
         oninput="validateExpressWallet()" />
       <div id="express-wallet-hint" style="font-size:10px;margin-top:6px;display:none;"></div>
@@ -1548,7 +1550,7 @@ div[style*="overflow-y: auto"] {
         </div>
         <div>
           <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#F5F0E8;">Лимиты и тарифы</div>
-          <div style="font-size:11px;color:rgba(245,240,232,0.5);margin-top:1px;">Мин. 12 USDT · Комиссия 0 ₽</div>
+          <div style="font-size:11px;color:rgba(245,240,232,0.5);margin-top:1px;">Мин. 12 USDT · 0 ₽ за обмен</div>
         </div>
       </div>
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#E8621A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.6;"><path d="M5 3l4 4-4 4"/></svg>
@@ -1659,7 +1661,7 @@ div[style*="overflow-y: auto"] {
     <div class="confirm-block-green">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
         <div class="confirm-label">Я ОТДАЮ</div>
-        <div style="font-family:'Inter',sans-serif;font-size:11px;color:#4CAF7D;background:rgba(76,175,125,0.1);border:1px solid rgba(76,175,125,0.2);border-radius:6px;padding:3px 10px;white-space:nowrap;" id="buy-conf-bank">Тинькофф</div>
+        <div style="font-family:'Inter',sans-serif;font-size:11px;color:#4CAF7D;background:rgba(76,175,125,0.1);border:1px solid rgba(76,175,125,0.2);border-radius:6px;padding:3px 10px;white-space:nowrap;" id="buy-conf-bank">—</div>
       </div>
       <div style="display:flex;align-items:center;gap:10px;">
         <div style="width:32px;height:32px;border-radius:50%;background:#4CAF7D;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:14px;font-weight:800;color:#fff;">₽</span></div>
@@ -3011,7 +3013,7 @@ div[style*="overflow-y: auto"] {
     </div>
     <div style="margin:8px 14px 0;background:rgba(232,98,26,0.05);border-radius:12px;padding:11px 14px;border:1px solid rgba(232,98,26,0.12);display:flex;gap:8px;">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0;margin-top:1px;"><circle cx="7" cy="7" r="5.5" stroke="#E8621A" stroke-width="1.2"/><path d="M7 6V9M7 4.5v.3" stroke="#E8621A" stroke-width="1.2" stroke-linecap="round"/></svg>
-      <span style="font-size:11px;color:rgba(245,240,232,0.45);line-height:1.6;">Лимиты обновляются ежедневно в 00:00 МСК. Комиссия сети — 0 ₽.</span>
+      <span style="font-size:11px;color:rgba(245,240,232,0.45);line-height:1.6;">Лимиты обновляются ежедневно в 00:00 МСК.</span>
     </div>
   </div>
 <!-- ── ЭКРАН: Ещё ── -->
@@ -3024,13 +3026,13 @@ div[style*="overflow-y: auto"] {
     <div style="font-family:'Inter',sans-serif;font-size:18px;font-weight:700;color:#F5F0E8;">Частые вопросы</div>
   </div>
   <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 14px 14px;">
-    <!-- FAQ 1 -->
-    <div class="faq-item" onclick="toggleFaq(this)" style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.06);margin-bottom:8px;cursor:pointer;">
+    <!-- FAQ 1 (open by default) -->
+    <div class="faq-item" onclick="toggleFaq(this)" style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(232,98,26,0.2);margin-bottom:8px;cursor:pointer;">
       <div style="display:flex;justify-content:space-between;align-items:center;">
         <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:700;color:#F5F0E8;flex:1;padding-right:10px;">Как работает обмен криптовалюты?</div>
-        <svg class="faq-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round" style="transition:transform 0.2s;flex-shrink:0;"><path d="M3 5l4 4 4-4"/></svg>
+        <svg class="faq-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="rgba(245,240,232,0.4)" stroke-width="1.5" stroke-linecap="round" style="transition:transform 0.2s;flex-shrink:0;transform:rotate(180deg);"><path d="M3 5l4 4 4-4"/></svg>
       </div>
-      <div class="faq-answer" style="display:none;margin-top:10px;font-size:12px;color:rgba(245,240,232,0.5);line-height:1.6;">
+      <div class="faq-answer" style="display:block;margin-top:10px;font-size:12px;color:rgba(245,240,232,0.5);line-height:1.6;">
         Вы оставляете заявку, выбираете направление (купить или продать) и метод (классический или экспресс). После подтверждения оператор обрабатывает заявку и переводит средства.
       </div>
     </div>
