@@ -2590,46 +2590,43 @@ div[style*="overflow-y: auto"] {
   <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:10px;">
     <!-- Юр. лица -->
     <div id="transfer-corp" style="display:flex;flex-direction:column;gap:10px;width:100%;">
-      <div onclick="openTfInvoice()" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-          <div style="width:38px;height:38px;border-radius:10px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="1" width="11" height="15" rx="2" stroke="#E8621A" stroke-width="1.4"/><path d="M5 5h5M5 8h5M5 11h3" stroke="#E8621A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-          <div style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#F5F0E8;">Оплата по инвойсу</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div onclick="openTfInvoice()" style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;display:flex;flex-direction:column;gap:10px;">
+          <svg width="24" height="24" viewBox="0 0 22 22" fill="none"><rect x="3" y="1" width="13" height="18" rx="2.5" stroke="rgba(245,240,232,0.4)" stroke-width="1.5"/><path d="M7 6h6M7 9h6M7 12h3" stroke="rgba(245,240,232,0.4)" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;">Инвойсы</div>
+          <div style="font-size:10px;color:rgba(245,240,232,0.4);line-height:1.4;">SWIFT / SEPA платежи</div>
         </div>
-        <div style="font-size:12px;color:rgba(245,240,232,0.5);line-height:1.6;">Платежи по вашим зарубежным инвойсам через SWIFT и SEPA: мы берём на себя проверку реквизитов, контроль сроков и безопасную отправку средств.</div>
-      </div>
-      <div onclick="openTfVed()" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-          <div style="width:38px;height:38px;border-radius:10px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#E8621A" stroke-width="1.4"/><path d="M2 9h14M9 2c-2 2-3 4-3 7s1 5 3 7M9 2c2 2 3 4 3 7s-1 5-3 7" stroke="#E8621A" stroke-width="1.2"/></svg></div>
-          <div style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#F5F0E8;">Платежный агент</div>
+        <div onclick="openTfVed()" style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;display:flex;flex-direction:column;gap:10px;">
+          <svg width="24" height="24" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="rgba(245,240,232,0.4)" stroke-width="1.5"/><path d="M3 11h16M11 3c-2.5 2.5-3.5 5-3.5 8s1 5.5 3.5 8M11 3c2.5 2.5 3.5 5 3.5 8s-1 5.5-3.5 8" stroke="rgba(245,240,232,0.4)" stroke-width="1.3"/></svg>
+          <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;">Платёжный агент</div>
+          <div style="font-size:10px;color:rgba(245,240,232,0.4);line-height:1.4;">Оплата с российских счетов</div>
         </div>
-        <div style="font-size:12px;color:rgba(245,240,232,0.5);line-height:1.6;">Выступим платёжным агентом: оплачиваем зарубежные инвойсы с российских счетов, возвращаем экспортную выручку.</div>
       </div>
     </div>
     <!-- Физ. лица -->
     <div id="transfer-pers" style="display:none;flex-direction:column;gap:10px;">
-      <div onclick="openTfCard()" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-          <div style="width:38px;height:38px;border-radius:10px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="4" width="16" height="11" rx="2" stroke="#E8621A" stroke-width="1.4"/><path d="M1 8h16" stroke="#E8621A" stroke-width="1.4"/><path d="M4 12h3" stroke="#E8621A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-          <div>
-            <div style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#F5F0E8;">Пополнение зарубежных карт</div>
-            <div style="font-size:10px;color:rgba(232,98,26,0.7);margin-top:2px;">до 9 999€ за операцию</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div onclick="openTfCard()" style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <svg width="24" height="24" viewBox="0 0 22 22" fill="none"><rect x="1" y="5" width="20" height="13" rx="2.5" stroke="rgba(245,240,232,0.4)" stroke-width="1.5"/><path d="M1 10h20" stroke="rgba(245,240,232,0.4)" stroke-width="1.5"/><path d="M5 15h4" stroke="rgba(245,240,232,0.4)" stroke-width="1.3" stroke-linecap="round"/></svg>
+            <div style="font-size:8px;font-weight:700;font-family:'Inter',sans-serif;padding:2px 6px;border-radius:5px;background:rgba(232,98,26,0.1);color:#E8621A;border:1px solid rgba(232,98,26,0.15);">9 999€</div>
           </div>
+          <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;">Карты</div>
+          <div style="font-size:10px;color:rgba(245,240,232,0.4);line-height:1.4;">Wise, Revolut, Zelle</div>
         </div>
-        <div style="font-size:12px;color:rgba(245,240,232,0.5);line-height:1.6;">Wise, Revolut, Zelle и др. Лимит в рамках одного пополнения — до 9,999€.</div>
+        <div onclick="openTfAlipay()" style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;display:flex;flex-direction:column;gap:10px;">
+          <svg width="24" height="24" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="rgba(245,240,232,0.4)" stroke-width="1.5"/><path d="M7 11a4 4 0 108 0" stroke="rgba(245,240,232,0.4)" stroke-width="1.3"/><path d="M11 7v8" stroke="rgba(245,240,232,0.4)" stroke-width="1.3"/></svg>
+          <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;">Alipay / WeChat</div>
+          <div style="font-size:10px;color:rgba(245,240,232,0.4);line-height:1.4;">Быстро и с гарантией</div>
+        </div>
       </div>
-      <div onclick="openTfAlipay()" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-          <div style="width:38px;height:38px;border-radius:10px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#E8621A" stroke-width="1.4"/><path d="M6 9a3 3 0 106 0" stroke="#E8621A" stroke-width="1.4"/><path d="M9 6v6" stroke="#E8621A" stroke-width="1.2"/></svg></div>
-          <div style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#F5F0E8;">Alipay и WeChat</div>
+      <div onclick="openTfInvoice()" style="background:#1A1A1A;border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,0.07);cursor:pointer;display:flex;align-items:center;gap:14px;">
+        <svg width="24" height="24" viewBox="0 0 22 22" fill="none"><rect x="3" y="1" width="13" height="18" rx="2.5" stroke="rgba(245,240,232,0.4)" stroke-width="1.5"/><path d="M7 6h6M7 9h6M7 12h3" stroke="rgba(245,240,232,0.4)" stroke-width="1.3" stroke-linecap="round"/></svg>
+        <div style="flex:1;">
+          <div style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#F5F0E8;">Оплата по инвойсу</div>
+          <div style="font-size:10px;color:rgba(245,240,232,0.4);margin-top:2px;">SWIFT / SEPA</div>
         </div>
-        <div style="font-size:12px;color:rgba(245,240,232,0.5);line-height:1.6;">Оперативное пополнение — быстро, надёжно и с гарантией зачисления.</div>
-      </div>
-      <div onclick="openTfInvoice()" style="background:#1A1A1A;border-radius:14px;padding:12px 14px;border:1.5px solid rgba(232,98,26,0.2);cursor:pointer;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(232,98,26,0.5)'" onmouseout="this.style.borderColor='rgba(232,98,26,0.2)'">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-          <div style="width:38px;height:38px;border-radius:10px;background:rgba(232,98,26,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="1" width="11" height="15" rx="2" stroke="#E8621A" stroke-width="1.4"/><path d="M5 5h5M5 8h5M5 11h3" stroke="#E8621A" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-          <div style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#F5F0E8;">Оплата по инвойсу</div>
-        </div>
-        <div style="font-size:12px;color:rgba(245,240,232,0.5);line-height:1.6;">SWIFT/SEPA: авто, недвижимость, услуги и другие покупки — быстро и безопасно.</div>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="rgba(245,240,232,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M6 3l5 5-5 5"/></svg>
       </div>
     </div>
     <div style="height:16px;"></div>
