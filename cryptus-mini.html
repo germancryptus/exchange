@@ -880,7 +880,7 @@ div[style*="overflow-y: auto"] {
             <div style="display:flex;align-items:center;gap:5px;margin-bottom:3px;">
               <span style="background:rgba(76,175,125,0.1);border:1px solid rgba(76,175,125,0.2);border-radius:5px;padding:1px 7px;font-size:8px;font-weight:600;color:#4CAF7D;">от 1 000 ₽</span>
             </div>
-            <div style="font-size:10px;color:rgba(245,240,232,0.5);">До 3 мин · Верификация</div>
+            <div style="font-size:10px;color:rgba(245,240,232,0.5);">До 3 мин · USDT TRC20 · Верификация</div>
           </div>
         </div>
         <div id="sheet-instant-rate" style="font-family:'Inter',sans-serif;font-size:16px;font-weight:800;color:rgba(232,98,26,0.6);font-variant-numeric:tabular-nums;">83.90 ₽</div>
@@ -1047,23 +1047,17 @@ div[style*="overflow-y: auto"] {
           </div>
           <span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">Альфа-банк</span>
         </div>
-        <div onclick="selectBank('Газпромбанк', '#003087', '#fff')" class="bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;transition:background 0.12s;">
-          <div style="width:32px;height:32px;border-radius:8px;background:#003087;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <span style="font-family:'Arial',sans-serif;font-size:10px;font-weight:700;color:#fff;">ГПБ</span>
+        <div onclick="selectBank('ВТБ', '#002882', '#fff')" class="bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;transition:background 0.12s;">
+          <div style="width:32px;height:32px;border-radius:8px;background:#002882;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Arial',sans-serif;font-size:10px;font-weight:700;color:#fff;">ВТБ</span>
           </div>
-          <span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">Газпромбанк</span>
+          <span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">ВТБ</span>
         </div>
-        <div onclick="selectBank('Авангард', '#FF6B00', '#fff')" class="bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;transition:background 0.12s;">
-          <div style="width:32px;height:32px;border-radius:8px;background:#FF6B00;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <span style="font-family:'Arial',sans-serif;font-size:10px;font-weight:700;color:#fff;">АВГ</span>
+        <div onclick="selectBank('Другой банк', '#555', '#fff')" class="bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;transition:background 0.12s;">
+          <div style="width:32px;height:32px;border-radius:8px;background:#555;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Arial',sans-serif;font-size:14px;font-weight:700;color:#fff;">…</span>
           </div>
-          <span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">Авангард</span>
-        </div>
-        <div onclick="selectBank('Промсвязьбанк', '#F5A623', '#fff')" class="bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;transition:background 0.12s;">
-          <div style="width:32px;height:32px;border-radius:8px;background:#F5A623;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <span style="font-family:'Arial',sans-serif;font-size:10px;font-weight:700;color:#fff;">ПСБ</span>
-          </div>
-          <span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">Промсвязьбанк</span>
+          <span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(245,240,232,0.6);">Другой банк</span>
         </div>
       </div>
     </div>
@@ -1277,6 +1271,7 @@ div[style*="overflow-y: auto"] {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 2L15 22l-4-9-9-4 20-7Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Написать оператору
     </div>
+    <div style="font-size:10px;color:rgba(245,240,232,0.35);text-align:center;margin:-4px 0 2px;">Оператор подтвердит заявку и начнёт обмен</div>
     <div onclick="goTo('screen1')" class="cta-secondary" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Главная</div>
   </div>
 </div><!-- /screen-success -->
@@ -1317,8 +1312,8 @@ div[style*="overflow-y: auto"] {
         <div onclick="selectBuyBank('Тинькофф','#FFDD2D','#000')" class="buy-bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#FFDD2D;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:11px;font-weight:900;color:#000;">T</span></div><span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">Тинькофф</span></div>
         <div onclick="selectBuyBank('Сбербанк','#21A038','#fff')" class="buy-bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#21A038;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><path d="M21 3l-9 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></div><span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">Сбербанк</span></div>
         <div onclick="selectBuyBank('Альфа-банк','#EF3124','#fff')" class="buy-bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#EF3124;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:14px;font-weight:900;color:#fff;">α</span></div><span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">Альфа-банк</span></div>
-        <div onclick="selectBuyBank('Газпромбанк','#003087','#fff')" class="buy-bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#003087;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:10px;font-weight:700;color:#fff;">ГПБ</span></div><span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">Газпромбанк</span></div>
-        <div onclick="selectBuyBank('Промсвязьбанк','#F5A623','#fff')" class="buy-bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#F5A623;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:10px;font-weight:700;color:#fff;">ПСБ</span></div><span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">Промсвязьбанк</span></div>
+        <div onclick="selectBuyBank('ВТБ','#002882','#fff')" class="buy-bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#002882;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:10px;font-weight:700;color:#fff;">ВТБ</span></div><span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:#F5F0E8;">ВТБ</span></div>
+        <div onclick="selectBuyBank('Другой банк','#555','#fff')" class="buy-bank-opt" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#555;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Arial',sans-serif;font-size:14px;font-weight:700;color:#fff;">…</span></div><span style="font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(245,240,232,0.6);">Другой банк</span></div>
       </div>
     </div>
     <div class="rate-divider">
@@ -1529,8 +1524,8 @@ div[style*="overflow-y: auto"] {
         <div onclick="selectEsBank('Тинькофф','#FFDD2D','#000')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#FFDD2D;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:11px;font-weight:900;color:#000;">T</span></div><span style="font-size:14px;font-weight:500;color:#F5F0E8;">Тинькофф</span></div>
         <div onclick="selectEsBank('Сбербанк','#21A038','#fff')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#21A038;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><path d="M21 3l-9 9" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></div><span style="font-size:14px;font-weight:500;color:#F5F0E8;">Сбербанк</span></div>
         <div onclick="selectEsBank('Альфа-банк','#EF3124','#fff')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#EF3124;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:14px;font-weight:900;color:#fff;">α</span></div><span style="font-size:14px;font-weight:500;color:#F5F0E8;">Альфа-банк</span></div>
-        <div onclick="selectEsBank('Газпромбанк','#003087','#fff')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#003087;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:10px;font-weight:700;color:#fff;">ГПБ</span></div><span style="font-size:14px;font-weight:500;color:#F5F0E8;">Газпромбанк</span></div>
-        <div onclick="selectEsBank('Промсвязьбанк','#F5A623','#fff')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#F5A623;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:10px;font-weight:700;color:#fff;">ПСБ</span></div><span style="font-size:14px;font-weight:500;color:#F5F0E8;">Промсвязьбанк</span></div>
+        <div onclick="selectEsBank('ВТБ','#002882','#fff')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#002882;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:10px;font-weight:700;color:#fff;">ВТБ</span></div><span style="font-size:14px;font-weight:500;color:#F5F0E8;">ВТБ</span></div>
+        <div onclick="selectEsBank('Другой банк','#555','#fff')" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;"><div style="width:32px;height:32px;border-radius:8px;background:#555;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:14px;font-weight:700;color:#fff;">…</span></div><span style="font-size:14px;font-weight:500;color:rgba(245,240,232,0.6);">Другой банк</span></div>
       </div>
     </div>
     <!-- Телефон СБП -->
@@ -1760,6 +1755,7 @@ div[style*="overflow-y: auto"] {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 2L15 22l-4-9-9-4 20-7Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Написать оператору
     </div>
+    <div style="font-size:10px;color:rgba(245,240,232,0.35);text-align:center;margin:-4px 0 2px;">Оператор подтвердит заявку и начнёт обмен</div>
     <div onclick="goTo('screen1')" class="cta-secondary" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Главная</div>
   </div>
 </div><!-- /screen-success-buy -->
@@ -2279,6 +2275,7 @@ div[style*="overflow-y: auto"] {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 2L15 22l-4-9-9-4 20-7Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Написать оператору
     </div>
+    <div style="font-size:10px;color:rgba(245,240,232,0.35);text-align:center;margin:-4px 0 2px;">Оператор подтвердит заявку и согласует встречу</div>
     <div onclick="goTo('screen1')" class="cta-secondary" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">Главная</div>
   </div>
   </div>
@@ -3383,7 +3380,7 @@ function renderVerifyBadge() {
         <span style="font-size:10px;color:#4CAF7D;font-weight:500;">Верификация пройдена</span>
       </div>`;
     const cta = document.getElementById('sheet-cta');
-    if (cta) { cta.style.background = '#E8621A'; cta.style.opacity = '1'; cta.style.pointerEvents = 'auto'; }
+    if (cta) { cta.style.background = '#E8621A'; cta.style.opacity = '1'; cta.style.pointerEvents = 'auto'; cta.textContent = 'Продолжить →'; cta.onclick = function() { sheetCTAClick(); }; }
   } else if (isPending) {
     badge.innerHTML = `
       <div style="background:rgba(255,193,7,0.08);border:1px solid rgba(255,193,7,0.2);border-radius:8px;padding:7px 11px;display:flex;align-items:center;gap:7px;">
@@ -3391,7 +3388,7 @@ function renderVerifyBadge() {
         <span style="font-size:10px;color:#FFC107;font-weight:500;">На проверке — ожидайте</span>
       </div>`;
     const cta = document.getElementById('sheet-cta');
-    if (cta) { cta.style.background = 'rgba(255,193,7,0.2)'; cta.style.opacity = '0.5'; cta.style.pointerEvents = 'none'; }
+    if (cta) { cta.style.background = 'rgba(255,193,7,0.2)'; cta.style.opacity = '0.5'; cta.style.pointerEvents = 'none'; cta.textContent = 'Верификация на проверке…'; }
   } else {
     badge.innerHTML = `
       <div style="background:rgba(232,98,26,0.08);border:1px solid rgba(232,98,26,0.2);border-radius:8px;padding:7px 11px;display:flex;align-items:center;justify-content:space-between;">
@@ -3402,7 +3399,7 @@ function renderVerifyBadge() {
         <span onclick="goToVerification()" style="font-size:10px;color:#E8621A;font-weight:600;cursor:pointer;white-space:nowrap;">Пройти →</span>
       </div>`;
     const cta = document.getElementById('sheet-cta');
-    if (cta) { cta.style.background = 'rgba(232,98,26,0.25)'; cta.style.opacity = '0.5'; cta.style.pointerEvents = 'none'; }
+    if (cta) { cta.style.background = 'rgba(232,98,26,0.25)'; cta.style.opacity = '0.7'; cta.style.pointerEvents = 'auto'; cta.textContent = 'Пройти верификацию →'; cta.onclick = function() { goToVerification(); }; }
   }
 }
 function goToVerification() {
@@ -4281,7 +4278,7 @@ function selectMethod(method) {
     if (shInstantRate) shInstantRate.style.color = 'rgba(232,98,26,0.5)';
     if (shClassicRate) shClassicRate.style.color = '#E8621A';
     const cta = document.getElementById('sheet-cta');
-    if (cta) { cta.style.background = '#E8621A'; cta.style.opacity = '1'; cta.style.pointerEvents = 'auto'; }
+    if (cta) { cta.style.background = '#E8621A'; cta.style.opacity = '1'; cta.style.pointerEvents = 'auto'; cta.textContent = 'Продолжить →'; cta.onclick = function() { sheetCTAClick(); }; }
   } else {
     instant.style.borderColor  = '#E8621A';
     instant.style.background   = '#261A12';
