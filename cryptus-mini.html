@@ -3399,7 +3399,7 @@ function renderVerifyBadge() {
         <span onclick="goToVerification()" style="font-size:10px;color:#E8621A;font-weight:600;cursor:pointer;white-space:nowrap;">Пройти →</span>
       </div>`;
     const cta = document.getElementById('sheet-cta');
-    if (cta) { cta.style.background = 'rgba(232,98,26,0.25)'; cta.style.opacity = '0.7'; cta.style.pointerEvents = 'auto'; cta.textContent = 'Пройти верификацию →'; cta.onclick = function() { goToVerification(); }; }
+    if (cta) { cta.style.background = '#E8621A'; cta.style.opacity = '1'; cta.style.pointerEvents = 'auto'; cta.textContent = 'Пройти верификацию →'; cta.onclick = function() { goToVerification(); }; }
   }
 }
 function goToVerification() {
