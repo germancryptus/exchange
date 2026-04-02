@@ -3923,7 +3923,7 @@ function openCashForm(intent) {
   if (intent === 'sell') {
     if (titleEl)   titleEl.textContent   = 'Продать';
     if (giveLabel) giveLabel.textContent = 'Отдаёте';
-    if (getLabel)  getLabel.textContent  = 'Получаете (наличными)';
+    if (getLabel)  getLabel.textContent  = 'Получаете';
     var cm = getCashMin(); if (minVal) minVal.textContent = (cm < 1 ? cm.toFixed(6) : cm.toLocaleString('ru-RU')) + ' ' + (cashCurrency || 'USDT');
     if (currBtn)      currBtn.style.display      = 'flex';
     if (giveFiatBtn)  giveFiatBtn.style.display  = 'none';
@@ -3931,7 +3931,7 @@ function openCashForm(intent) {
     if (getCryptoBtn) getCryptoBtn.style.display = 'none';
   } else {
     if (titleEl)   titleEl.textContent   = 'Купить';
-    if (giveLabel) giveLabel.textContent = 'Отдаёте (наличными)';
+    if (giveLabel) giveLabel.textContent = 'Отдаёте';
     if (getLabel)  getLabel.textContent  = 'Получаете';
     var cmb = getCashMin(); if (minVal) minVal.textContent = cmb.toLocaleString('ru-RU') + getCashMinUnit();
     if (currBtn)      currBtn.style.display      = 'none';
